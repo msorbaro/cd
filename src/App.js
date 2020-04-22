@@ -1,12 +1,31 @@
 import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+const MainMenu = () => {
+  <div>
+    <Link to="/">
+      <button>home</button>
+    </Link>
+  </div>
+}
+
+const Home = () => (
+  <div>
+    Home
+  </div>
+)
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to React</h1>
+            <MainMenu/>
         <p>
           Welcome Team <code>cd ur_mom</code>!
         </p>
@@ -24,7 +43,11 @@ function App() {
           I am excited to see the great things you do with this code :)
         </p>
       </header>
+      <div>
+        <Route exact path="/" component={Home} />
+      </div>
     </div>
+    </Router>
   );
 }
 
