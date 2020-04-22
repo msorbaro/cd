@@ -40,17 +40,17 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="displaySignInInfoContainer">
-        <div className="displaySignInInfo">
-          <div className="leftJustify" style={{ width: '100%' }}>
-            <div className="prompt"> Email: </div>
+      <div >
+        <div >
+          <div>
+            <div > Email: </div>
             <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
-            <div className="prompt"> Password: </div>
-            <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+            <div> Password: </div>
+            <Input type="password" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
           </div>
           <div>
-            <Button className="signupButtons" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
-            <Button className="signupButtons" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
+            <Button  id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
+            <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
           </div>
         </div>
       </div>

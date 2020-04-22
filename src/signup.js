@@ -71,24 +71,24 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="displaySignInInfoContainer">
-        <div className="displaySignInInfo">
-          <div className="leftJustify">
-            <div className="prompt"> Enter your Dartmouth email: </div>
-            <Input className="response" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
-            <div className="prompt"> Enter your first name: </div>
-            <Input className="response" placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
-            <div className="prompt"> Enter your last name: </div>
-            <Input className="response" placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
-            <div className="prompt"> Enter a password: </div>
-            <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+      <div >
+        <div >
+          <div >
+            <div> Enter your Dartmouth email: </div>
+            <Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+            <div > Enter your first name: </div>
+            <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
+            <div > Enter your last name: </div>
+            <Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
+            <div > Enter a password: </div>
+            <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
             <div className="prompt"> Confirm password: </div>
-            <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
+            <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
 
           </div>
           <div>
-            <Button className="signupButtons" id="createButton" onClick={this.handleSignupButtonClick}>Sign Up</Button>
-            <Button className="signupButtons" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
+            <Button  id="createButton" onClick={this.handleSignupButtonClick}>Sign Up</Button>
+            <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
           </div>
         </div>
       </div>
