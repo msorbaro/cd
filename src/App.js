@@ -1,12 +1,15 @@
 import React from 'react';
-import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Switch } from 'react-router';
+
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import NavBar from './navbar'
-import Signin from './signin'
-import Signup from './signup'
+
+import Signin from './signin';
+import Signup from './signup';
+import Home from './home';
 
 
 const FallBack = (props) => {
@@ -17,15 +20,14 @@ function App() {
   return (
     <Router>
       <div >
-        <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home} />
+      <Switch>
+            <Route exact path="/home" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/signin" component={Signin} />
 
             <Route component={FallBack} />
-          
-      </Switch>
+           </Switch>
+
       </div>
     </Router>
   );
