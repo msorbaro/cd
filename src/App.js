@@ -5,23 +5,13 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import NavBar from './navbar'
-import Signin from './Signin'
-import Signup from './Signup'
+import Signin from './signin'
+import Signup from './signup'
 
 
-const MainMenu = () => {
-  <div>
-    <Link to="/">
-      <button>home</button>
-    </Link>
-  </div>
-}
-
-const Home = () => (
-  <div>
-    Home
-  </div>
-)
+const FallBack = (props) => {
+  return <div>URL Not Found</div>;
+};
 
 function App() {
   return (
@@ -32,10 +22,8 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/signin" component={Signin} />
-            <Route exact path="/" component={Home} />
 
             <Route component={FallBack} />
-          
           
       </Switch>
       </div>
