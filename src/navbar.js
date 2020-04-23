@@ -12,7 +12,6 @@ class NavBar extends Component {
         authenticated: false,
       };
     }
-
 }
 
 export default withRouter((NavBar));
