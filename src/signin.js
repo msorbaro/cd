@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
+import './signin.css';
 
 class SignIn extends Component {
   constructor(props) {
@@ -55,8 +56,8 @@ class SignIn extends Component {
           <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
         </div>
         <div>
-          <Button className="signupButtons" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
-          <Button className="signupButtons" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
+          <Button className="signupButton" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
+          <Button className="cancelButton" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
         </div>
     </div>
     );
