@@ -40,20 +40,24 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div >
-        <div >
-          <div>
-            <div > Email: </div>
-            <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
-            <div> Password: </div>
-            <Input type="password" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
-          </div>
-          <div>
-            <Button  id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
-            <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
-          </div>
-        </div>
+    <div className="all">
+      <div className="dartCalLogo">
+        DartCal
+        <div className="scheduleLogo"><img width="90px" src="./calendar.png"/></div>
       </div>
+        <div className="signInBox1">
+          <div className="prompt"> Username: </div>
+          <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+        </div>
+        <div className="signInBox2">
+          <div className="prompt"> Password: </div>
+          <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+        </div>
+        <div>
+          <Button className="signupButtons" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
+          <Button className="signupButtons" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
+        </div>
+    </div>
     );
   }
 }
