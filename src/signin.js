@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
+import logo from './calendar.png';
 
 class SignIn extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class SignIn extends Component {
     <div className="all">
       <div className="dartCalLogo">
         DartCal
-        <div className="scheduleLogo"><img width="90px" src="./calendar.png"/></div>
+        <div className="scheduleLogo"><img width="90px" src={logo}/></div>
       </div>
         <div className="signInBox1">
           <div className="prompt"> Username: </div>
