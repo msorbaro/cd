@@ -1,0 +1,44 @@
+.all{
+    background-color:  #5C6784;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    min-height: 100vh;
+    display: flex;
+    text-align: center;
+  }
+
+  .dartCalLogo {
+    position: static;
+    top: 20%;
+    bottom: 14.86%;
+    
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 59px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  
+    position: absolute;
+  
+    color: #C4C4C4;
+  }
+
+  .accountinfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-right: 5%;
+  
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: white;
+  }

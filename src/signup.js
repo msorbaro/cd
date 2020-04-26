@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
+import './signup.css';
+import logo from './calendar.png'
 
 class SignUp extends Component {
   constructor(props) {
@@ -71,18 +73,21 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div >
-        <div >
-          <div >
-            <div> Enter your Dartmouth email: </div>
+      <div className="all">
+        <div className="dartCalLogo">
+          DartCal
+          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+        </div>
+          <div className="accountinfo">
+            <div> Dartmouth Email: </div>
             <Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
-            <div > Enter your first name: </div>
+            <div > First Name: </div>
             <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
-            <div > Enter your last name: </div>
+            <div > Last Name: </div>
             <Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
-            <div > Enter a password: </div>
+            <div > Password: </div>
             <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
-            <div className="prompt"> Confirm password: </div>
+            <div> Confirm Password: </div>
             <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
 
           </div>
@@ -90,7 +95,6 @@ class SignUp extends Component {
             <Button  id="createButton" onClick={this.handleSignupButtonClick}>Sign Up</Button>
             <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
           </div>
-        </div>
       </div>
     );
   }
