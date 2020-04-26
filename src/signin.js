@@ -58,7 +58,7 @@ class SignIn extends Component {
         </div>
         <div className="signup">
           New to DartCal?
-          <a href="www.google.com">Sign Up!</a>
+          <a href="www.google.com" style={{marginLeft:10}}>Sign Up!</a>
         </div>
       </div>
         <div className="enterorcancelbuttons">
