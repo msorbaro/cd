@@ -1,10 +1,11 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
+import { NavLink, withRouter } from 'react-router-dom';
+
 import './signin.css';
 
 class SignIn extends Component {
@@ -58,7 +59,7 @@ class SignIn extends Component {
         </div>
         <div className="signup">
           New to DartCal?
-          <a href="www.google.com" style={{marginLeft:10}}>Sign Up!</a>
+          <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
         </div>
       </div>
         <div className="enterorcancelbuttons">
