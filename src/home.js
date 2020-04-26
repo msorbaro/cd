@@ -11,17 +11,16 @@ class Home extends Component {
     constructor(props) {
       super();
       this.state = {
-        authenticated: false,
-      }
+        authenticated: false, }
       };
-    
-
 
 render() {
     return ( 
       <div >
      <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
     <NavLink to="/signin" ><Button >Sign In</Button></NavLink>
+    <NavLink to="/calendar"><Button >Calendar</Button></NavLink>
+    <NavLink to="/signin" ><Button >Profile</Button></NavLink>
     </div>
     );
 }
