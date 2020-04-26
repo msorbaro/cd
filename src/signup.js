@@ -74,25 +74,34 @@ class SignUp extends Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogo">
+        <div className="dartCalLogoSmall">
           DartCal
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
           <div className="accountinfo">
-            <div> Dartmouth Email: </div>
-            <Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
-            <div > First Name: </div>
-            <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
-            <div > Last Name: </div>
-            <Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
-            <div > Password: </div>
-            <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
-            <div> Confirm Password: </div>
-            <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
-
+            <div className="inputline"> 
+              Dartmouth Email: 
+              <Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+            </div>
+            <div className="inputline"> 
+              First Name: 
+              <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
+            </div>
+            <div className="inputline"> 
+              Last Name: 
+              <Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
+            </div>
+            <div className="inputline"> 
+              Password:
+              <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+            </div>
+            <div className="inputline"> 
+              Confirm Password: 
+              <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
+            </div>
           </div>
-          <div>
-            <Button  id="createButton" onClick={this.handleSignupButtonClick}>Sign Up</Button>
+          <div className="enterorcancelbuttons">
+            <Button  id="createButton" onClick={this.handleSignupButtonClick}>Create User</Button> &nbsp; 
             <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
           </div>
       </div>

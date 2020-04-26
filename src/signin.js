@@ -55,8 +55,8 @@ class SignIn extends Component {
           <div className="prompt"> Password: </div>
           <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
         </div>
-        <div>
-          <Button className="signupButton" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button>
+        <div className="enterorcancelbuttons">
+          <Button className="signupButton" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button> &nbsp;
           <Button className="cancelButton" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
         </div>
     </div>
