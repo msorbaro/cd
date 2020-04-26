@@ -80,6 +80,10 @@ class SignUp extends Component {
               Confirm Password: 
               <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
             </div>
+            <div className="inputline"> 
+              Class Year: 
+              <Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023"/>
+            </div>
           </div>
           <div className="enterorcancelbuttons">
             <Button  id="createButton" onClick={this.handleSignupButtonClick}>Create User</Button> &nbsp; 
