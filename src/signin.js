@@ -47,14 +47,20 @@ class SignIn extends Component {
         DartCal
         <div className="scheduleLogo"><img width="90px" src={logo}/></div>
       </div>
-        <div className="signInBox1">
-          <div className="prompt"> Username: </div>
+      <div className="logininfo">
+        <div className="inputline">
+          Username: 
           <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
         </div>
-        <div className="signInBox2">
-          <div className="prompt"> Password: </div>
+        <div className="inputline">
+          Password: 
           <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
         </div>
+        <div className="signup">
+          New to DartCal?
+          <a href="www.google.com">Sign Up!</a>
+        </div>
+      </div>
         <div className="enterorcancelbuttons">
           <Button className="signupButton" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button> &nbsp;
           <Button className="cancelButton" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
