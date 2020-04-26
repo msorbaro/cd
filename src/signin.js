@@ -58,9 +58,9 @@ class SignIn extends Component {
           <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
         </div>
         <div className="signup">
-          New to DartCal?
+          New to DartCal? &nbsp; 
           <NavLink to="/signup">
-            <div classname='fakelink'> Sign Up </div>
+             Sign Up 
           </NavLink>
         </div>
       </div>
