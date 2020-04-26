@@ -57,6 +57,8 @@
     margin-top: 7%;
     font-style: normal;
     font-weight: bolder;
+    display: absolute;
+    flex-direction: row;
   }
 
   
@@ -85,4 +87,7 @@
     text-align: center;
     color: #C4C4C4;
     border: none;
+  }
+  .fakelink{
+    color: #1D263B;
   }

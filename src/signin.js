@@ -59,7 +59,9 @@ class SignIn extends Component {
         </div>
         <div className="signup">
           New to DartCal?
-          <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
+          <NavLink to="/signup">
+            <div classname='fakelink'> Sign Up </div>
+          </NavLink>
         </div>
       </div>
         <div className="enterorcancelbuttons">
