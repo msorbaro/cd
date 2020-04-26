@@ -9,8 +9,8 @@ import './App.css';
 
 import Signin from './signin';
 import Signup from './signup';
-import Calendar from './signup';
-import Profile from './signup';
+import Calendar from './calendar';
+import Profile from './profile';
 import Home from './home';
 
 

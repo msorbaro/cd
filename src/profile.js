@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 
-import './profile.css';
+//import './profile.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -22,7 +22,10 @@ class Profile extends Component {
 
   render() {
     return (
-    <div className="Profile"></div>
+    <div >
+      <p>hi</p> 
+    </div>
+
     );
   }
 }

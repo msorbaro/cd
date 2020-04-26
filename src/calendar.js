@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 
-import './calendar.css';
+//import './calendar.css';
 
 class Calendar extends Component {
   constructor(props) {
@@ -21,7 +21,9 @@ class Calendar extends Component {
 
   render() {
     return (
-    <div className="Calendar"></div>
+    <div >
+      <p>hi</p> 
+    </div>
     );
   }
 }
