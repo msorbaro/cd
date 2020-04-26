@@ -20,7 +20,7 @@ render() {
      <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
     <NavLink to="/signin" ><Button >Sign In</Button></NavLink>
     <NavLink to="/calendar"><Button >Calendar</Button></NavLink>
-    <NavLink to="/signin" ><Button >Profile</Button></NavLink>
+    <NavLink to="/profile" ><Button >Profile</Button></NavLink>
     </div>
     );
 }
