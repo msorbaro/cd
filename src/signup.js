@@ -66,7 +66,7 @@ class SignUp extends Component {
             </div>
             <div className="inputline"> 
               First Name: 
-              <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />``
+              <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
             </div>
             <div className="inputline"> 
               Last Name: 
