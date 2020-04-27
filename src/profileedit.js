@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
+import './profileedit.css'
 
 //import './profile.css';
 
