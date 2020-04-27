@@ -26,14 +26,17 @@ class Calendar extends React.Component {
 
   render() {
     return (
+      <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
         plugins={[ dayGridPlugin ]} 
         events={[
           { title: 'Lily is cooler than Scott', date: '2020-05-01' },
-          { title: 'Scott can\'t change these events bc he doesnt know how it works', date: '2020-05-02' }
+          {title: 'bc he doesnt know how it works', date: '2020-05-02'},
+          { title: '*Scott can\'t change this', date: '2020-05-02' }
           ]}
       />
+      </div>
     )
   }
 }

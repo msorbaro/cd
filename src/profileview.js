@@ -26,7 +26,7 @@ class ProfileView extends Component {
           DartCal
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
-        <div className="accountinfo">
+        <div className="profileinfo">
           <div className="inputline">
             Username: 
             <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
