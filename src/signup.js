@@ -45,7 +45,29 @@ class SignUp extends Component {
 
 
   handleSignupButtonClick = (event) => {
-      return <create />
+    if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
+        alert(error);
+      });
+    
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          firebase.database().ref(`users/${user.uid}`).set({
+            email: this.state.email,
+            username: `${this.state.firstusername} ${this.state.lastusername}`,
+          });
+          user.updateProfile({
+            displayName: `${this.state.firstusername} ${this.state.lastusername}`,
+          });
+          console.log('pushing history');
+          this.props.history.push('/');
+        }
+      });
+    } else if (!this.state.email.endsWith('@dartmouth.edu')) {
+      alert('Please enter a dartmouth.edu email');
+    } else {
+      alert('Make sure passwords match');
+    }
   }
 
   handleCancelButtonClick = (event) => {

@@ -19,8 +19,11 @@ render() {
       <div >
      <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
     <NavLink to="/signin" ><Button >Sign In</Button></NavLink>
-    <NavLink to="/calendar"><Button >Calendar</Button></NavLink>
-    <NavLink to="/profile" ><Button >Profile</Button></NavLink>
+    <NavLink to="/calendarmonthly"><Button >Monthly calendar</Button></NavLink>
+    <NavLink to="/calendarweekly" ><Button >Weekly calendar</Button></NavLink>
+    <NavLink to="/profileview" ><Button >View your profile</Button></NavLink>
+    <NavLink to="/profileedit" ><Button >Edit your profile</Button></NavLink>
+    <NavLink to="/searchfriends" ><Button >Search for your friends!</Button></NavLink>
     </div>
     );
 }
