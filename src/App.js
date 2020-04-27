@@ -9,9 +9,12 @@ import './App.css';
 
 import Signin from './signin';
 import Signup from './signup';
-import Calendar from './calendar';
+import CalendarMonthly from './calendarmonthly';
 import Profile from './profile';
 import Home from './home';
+import CalendarWeekly from './calendarweekly';
+import SearchFriends from './searchfriends';
+
 
 
 const FallBack = (props) => {
