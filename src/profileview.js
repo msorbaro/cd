@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
+import './profileview.css';
 
 class ProfileView extends Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class ProfileView extends Component {
 
   render() {
     return (
-    <div >
-      <p>profile view page</p> 
-    </div>
-
+      <div className="all">
+        <div className="dartCalLogoProfile">
+          DartCal
+          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+        </div>
+      </div>
     );
   }
 }
