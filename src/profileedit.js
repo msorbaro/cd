@@ -8,7 +8,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 //import './profile.css';
 
-class Profile extends Component {
+class ProfileEdit extends Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +23,7 @@ class Profile extends Component {
   render() {
     return (
     <div >
-      <p>hi</p> 
+      <p>profile edit page</p> 
     </div>
 
     );
@@ -31,4 +31,4 @@ class Profile extends Component {
 }
 
 // export default NewPost;
-export default withRouter((Profile));
+export default withRouter((ProfileEdit));

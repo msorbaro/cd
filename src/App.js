@@ -10,7 +10,8 @@ import './App.css';
 import Signin from './signin';
 import Signup from './signup';
 import CalendarMonthly from './calendarmonthly';
-import Profile from './profile';
+import ProfileEdit from './profileedit';
+import ProfileView from './profileview';
 import Home from './home';
 import CalendarWeekly from './calendarweekly';
 import SearchFriends from './searchfriends';
@@ -30,7 +31,8 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/signin" component={Signin} />
             <Route exact path="/calendarmonthly" component={CalendarMonthly} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profileedit" component={ProfileEdit} />
+            <Route exact path="/profileview" component={ProfileView} />
             <Route exact path="/searchfriends" component={SearchFriends} />
             <Route exact path="/calendarweekly" component={CalendarWeekly} />
             <Route component={FallBack} />
