@@ -7,11 +7,13 @@ import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import './calendar.css' // webpack must be configured to do this
+import './calendar.css' 
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
+import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 
 //import './calendar.css';
 
-class CalendarMonthly extends React.Component {
+class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +26,18 @@ class CalendarMonthly extends React.Component {
 
   render() {
     return (
-      <div >
-      <p>helloski</p> 
-    </div>
+      <FullCalendar 
+        dateClick={this.handleDateClick} 
+        plugins={[ dayGridPlugin ]} 
+        events={[
+          { title: 'Lily is cooler than Scott', date: '2020-05-01' },
+          { title: 'Scott can\'t change these events bc he doesnt know how it works', date: '2020-05-02' }
+          ]}
+      />
     )
   }
 }
 
 // export default NewPost;
-export default withRouter((CalendarMonthly));
+export default withRouter((Calendar));
 
