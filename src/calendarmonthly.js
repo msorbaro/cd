@@ -11,7 +11,7 @@ import './calendar.css' // webpack must be configured to do this
 
 //import './calendar.css';
 
-class Calendar extends React.Component {
+class CalendarMonthly extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,11 +24,13 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} />
+      <div >
+      <p>helloski</p> 
+    </div>
     )
   }
 }
 
 // export default NewPost;
-export default withRouter((Calendar));
+export default withRouter((CalendarMonthly));
 
