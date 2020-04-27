@@ -5,10 +5,13 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import './calendar.css' // webpack must be configured to do this
 
 //import './calendar.css';
 
-class Calendar extends Component {
+class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +24,11 @@ class Calendar extends Component {
 
   render() {
     return (
-    <div >
-      <p>hi</p> 
-    </div>
-    );
+      <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} />
+    )
   }
 }
 
 // export default NewPost;
 export default withRouter((Calendar));
+
