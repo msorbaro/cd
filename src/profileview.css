@@ -22,9 +22,26 @@
   .profileinfo{
     position: absolute;
     flex-direction: column;
-    top: 10%;
+    top: 2%;
     left: 0%;
     width: 40%;
-    height: 40%;
+    height: 20%;
+    background-color: black;
+    
+  }
+  .sectionHeader{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    width: 30%;
+    height: 10%;
+  }
 
+  .classinfo{
+    position: absolute;
+    flex-direction: column;
+    top: 2%;
+    left: 80%;
+    width: 40%;
+    height: 80%;
   }
