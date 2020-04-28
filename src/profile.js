@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
+import * as db from './datastore';
 
 //import './profile.css';
 
@@ -14,17 +15,38 @@ class Profile extends Component {
 
     this.state = {
       userID: '',
-      name: '',
-      friendslist: '',
+      userFirstName: '',
+      userLastName: '',
+      userYear: '',
+      friendsList: '',
+      bio: '',
+      image:'',
+      clubList: '',
+      editing: false,
     };  
   }
 
-  getCurrentUser() {
+  compoundDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ userID: user.uid });
+        this.setState({ userFirstName: '' });
+        this.setState({ userLastName: user.uid });
+        this.setState({ userYear: user.uid });
+        this.setState({ userID: user.uid });
+
       }
     });
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ userID: user.uid });
+        this.setState({ username: user.displayName });
+      }
+    });
+    db.getQuesions(this.recievedQuestions);
   }
 
   onEmailChange = (event) => {
@@ -53,13 +75,22 @@ class Profile extends Component {
 
   render() {
     return (
-    <div >
-      <p>Change your first name: </p> 
-      <p>Change your bio: </p> 
-      <p>Change your first name: </p> 
-      <p>Change your first name: </p> 
-    </div>
-
+      <div className="all">
+        <div className="dartCalLogoProfile">
+          DartCal
+          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+        </div>
+        <div className="profileinfo">
+          <div className="inputline">
+            Username: 
+            <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+          </div>
+          <div className="inputline">
+            Password: 
+            <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+          </div>
+        </div>
+      </div>
     );
   }
 }
