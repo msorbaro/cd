@@ -13,7 +13,7 @@
 
 .cal{
     position: absolute;
-    width: 80%;
+    width: 78%;
     height: auto;
     left: 20%;
     top: 10%;
@@ -98,6 +98,7 @@
 
 .checkbox{
     color: #1D263B;
+    margin-left: 15%;
 }
 
 .friendsCal {
@@ -122,7 +123,7 @@ a {
     justify-content: center;
     width: 30%;
     height: auto;
-    top: 0%;
+    top: 1%;
     left: 68%;
     margin-left: 5%;
     margin-right: 5%;

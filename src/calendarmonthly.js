@@ -30,7 +30,7 @@ class Calendar extends React.Component {
     return (
       <div className="allCal">
       <div className="calSearchBar">
-        <img width="30px" src={search}/>
+        <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
         <input type="text" width="10px" ></input>
       </div>
       <div className="cal">
@@ -46,7 +46,7 @@ class Calendar extends React.Component {
       </div>
       <div className="dartCalLogoCal">
         DartCal
-        <div className="scheduleLogo"><img width="30px" src={logo}/></div>
+        <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
@@ -73,13 +73,13 @@ class Calendar extends React.Component {
         </div>
         <div className="friendsCal">
           <div>Friend's Calendars</div>
-          <div className="checkbox"> 
+          <div style={{color: '#1D263B' }}> 
             <img width="20px" src={plus}/> 
             Add Friend
           </div>
         </div>
          <div className="calProfileIcon">
-            <img width="50px" src={userpic} /> 
+            <img width="50px" src={userpic} style={{ 'vertical-align':'middle' }}/> 
             <NavLink to="/profile">Profile</NavLink>
          </div>
       </div>
