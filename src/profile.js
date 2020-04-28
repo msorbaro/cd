@@ -72,25 +72,43 @@ class Profile extends Component {
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
         <div className="profileinfo">
-          <div className="inputline">
+          <div>
             <h3 className="sectionHeader">Profile</h3>
-            <img src="https://cs.dartmouth.edu/~albertoq/cs10/people/kat-lasonde.png" width="150" height="150"/>
+            <div className="imgStyle">
+              <img src="https://cs.dartmouth.edu/~albertoq/cs10/people/kat-lasonde.png" width="150" height="150"/>
+            </div>
           </div>
-          <div className="inputline">
-            Name: 
-            <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+          <div className="nameContainer">
+            <h6>Name</h6>
+            <h6>Email</h6>
+            <h6>Password</h6>
+            <h6>Year</h6>
           </div>
-          <div className="inputline">
-            Email: 
-            <Input type="password" className="response" id="passwordInput" placeholder="william.s.gibbons.23@dartmouth.edu" onChange={this.onPasswordChange} value={this.state.password} />
+          <div className="inputContainer">
+            <div className="indivInput">
+              <h6>Kat Lasonde</h6>
+            </div>
+            <div className="indivInput">
+              <h6>kat.lasonde.23@dartmouth.edu</h6>
+            </div>
+            <div className="indivInput">
+              <h6>***********</h6>
+            </div>
+            <div className="indivInput">
+              <h6>2023</h6>
+            </div>
           </div>
-          <div className="inputline">
-            Password: 
-            <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+        </div>
+
+        <div className="classinfo">
+          <div>
+            <h3 className="sectionHeader">Classes</h3>
           </div>
-          <div className="inputline">
-            Year: 
-            <Input type="password" className="response" id="passwordInput" placeholder="2023" onChange={this.onPasswordChange} value={this.state.password} />
+          <div className="listStyle">
+            <ul>
+              <li>COSC10</li>
+              <li>BIOL13</li>
+            </ul>
           </div>
         </div>
         
