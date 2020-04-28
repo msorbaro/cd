@@ -13,7 +13,6 @@ import './calendar.css'
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 
-//import './calendarmonthly.css';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -28,39 +27,55 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="all">
+      <div className="allCal">
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
         plugins={[ dayGridPlugin ]} 
         events={[
-          { title: 'Lily is cooler than Scott', date: '2020-05-01' },
+          { title: 'Scott is cooler than Dylan', date: '2020-05-01' },
           {title: 'bc he doesnt know how it works', date: '2020-05-02'},
-          { title: '*Scott can\'t change this', date: '2020-05-02' }
+          { title: '*Kat can\'t change this', date: '2020-05-02' }
           ]}
       />
       </div>
       <div className="dartCalLogoCal">
         DartCal
-        <div className="scheduleLogo"><img width="20px" src={logo}/></div>
+        <div className="scheduleLogo"><img width="30px" src={logo}/></div>
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
-            <img width="20px" src={plus} />
+            <img width="20px" src={plus}/> &nbsp;
             Add Event
          </div>
-         <div className="toggleMonth/Week">
-           
+         <div className="toggleMonthWeek">
+           Weekly View
          </div>
          <div className="toggleCalendarView">
-
-         </div>
-         <div className="friendsCal">
-
-         </div>
+           Calendar View Options
+           <div className="checkbox"> 
+            <input type="checkbox"></input> Classes
+           </div>
+           <div className="checkbox"> 
+            <input type="checkbox"></input> Clubs
+           </div>
+           <div className="checkbox"> 
+            <input type="checkbox"></input> Social Events
+           </div>
+           <div className="checkbox"> 
+            <input type="checkbox"></input> Other
+           </div>
+        </div>
+        <div className="friendsCal">
+          <div>Friend's Calendars</div>
+          <div className="checkbox"> 
+            <img width="20px" src={plus}/> 
+            Add Friend
+          </div>
+        </div>
          <div className="calProfileIcon">
-            <img width="60px" src={userpic} />
-            Profile
+            <img width="50px" src={userpic} /> &nbsp;
+            <NavLink to="/profile">Profile</NavLink>
          </div>
       </div>
       </div>
