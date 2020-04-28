@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import './profileedit.css'
 
@@ -17,7 +16,9 @@ class ProfileEdit extends Component {
     };
   }
 
-  // 
+  // automatically called as rendering 
+  // component called it automatically as loading 
+  // put initialization in here
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -31,12 +32,19 @@ class ProfileEdit extends Component {
     this.props.history.push('/');
   }
 
+  editProfile = () => {
+    this.setState(prevState => ({ showCreateLetterInfo: !prevState.showCreateLetterInfo }));
+    if (this.state.showCreateLetterInfo) {
+      document.body.style.overflow = 'unset';
+    }
+  }
+
   render() {
-    const createButton = (
-      <div className="createLetterButtonContainer">
-        <button onClick={this.createQuestion}
+    const editButton= (
+      <div className="editButton">
+        <button onClick={this.editProfile}
           type="button"
-          className="pollButton"
+          className="editButton"
         >
         </button>
       </div>
