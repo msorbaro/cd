@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from './pictures/calendar.png';
 import userpic from './pictures/user.png';
+import search from './pictures/magnifying-glass.png'
 import plus from './pictures/plus.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
@@ -28,6 +29,10 @@ class Calendar extends React.Component {
   render() {
     return (
       <div className="allCal">
+      <div className="calSearchBar">
+        <img width="30px" src={search}/>
+        <input type="text" width="10px" ></input>
+      </div>
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
@@ -45,7 +50,7 @@ class Calendar extends React.Component {
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
-            <img width="20px" src={plus}/> &nbsp;
+            <img width="20px" src={plus}/> 
             Add Event
          </div>
          <div className="toggleMonthWeek">
@@ -74,7 +79,7 @@ class Calendar extends React.Component {
           </div>
         </div>
          <div className="calProfileIcon">
-            <img width="50px" src={userpic} /> &nbsp;
+            <img width="50px" src={userpic} /> 
             <NavLink to="/profile">Profile</NavLink>
          </div>
       </div>

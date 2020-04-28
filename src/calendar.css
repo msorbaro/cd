@@ -70,7 +70,7 @@
 .toggleCalendarView {
     position: sticky;
     flex-direction: row;
-    justify-content: center;
+    text-align: left;
     width: 100%;
     height: auto;
     top: 30%;
@@ -111,3 +111,26 @@
     font-weight: bolder;
     font-size: 22px;
 }
+
+a {
+    color: white;
+}
+
+.calSearchBar {
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+    top: 0%;
+    left: 68%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+img {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+

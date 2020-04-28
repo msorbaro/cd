@@ -38,6 +38,8 @@
   .inputline{
     display: absolute;
     flex-direction: row;
+    margin-top: 4%;
+    margin-left: 5%;
   }
 
   .logininfo{
@@ -87,7 +89,4 @@
     text-align: center;
     color: #C4C4C4;
     border: none;
-  }
-  NavLink {
-    color: #1D263B;
   }
