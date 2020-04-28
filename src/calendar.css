@@ -70,7 +70,6 @@
 .toggleCalendarView {
     position: sticky;
     flex-direction: row;
-    text-align: left;
     width: 100%;
     height: auto;
     top: 30%;
@@ -99,6 +98,7 @@
 .checkbox{
     color: #1D263B;
     margin-left: 15%;
+    text-align: left;
 }
 
 .friendsCal {
