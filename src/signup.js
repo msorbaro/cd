@@ -56,9 +56,6 @@ class SignUp extends Component {
             email: this.state.email,
             username: `${this.state.firstusername} ${this.state.lastusername}`,
           });
-          user.updateProfile({
-            displayName: `${this.state.firstusername} ${this.state.lastusername}`,
-          });
           console.log('pushing history');
           this.props.history.push('/');
         }
