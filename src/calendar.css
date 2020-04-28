@@ -5,7 +5,54 @@
 .cal{
     position: absolute;
     width: 80%;
-    height: 80%;
-    left: 20%
-    
+    height: auto;
+    left: 20%;
+    top: 10%;
+    font-family: Montserrat;
+    font-style: normal;
+    background-color: white;
 }
+.sidebar {
+    position: absolute;
+    flex-direction: column;
+    font-weight: bold;
+    background-color:  #5C6784;;
+    width: 20%;
+    height: 120vh;
+    left: 0%;
+}
+
+.addNewEvent {
+    top: 20%;
+}
+
+.calProfileIcon{
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+
+    width: 20%;
+    height: auto;
+    left: 20%;
+    top: 60%;
+}
+
+
+.dartCalLogoCal {
+    position: absolute;
+    top: 1%;
+    left: 37.5%;
+    
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+
+  
+    color: black;
+  }

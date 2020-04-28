@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import './signup.css';
-import logo from './calendar.png'
+import logo from './pictures/calendar.png'
 import create from './datastore';
 // import * as db from './datastore';\
 

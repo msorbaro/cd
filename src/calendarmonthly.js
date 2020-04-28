@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from './calendar.png';
+import logo from './pictures/calendar.png';
+import userpic from './pictures/user.png';
+import plus from './pictures/plus.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -26,6 +28,7 @@ class Calendar extends React.Component {
 
   render() {
     return (
+      <div className="all">
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
@@ -36,6 +39,30 @@ class Calendar extends React.Component {
           { title: '*Scott can\'t change this', date: '2020-05-02' }
           ]}
       />
+      </div>
+      <div className="dartCalLogoCal">
+        DartCal
+        <div className="scheduleLogo"><img width="20px" src={logo}/></div>
+      </div>
+      <div className="sidebar">
+         <div className="addNewEvent">
+            <img width="20px" src={plus} />
+            Add Event
+         </div>
+         <div className="toggleMonth/Week">
+           
+         </div>
+         <div className="toggleCalendarView">
+
+         </div>
+         <div className="friendsCal">
+
+         </div>
+         <div className="calProfileIcon">
+            <img width="60px" src={userpic} />
+            Profile
+         </div>
+      </div>
       </div>
     )
   }
