@@ -6,8 +6,7 @@ import firebase from 'firebase';
 import logo from './calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
-
-//import './profile.css';
+import './profile.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -39,15 +38,7 @@ class Profile extends Component {
     });
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ userID: user.uid });
-        this.setState({ username: user.displayName });
-      }
-    });
-    db.getQuesions(this.recievedQuestions);
-  }
+
 
   onEmailChange = (event) => {
     this.setState({ email: event.target.value });
@@ -82,14 +73,27 @@ class Profile extends Component {
         </div>
         <div className="profileinfo">
           <div className="inputline">
-            Username: 
+            <h3 className="sectionHeader">Profile</h3>
+            <img src="https://cs.dartmouth.edu/~albertoq/cs10/people/kat-lasonde.png" width="150" height="150"/>
+          </div>
+          <div className="inputline">
+            Name: 
             <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+          </div>
+          <div className="inputline">
+            Email: 
+            <Input type="password" className="response" id="passwordInput" placeholder="william.s.gibbons.23@dartmouth.edu" onChange={this.onPasswordChange} value={this.state.password} />
           </div>
           <div className="inputline">
             Password: 
             <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
           </div>
+          <div className="inputline">
+            Year: 
+            <Input type="password" className="response" id="passwordInput" placeholder="2023" onChange={this.onPasswordChange} value={this.state.password} />
+          </div>
         </div>
+        
       </div>
     );
   }

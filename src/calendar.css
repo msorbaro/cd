@@ -2,9 +2,10 @@
 @import '~@fullcalendar/daygrid/main.css';
 @import '~@fullcalendar/timegrid/main.css';
 
-cal{
+.cal{
     position: absolute;
     width: 80%;
     height: 80%;
     left: 20%
+    
 }
