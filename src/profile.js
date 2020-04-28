@@ -148,6 +148,49 @@ class Profile extends Component {
             </ul>
           </div>
         </div>
+
+        <div className="friendsinfo">
+          <div>
+            <h3 className="sectionHeader">Friends</h3>
+          </div>
+          <div class="grid-container">
+            <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/lily-maechling.jpg" width="55%" height="55%"/>
+                <p>Lily Maechling</p>
+              </div>
+            </div>
+              <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="55%" height="55%"/>
+                <p>Morgan Sorbaro</p>
+              </div>
+            </div>
+            <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/scott-gibbons.jpg" width="55%" height="55%"/>
+                <p>Scott Gibbons</p>
+              </div>
+            </div>  
+            <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/dylan-bienstock.jpg" width="55%" height="55%"/>
+                <p>Dylan Bienstock</p>
+              </div>
+            </div>
+            <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="55%" height="55%"/>
+                <p>Annika Khouia</p>
+              </div>
+            </div>
+            <div class="grid-item">
+              <div className="imgStyle">
+                <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1587482989796-0S8Z5DVKV8Z3SE96M7O9/ke17ZwdGBToddI8pDm48kG-Ms6Smr4lC2kzD5v_KP3t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTm1v6GcKqh6mrhfxzW2tqo7-0XwA3F-pA8XrOvc9dyMzi0uf8JEqNBbhhFGdpXdvkc/pk2Qpyc.jpg?format=1000w" width="55%" height="55%"/>
+                <p>Varsha Iyer</p>
+              </div></div>   
+          </div>
+        </div>
       </div>
     );
   }

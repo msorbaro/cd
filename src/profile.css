@@ -22,7 +22,7 @@
 .profileinfo{
   position: absolute;
   flex-direction: column;
-  top: 10%;
+  top: 15%;
   left: 0%;
   width: 40%;
   height: 20%;
@@ -78,7 +78,7 @@ h6 {
 .classinfo{
   position: absolute;
   flex-direction: column;
-  top: 60%;
+  top: 65%;
   left: 0%;
   width: 40%;
   height: 20%;
@@ -115,10 +115,10 @@ img.a{
 .dropbtn {
   background-color: #1D263B;
   color: white;
-  padding: 4px;
+  padding: 1px;
   font-size: 16px;
   border: none;
-  margin: 1px 8px;
+  margin: 1px 6px;
 
 }
 
@@ -152,8 +152,39 @@ img.a{
 .clubinfo{
   position: absolute;
   flex-direction: column;
-  top: 60%;
-  left: 60%;
+  top: 65%;
+  left: 50%;
   width: 40%;
   height: 20%;
+}
+
+.friendsinfo{
+  position: absolute;
+  flex-direction: column;
+  top: 15%;
+  left: 50%;
+  width: 40%;
+  height: 20%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 0px;
+  grid-template-rows: auto auto;
+}
+.grid-item {
+  padding: 1px;
+  font-size: 15px;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 0;
+}
+p{
+  position: flex;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
 }
