@@ -6,8 +6,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import './signup.css';
 import logo from './pictures/calendar.png'
-import createUser from './datastore';
-
+import * as db from './datastore';
 
 class SignUp extends Component {
   constructor(props) {
@@ -58,12 +57,12 @@ class SignUp extends Component {
     
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-        createUser(
+        db.createUser(
           user.uid, this.state.email, this.state.firstusername,
           this.state.lastusername, this.state.userYear,)
        
         
-          
+    
           console.log('pushing history');
           this.props.history.push('/');
         }

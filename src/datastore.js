@@ -43,4 +43,3 @@ export function getUser(callBack) {
 });
 }
 
-export default createUser;

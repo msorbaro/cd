@@ -28,7 +28,7 @@ class Profile extends Component {
   }
 
   compoundDidMount() {
-      getUser(this.setCurrUser);
+      db.getUser(this.setCurrUser);
   }
 
   setCurrUser = (currUser) => {
