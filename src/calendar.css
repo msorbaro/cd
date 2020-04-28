@@ -2,9 +2,136 @@
 @import '~@fullcalendar/daygrid/main.css';
 @import '~@fullcalendar/timegrid/main.css';
 
-cal{
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    left: 20%
+.allCal{
+    background-color:  #5C6784;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    height: 150vh;
+    display: flex;
+    text-align: center;
 }
+
+.cal{
+    position: absolute;
+    width: 78%;
+    height: auto;
+    left: 20%;
+    top: 10%;
+    font-family: Montserrat;
+    font-style: normal;
+    background-color: white;
+}
+.sidebar {
+    position: sticky;
+    flex-direction: column;
+    font-weight: bold;
+    background-color:  #5C6784;;
+    width: 20%;
+    height: 150vh;
+    left: 0%;
+}
+
+.addNewEvent {
+    position: sticky;
+    justify-content: center;
+    top: 10%;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.calProfileIcon{
+    position: sticky;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    top: 80%;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.toggleMonthWeek {
+    position: sticky;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    top: 20%;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.toggleCalendarView {
+    position: sticky;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    top: 30%;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.dartCalLogoCal {
+    position: absolute;
+    top: 1%;
+    left: 37.5%;
+    
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+    color: #1D263B;
+}
+
+.checkbox{
+    color: #1D263B;
+    margin-left: 15%;
+    text-align: left;
+}
+
+.friendsCal {
+    position: sticky;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    top: 60%;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+a {
+    color: white;
+}
+
+.calSearchBar {
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+    top: 1%;
+    left: 68%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+img {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+

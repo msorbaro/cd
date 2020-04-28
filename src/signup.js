@@ -5,9 +5,9 @@ import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import './signup.css';
-import logo from './calendar.png'
-import create from './datastore';
-// import * as db from './datastore';\
+import logo from './pictures/calendar.png'
+import createUser from './datastore';
+
 
 class SignUp extends Component {
   constructor(props) {
@@ -16,10 +16,12 @@ class SignUp extends Component {
 
     this.state = {
       email: '',
+      userID: '',
       firstusername: '',
       lastusername: '',
       password: '',
       passwordTwo: '',
+      userYear: '',
     };
   }
 
@@ -43,6 +45,10 @@ class SignUp extends Component {
     this.setState({ lastusername: event.target.value });
   }
 
+  onUserYearChange= (event) => {
+    this.setState({ userYear: event.target.value });
+  }
+
 
   handleSignupButtonClick = (event) => {
     if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
@@ -52,13 +58,12 @@ class SignUp extends Component {
     
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          firebase.database().ref(`users/${user.uid}`).set({
-            email: this.state.email,
-            username: `${this.state.firstusername} ${this.state.lastusername}`,
-          });
-          user.updateProfile({
-            displayName: `${this.state.firstusername} ${this.state.lastusername}`,
-          });
+        createUser(
+          user.uid, this.state.email, this.state.firstusername,
+          this.state.lastusername, this.state.userYear,)
+       
+        
+          
           console.log('pushing history');
           this.props.history.push('/');
         }
@@ -104,7 +109,7 @@ class SignUp extends Component {
             </div>
             <div className="inputline"> 
               Class Year: 
-              <Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023"/>
+              <Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023" onChange={this.onUserYearChange} value={this.state.userYear}/>
             </div>
           </div>
           <div className="enterorcancelbuttons">

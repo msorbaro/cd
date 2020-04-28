@@ -2,7 +2,7 @@
     background-color:  #5C6784;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    min-height: 100vh;
+    min-height: 120vh;
     display: flex;
     text-align: center;
   }
@@ -38,6 +38,8 @@
   .inputline{
     display: absolute;
     flex-direction: row;
+    margin-top: 4%;
+    margin-left: 5%;
   }
 
   .logininfo{
@@ -87,7 +89,4 @@
     text-align: center;
     color: #C4C4C4;
     border: none;
-  }
-  NavLink {
-    color: #1D263B;
   }
