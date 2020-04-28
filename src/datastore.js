@@ -12,7 +12,6 @@ const firebaseConfig = {
   };
 
   firebase.initializeApp(firebaseConfig);
-
   const ourDB = firebase.database();
   const ourAuth = firebase.auth();
   
@@ -32,17 +31,16 @@ const firebaseConfig = {
     });
 }
 
-
 export function getUser(callBack) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // get the user id and accept a snapshot of information
-      firebase.database().ref(`users/${user.uid}`).on('value', (snapshot) => { 
+      ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
         const currUser = snapshot.val(); // return the current user
-        callback(currUser); // call user into
+        callBack(currUser); // call user into
       });
   }
 });
 }
 
-export default datastore;
+export default createUser;
