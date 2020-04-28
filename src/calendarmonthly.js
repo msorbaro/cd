@@ -9,7 +9,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import './calendar.css' // webpack must be configured to do this
 
-//import './calendar.css';
+//import './calendarmonthly.css';
 
 class CalendarMonthly extends React.Component {
   constructor(props) {
