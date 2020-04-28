@@ -7,6 +7,8 @@ import logo from './pictures/calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import './profile.css';
+import getUser from './datastore';
+
 
 class Profile extends Component {
   constructor(props) {
@@ -26,20 +28,18 @@ class Profile extends Component {
   }
 
   compoundDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ userID: user.uid });
-        this.setState({ userFirstName: '' });
-        this.setState({ userLastName: user.uid });
-        this.setState({ userYear: user.uid });
-        this.setState({ userID: user.uid });
-
-      }
-    });
+      getUser(this.setCurrUser);
   }
 
-
-
+  setCurrUser = (currUser) => {
+     this.setState({
+        userID: currUser.userID,
+        userFirstName: currUser.userFirstName,
+        userLastName: currUser.userLastName,
+        userYear: currUser.userYear,
+      });
+  }
+  
   onEmailChange = (event) => {
     this.setState({ email: event.target.value });
   }
@@ -86,7 +86,8 @@ class Profile extends Component {
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>Kat Lasonde</h6>
+              <h6>{this.userFirstName}</h6>
+              <h6>hi</h6>
             </div>
             <div className="indivInput">
               <h6>kat.lasonde.23@dartmouth.edu</h6>
