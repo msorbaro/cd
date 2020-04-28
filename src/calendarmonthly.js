@@ -54,7 +54,7 @@ class Calendar extends React.Component {
             Add Event
          </div>
          <div className="toggleMonthWeek">
-           Weekly View
+          <NavLink to="/calendarweekly">Weekly View</NavLink>
          </div>
          <div className="toggleCalendarView">
            Calendar View Options
@@ -79,7 +79,7 @@ class Calendar extends React.Component {
           </div>
         </div>
          <div className="calProfileIcon">
-            <img width="50px" src={userpic} style={{ 'vertical-align':'middle' }}/> 
+            <img width="50px" src={userpic} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
             <NavLink to="/profile">Profile</NavLink>
          </div>
       </div>
