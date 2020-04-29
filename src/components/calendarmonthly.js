@@ -1,7 +1,7 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal'
+//import Modal from "./addeventmodal";
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
@@ -19,56 +19,21 @@ import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = { show: false };
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
 
-  createModal = (props) => {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add Event
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>header</h4>
-          <p>
-            here
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  
-  AddEvent = (event)  => {
-    const [modalShow, setModalShow] = React.useState(false);
-  
-    return (
-      <div>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Launch vertically centered modal
-        </Button>
-  
-        <this.createModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </div>
-    );
-  }
 
   render() {
     return (
@@ -92,10 +57,14 @@ class Calendar extends React.Component {
         DartCal
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
+      <div className="addEventModal">
+        <Modal show={this.state.show} handleClose={this.hideModal}>
+        </Modal>
+      </div>
       <div className="sidebar">
          <div className="addNewEvent">
             <img width="20px" src={plus}/> 
-            <Button onClick={this.AddEvent()}>Add Event</Button>
+            <Button onClick={this.showModal}>Add Event</Button>
          </div>
          <div className="toggleMonthWeek">
           <NavLink to="/calendarweekly">Weekly View</NavLink>
@@ -131,6 +100,31 @@ class Calendar extends React.Component {
     )
   }
 }
+
+const Modal = ({ handleClose, show, children }) => {
+  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+  if (show){
+    return (
+      <div className={showHideClassName}>
+        <section className='modal-main'>
+          {children}
+          <button
+            onClick={handleClose}
+          >
+            Close
+          </button>
+        </section>
+      </div>
+    );
+  }
+    return (null)
+};
+
+
+const container = document.createElement('div');
+document.body.appendChild(container);
+NavLink.render(<Calendar />, container);
+
 
 // export default NewPost;
 export default withRouter((Calendar));
