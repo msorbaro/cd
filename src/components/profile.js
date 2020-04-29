@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
+import noUserPic from '../pictures/noUser.png'
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/profile.css';
@@ -19,17 +20,19 @@ class Profile extends Component {
       userEmail: 'no email',
       userFirstName: ' first ',
       userLastName: ' last ',
+      userName: 'username',
       userYear: 'no year',
       friendsList: '',
+      friendsPics: '',
       bio: '',
-      image:'',
+      image: '',
       clubList: '',
       editing: false,
     };  
   }
 
   componentDidMount() {
-      db.getUser(this.setCurrUser);
+      db.getCurrUser(this.setCurrUser);
   }
 
   setCurrUser = (currUser) => {
@@ -39,9 +42,11 @@ class Profile extends Component {
         userFirstName: currUser.userFirstName,
         userLastName: currUser.userLastName,
         userYear: currUser.userYear,
+        image: currUser.userPic,
       });
   }
   
+ 
   onEmailChange = (event) => {
     this.setState({ email: event.target.value });
   }
@@ -77,7 +82,7 @@ class Profile extends Component {
           <div>
             <h3 className="sectionHeader">Profile</h3>
             <div className="imgStyle">
-              <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/kat-lasonde.png" width="150" height="150"/>
+              <img class="a" src={this.state.image} width="150" height="150"/>
             </div>
           </div>
           <div className="nameContainer">

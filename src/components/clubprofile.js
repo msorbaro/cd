@@ -28,7 +28,7 @@ class ClubProfile extends Component {
     }
 
     compoundDidMount() {
-        db.getUser(this.setCurrUser);
+        db.getCurrUser(this.setCurrUser);
     }
   
     setCurrUser = (currUser) => {

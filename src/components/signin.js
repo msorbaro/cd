@@ -32,7 +32,7 @@ class SignIn extends Component {
     });
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.props.history.push('/');
+        this.props.history.push('/profile');
       }
     });
   }

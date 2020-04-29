@@ -1,4 +1,6 @@
 import firebase from 'firebase'
+import noUserPic from '../pictures/noUser.png'
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDrCgRkz4jQR0tRVrWkamdSxoqQhh18YM0",
@@ -26,19 +28,18 @@ const firebaseConfig = {
           userFirstName,
           userLastName,
           userYear,
+          userPic: noUserPic,
         });
       }
     });
 }
 
-export function getUser(callBack) {
+export function getCurrUser(callBack) {
   console.log("getting user");
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log("user exists");
       // get the user id and accept a snapshot of information
       ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
-        console.log("getting user info");
         const currUser = snapshot.val(); // return the current user
         callBack(currUser); // call user into
       });
@@ -46,3 +47,23 @@ export function getUser(callBack) {
 });
 }
 
+export function getUser(userID, callback) {
+  ourDB.ref(`users/${userID}/`).on('value', (snapshot) => {
+    const User = snapshot.val(); 
+    callback(User);
+  });
+}
+ 
+export function getFriends(userID, callback) {
+  ourDB.ref(`users/${userID}/`).child('FriendsID').on('value', (snapshot) => {
+    const friends = snapshot.val(); 
+    callback(friends);
+  });
+}
+
+export function getImage(userID, callback) {
+  ourDB.ref(`users/${userID}/`).child('userPic').on('value', (snapshot) => {
+    const pic = snapshot.val(); 
+    callback(pic);
+  });
+}
