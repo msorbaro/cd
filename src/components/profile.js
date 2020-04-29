@@ -15,10 +15,11 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      userID: '',
-      userFirstName: '',
-      userLastName: '',
-      userYear: '',
+      userID: 'no user ID',
+      userEmail: 'no email',
+      userFirstName: ' first ',
+      userLastName: ' last ',
+      userYear: 'no year',
       friendsList: '',
       bio: '',
       image:'',
@@ -27,13 +28,14 @@ class Profile extends Component {
     };  
   }
 
-  compoundDidMount() {
+  componentDidMount() {
       db.getUser(this.setCurrUser);
   }
 
   setCurrUser = (currUser) => {
      this.setState({
         userID: currUser.userID,
+        userEmail: currUser.userEmail,
         userFirstName: currUser.userFirstName,
         userLastName: currUser.userLastName,
         userYear: currUser.userYear,
@@ -86,17 +88,16 @@ class Profile extends Component {
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>{this.userFirstName}</h6>
-              <h6>Kat Lasonde</h6>
+              <h6>{this.state.userFirstName}</h6>
             </div>
             <div className="indivInput">
-              <h6>kat.lasonde.23@dartmouth.edu</h6>
+              <h6>{this.state.userEmail}</h6>
             </div>
             <div className="indivInput">
               <h6>***********</h6>
             </div>
             <div className="indivInput">
-              <h6>2023</h6>
+              <h6>{this.state.userYear}</h6>
             </div>
           </div>
         </div>

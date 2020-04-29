@@ -32,10 +32,13 @@ const firebaseConfig = {
 }
 
 export function getUser(callBack) {
+  console.log("getting user");
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      console.log("user exists");
       // get the user id and accept a snapshot of information
       ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
+        console.log("getting user info");
         const currUser = snapshot.val(); // return the current user
         callBack(currUser); // call user into
       });
