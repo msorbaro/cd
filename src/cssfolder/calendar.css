@@ -135,3 +135,6 @@ img {
     margin-right: 2%;
 }
 
+input.shortSearch {
+    min-width:200px;
+}

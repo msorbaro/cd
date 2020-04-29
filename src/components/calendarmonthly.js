@@ -1,6 +1,7 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal'
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
@@ -26,12 +27,55 @@ class Calendar extends React.Component {
     this.props.history.push('/');
   }
 
+  createModal = (props) => {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Add Event
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>header</h4>
+          <p>
+            here
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+  
+  AddEvent = (event)  => {
+    const [modalShow, setModalShow] = React.useState(false);
+  
+    return (
+      <div>
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Launch vertically centered modal
+        </Button>
+  
+        <this.createModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="allCal">
       <div className="calSearchBar">
         <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
-        <input type="text" width="10px" ></input>
+        <input type="text" width="10px" className="shortSearch" ></input>
       </div>
       <div className="cal">
       <FullCalendar 
@@ -51,7 +95,7 @@ class Calendar extends React.Component {
       <div className="sidebar">
          <div className="addNewEvent">
             <img width="20px" src={plus}/> 
-            Add Event
+            <Button onClick={this.AddEvent()}>Add Event</Button>
          </div>
          <div className="toggleMonthWeek">
           <NavLink to="/calendarweekly">Weekly View</NavLink>

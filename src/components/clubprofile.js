@@ -7,6 +7,8 @@ import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/profile.css';
 import getUser from './datastore';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
 
 class ClubProfile extends Component {
     constructor(props) {
@@ -64,7 +66,15 @@ class ClubProfile extends Component {
   
     render() {
       return (
-        <div> club profile page </div>
+        <div> club profile page 
+        <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
+        events={[
+          { title: 'DFR', date: '2020-05-01' },
+          {title: 'rad', date: '2020-05-02'},
+          { title: 'is', date: '2020-05-02' }
+          ]}
+      />
+      </div>
       );
     }
   }
