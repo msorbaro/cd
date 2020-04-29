@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Switch } from 'react-router';
 
-import './App.css';
+import '../cssfolder/App.css';
 
 
 import Signin from './signin';
@@ -13,8 +13,7 @@ import Profile from './profile';
 import Home from './home';
 import CalendarWeekly from './calendarweekly';
 import SearchFriends from './searchfriends';
-
-
+import ClubProfile from './clubprofile';
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
@@ -32,6 +31,7 @@ function App() {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/searchfriends" component={SearchFriends} />
             <Route exact path="/calendarweekly" component={CalendarWeekly} />
+            <Route exact path="/clubprofile" component={ClubProfile} />
             <Route component={FallBack} />
            </Switch>
 

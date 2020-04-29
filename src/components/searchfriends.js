@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from './calendar.png';
+import logo from '../pictures/calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import '../cssfolder/calendar.css' // webpack must be configured to do this
 
-//import './profile.css';
+//import './calendar.css';
 
-class Profile extends Component {
+class SearchFriends extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
     };
   }
@@ -22,13 +24,15 @@ class Profile extends Component {
 
   render() {
     return (
-    <div >
-      <p>hi</p> 
-    </div>
-
-    );
+      <div>
+          <p>
+              hello
+          </p>
+      </div>
+    )
   }
 }
 
 // export default NewPost;
-export default withRouter((Profile));
+export default withRouter((SearchFriends));
+

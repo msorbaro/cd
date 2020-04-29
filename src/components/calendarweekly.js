@@ -3,19 +3,20 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from './pictures/calendar.png';
-import userpic from './pictures/user.png';
-import search from './pictures/magnifying-glass.png'
-import plus from './pictures/plus.png';
+import logo from '../pictures/calendar.png';
+import userpic from '../pictures/user.png';
+import search from '../pictures/magnifying-glass.png'
+import plus from '../pictures/plus.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import './calendar.css' 
+import '../cssfolder/calendar.css' 
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 
+//import './calendarweekly.css';
 
-class Calendar extends React.Component {
+class CalendarMonthly extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,11 +37,11 @@ class Calendar extends React.Component {
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
-        plugins={[ dayGridPlugin ]} 
+        plugins={[ resourceTimeGridPlugin ]} 
         events={[
-          { title: 'Scott is cooler than Dylan', date: '2020-05-01' },
-          {title: 'bc he doesnt know how it works', date: '2020-05-02'},
-          { title: '*Kat can\'t change this', date: '2020-05-02' }
+          { title: 'Lily', date: '2020-05-01' },
+          {title: 'best', date: '2020-05-02'},
+          { title: '*is', date: '2020-05-02' }
           ]}
       />
       </div>
@@ -54,7 +55,7 @@ class Calendar extends React.Component {
             Add Event
          </div>
          <div className="toggleMonthWeek">
-          <NavLink to="/calendarweekly">Weekly View</NavLink>
+          <NavLink to="/calendarmonthly">Monthly View</NavLink>
          </div>
          <div className="toggleCalendarView">
            Calendar View Options
@@ -89,5 +90,5 @@ class Calendar extends React.Component {
 }
 
 // export default NewPost;
-export default withRouter((Calendar));
+export default withRouter((CalendarMonthly));
 

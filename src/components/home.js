@@ -21,8 +21,9 @@ render() {
     <NavLink to="/signin" ><Button >Sign In</Button></NavLink>
     <NavLink to="/calendarmonthly"><Button >Monthly calendar</Button></NavLink>
     <NavLink to="/calendarweekly" ><Button >Weekly calendar</Button></NavLink>
-    <NavLink to="/profile" ><Button >View your profile</Button></NavLink>
-    <NavLink to="/searchfriends" ><Button >Search for your friends!</Button></NavLink>
+    <NavLink to="/profile" ><Button>View your profile</Button></NavLink>
+    <NavLink to="/searchfriends" ><Button>Search for your friends!</Button></NavLink>
+    <NavLink to="/clubprofile" ><Button>View club profile</Button></NavLink>
     </div>
     );
 }

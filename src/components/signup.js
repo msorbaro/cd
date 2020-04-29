@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import './signup.css';
-import logo from './pictures/calendar.png'
+import '../cssfolder/signup.css';
+import logo from '../pictures/calendar.png'
 import * as db from './datastore';
 
 class SignUp extends Component {
@@ -21,10 +21,15 @@ class SignUp extends Component {
       password: '',
       passwordTwo: '',
       userYear: '',
+      image: '',
     };
   }
 
   onEmailChange = (event) => {
+    this.setState({ email: event.target.value });
+  }
+
+  onImageChange = (event) => {
     this.setState({ email: event.target.value });
   }
 

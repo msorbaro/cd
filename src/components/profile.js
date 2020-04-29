@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from './pictures/calendar.png';
+import logo from '../pictures/calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
-import './profile.css';
+import '../cssfolder/profile.css';
 import getUser from './datastore';
 
 
