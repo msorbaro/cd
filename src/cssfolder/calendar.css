@@ -138,3 +138,15 @@ img {
 input.shortSearch {
     min-width:200px;
 }
+
+.modal {
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: 50%;
+    top: 25%;
+    left: 30%;
+    background-color: yellow;
+    opacity: 1;
+}

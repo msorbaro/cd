@@ -58,8 +58,7 @@ class Calendar extends React.Component {
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
       <div className="addEventModal">
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-        </Modal>
+        <Modal show={this.state.show} handleClose={this.hideModal}> Stuff </Modal>
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
@@ -101,18 +100,12 @@ class Calendar extends React.Component {
   }
 }
 
-const Modal = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+const Modal = ({ handleClose, show }) => {
   if (show){
     return (
-      <div className={showHideClassName}>
+      <div className="modal">
         <section className='modal-main'>
-          {children}
-          <button
-            onClick={handleClose}
-          >
-            Close
-          </button>
+          <Button onClick={handleClose}> Close </Button>
         </section>
       </div>
     );
