@@ -9,6 +9,8 @@ import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/profile.css';
 import getUser from './datastore';
+import noFriends from '../pictures/nofriend.png';
+
 
 
 class Profile extends Component {
@@ -22,17 +24,35 @@ class Profile extends Component {
       userLastName: ' last ',
       userName: 'username',
       userYear: 'no year',
-      friendsList: '',
-      friendsPics: '',
+      friendsPics: [noUserPic, noUserPic, noUserPic, noUserPic, noUserPic, noUserPic],
+      friendsNames: ['', '', '', '', '', ''],
       bio: '',
       image: '',
-      clubList: '',
+      classList: [],
+      clubList: [],
       editing: false,
     };  
   }
 
+  assignFriendsNamesAndPics() {
+    const f = db.getFriends(this.state.userID);
+    //index = 0;
+  
+   
+
+    Object.keys(f).map((id) => {
+        this.state.friendsPics[index] = db.getImage(f[id]);
+        this.setState.friendsNames[index] = db.getName(f[id]);   
+      })
+    }
+
   componentDidMount() {
+    
       db.getCurrUser(this.setCurrUser);
+      this.assignFriendsNamesAndPics();
+      this.state.classList = db.getClass(this.state.userID);
+      this.state.clubList = db.getClubs(this.state.userID);
+      
   }
 
   setCurrUser = (currUser) => {
@@ -162,37 +182,37 @@ class Profile extends Component {
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/lily-maechling.jpg" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[0]} width="55%" height="55%"/>
                 <p>Lily Maechling</p>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[1]} width="55%" height="55%"/>
                 <p>Morgan Sorbaro</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/scott-gibbons.jpg" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[2]} width="55%" height="55%"/>
                 <p>Scott Gibbons</p>
               </div>
             </div>  
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/dylan-bienstock.jpg" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[3]} width="55%" height="55%"/>
                 <p>Dylan Bienstock</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[4]} width="55%" height="55%"/>
                 <p>Annika Khouia</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1587482989796-0S8Z5DVKV8Z3SE96M7O9/ke17ZwdGBToddI8pDm48kG-Ms6Smr4lC2kzD5v_KP3t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTm1v6GcKqh6mrhfxzW2tqo7-0XwA3F-pA8XrOvc9dyMzi0uf8JEqNBbhhFGdpXdvkc/pk2Qpyc.jpg?format=1000w" width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
                 <p>Varsha Iyer</p>
               </div></div>   
           </div>

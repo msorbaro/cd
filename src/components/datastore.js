@@ -54,16 +54,35 @@ export function getUser(userID, callback) {
   });
 }
  
-export function getFriends(userID, callback) {
+export function getFriends(userID) {
   ourDB.ref(`users/${userID}/`).child('FriendsID').on('value', (snapshot) => {
     const friends = snapshot.val(); 
-    callback(friends);
+    return friends;
   });
 }
 
-export function getImage(userID, callback) {
+export function getImage(userID) {
   ourDB.ref(`users/${userID}/`).child('userPic').on('value', (snapshot) => {
     const pic = snapshot.val(); 
-    callback(pic);
+    return pic;
   });
+}
+export function getName(userID) {
+  ourDB.ref(`users/${userID}/`).child('userName').on('value', (snapshot) => {
+  const name = snapshot.val(); 
+  return name;
+  });
+
+export function getClass(userID) {
+  ourDB.ref(`users/${userID}/`).child('classList').on('value', (snapshot) => {
+    const classes = snapshot.val(); 
+    return classes;
+  });
+}
+  export function getClub(userID) {
+      ourDB.ref(`users/${userID}/`).child('clubList').on('value', (snapshot) => {
+        const clubs = snapshot.val(); 
+        return clubs;
+        });
+  }
 }
