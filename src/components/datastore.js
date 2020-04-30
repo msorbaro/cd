@@ -72,17 +72,42 @@ export function getName(userID) {
   const name = snapshot.val(); 
   return name;
   });
-
+}
 export function getClass(userID) {
   ourDB.ref(`users/${userID}/`).child('classList').on('value', (snapshot) => {
     const classes = snapshot.val(); 
     return classes;
   });
 }
-  export function getClub(userID) {
+export function getClubs(userID) {
       ourDB.ref(`users/${userID}/`).child('clubList').on('value', (snapshot) => {
         const clubs = snapshot.val(); 
         return clubs;
         });
   }
+
+
+
+export function addFriend(userID, friendID) {
+
+  ourDB.ref(`users/${userID}/Friends`).on('value', (snapshot) => {
+    var Friends = snapshot.val(); 
+    console.log(Friends)
+    console.log(typeof Friends)
+    console.log(Friends.Friends)
+  
+    if(Friends !== null){
+      Friends.Friends.push(friendID);
+    }
+    else {
+      Friends =[friendID]
+    }
+
+    ourDB.ref(`users/${userID}`).child('Friends').set({
+          Friends
+    })
+  });
+
+
 }
+

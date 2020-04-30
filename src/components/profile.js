@@ -34,16 +34,16 @@ class Profile extends Component {
     };  
   }
 
-  assignFriendsNamesAndPics() {
+  assignFriendsNamesAndPics = () => {
     const f = db.getFriends(this.state.userID);
     //index = 0;
   
    
 
-    Object.keys(f).map((id) => {
-        this.state.friendsPics[index] = db.getImage(f[id]);
-        this.setState.friendsNames[index] = db.getName(f[id]);   
-      })
+   // Object.keys(f).map((id) => {
+      //  this.state.friendsPics[index] = db.getImage(f[id]);
+       // this.setState.friendsNames[index] = db.getName(f[id]);   
+    //  })
     }
 
   componentDidMount() {
