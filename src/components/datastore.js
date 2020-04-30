@@ -94,10 +94,11 @@ export function addFriend(userID, friendID) {
     var Friends = snapshot.val(); 
     console.log(Friends)
     console.log(typeof Friends)
-    console.log(Friends.Friends)
+    //console.log(Friends.Friends)
   
     if(Friends !== null){
-      Friends.Friends.push(friendID);
+      //Friends.Friends.push(friendID);
+      Friends.push(friendID);
     }
     else {
       Friends =[friendID]
@@ -108,6 +109,15 @@ export function addFriend(userID, friendID) {
     })
   });
 
+  //var ref = firebase.database().ref().child('/scenes/' + projId).orderByChild('wordcount');
+  //ref.once('value',function(snap) {
+    //snap.forEach(function(item) {
+        //var itemVal = item.val();
+        //keys.push(itemVal);
+    //});
+    //for (i=0; i < keys.length; i++) {
+        //counts.push(keys[i].wordcount);
+    //}  
 
 }
 

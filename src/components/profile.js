@@ -56,6 +56,12 @@ class Profile extends Component {
   }
 
   setCurrUser = (currUser) => {
+    console.log("hello");
+    console.log(currUser.userID);
+    console.log(currUser.userFirstName);
+    console.log(currUser.userEmail);
+    console.log(currUser.userYear);
+
      this.setState({
         userID: currUser.userID,
         userEmail: currUser.userEmail,
