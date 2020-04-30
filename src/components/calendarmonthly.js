@@ -104,29 +104,31 @@ const Modal = ({ handleClose, show }) => {
   if (show){
     return (
       <div className="modal">
-            <div className="modalTitle">Add New Event</div>
+            <div className="modalTitle"><br></br>Add New Event</div>
         <div className="newEventInfo">
             <div className="inputline"> 
-              Name: 
+              Name: &nbsp;
               <Input type="text" placeholder="Event Name"/>
             </div>
             <div className="inputline"> 
-              Type:
-              <Input type ="text" placeholder="Ex: Classes"/>
+              <Input  type="radio" name="eventType"/>Classes &nbsp;
+              <Input  type="radio" name="eventType"/>Clubs &nbsp;
+              <Input  type="radio" name="eventType"/>Social &nbsp;
+              <Input  type="radio" name="eventType"/>Other &nbsp;
             </div>
             <div className="inputline" > 
-              Date: 
-              <Input  type="date"/>
+              Date: &nbsp;
+              <Input type="date"/>
             </div>
             <div className="inputline"> 
-              Time:
+              Time: &nbsp;
               <Input type="time"/>
             </div>
         </div>
-        <div className="enterorcancelbuttons">
+        <div className="enterorcancelbuttons" id="longButtons">
           <Button> Save </Button> &nbsp;
           <Button onClick={handleClose}> Close </Button>
-      </div>
+        </div>
     </div>
     );
   }

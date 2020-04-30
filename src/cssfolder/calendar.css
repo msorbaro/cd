@@ -160,17 +160,16 @@ input.shortSearch {
     top:10%;
 }
 
-.accountinfo{
+.newEventInfo{
     position: absolute;
     flex-direction: column;
     width: 80%;
     height: 80%;
-    top: 30%;
+    top: 22%;
     left: 10%;
 
     font-size: 18px;
     line-height: 29px;
     text-align: center;
     color: black;
-
   }

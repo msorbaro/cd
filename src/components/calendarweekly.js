@@ -1,6 +1,7 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+//import Modal from "./addeventmodal";
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
@@ -11,37 +12,43 @@ import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import '../cssfolder/calendar.css' 
-import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
-import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
-//import './calendarweekly.css';
 
-class CalendarMonthly extends React.Component {
+class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = { show: false };
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
+
 
   render() {
     return (
       <div className="allCal">
       <div className="calSearchBar">
         <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
-        <input type="text" width="10px" ></input>
+        <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input>
       </div>
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
-        plugins={[ resourceTimeGridPlugin ]} 
+        plugins={[ timeGridPlugin ]} 
         events={[
-          { title: 'Lily', date: '2020-05-01' },
-          {title: 'best', date: '2020-05-02'},
-          { title: '*is', date: '2020-05-02' }
+          { title: 'lily', date: '2020-05-01' },
+          {title: 'is better', date: '2020-05-02'},
+          { title: 'than Scott', date: '2020-05-02' }
           ]}
       />
       </div>
@@ -49,10 +56,13 @@ class CalendarMonthly extends React.Component {
         DartCal
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
+      <div className="addEventModal">
+        <Modal show={this.state.show} handleClose={this.hideModal}>  </Modal>
+      </div>
       <div className="sidebar">
          <div className="addNewEvent">
             <img width="20px" src={plus}/> 
-            Add Event
+            <Button onClick={this.showModal}>Add Event</Button>
          </div>
          <div className="toggleMonthWeek">
           <NavLink to="/calendarmonthly">Monthly View</NavLink>
@@ -89,6 +99,47 @@ class CalendarMonthly extends React.Component {
   }
 }
 
+const Modal = ({ handleClose, show }) => {
+  if (show){
+    return (
+      <div className="modal">
+            <div className="modalTitle"><br></br>Add New Event</div>
+        <div className="newEventInfo">
+            <div className="inputline"> 
+              Name: &nbsp;
+              <Input type="text" placeholder="Event Name"/>
+            </div>
+            <div className="inputline"> 
+              <Input  type="radio" name="eventType"/>Classes &nbsp;
+              <Input  type="radio" name="eventType"/>Clubs &nbsp;
+              <Input  type="radio" name="eventType"/>Social &nbsp;
+              <Input  type="radio" name="eventType"/>Other &nbsp;
+            </div>
+            <div className="inputline" > 
+              Date: &nbsp;
+              <Input type="date"/>
+            </div>
+            <div className="inputline"> 
+              Time: &nbsp;
+              <Input type="time"/>
+            </div>
+        </div>
+        <div className="enterorcancelbuttons" id="longButtons">
+          <Button> Save </Button> &nbsp;
+          <Button onClick={handleClose}> Close </Button>
+        </div>
+    </div>
+    );
+  }
+    return (null)
+};
+
+
+const container = document.createElement('div');
+document.body.appendChild(container);
+NavLink.render(<Calendar />, container);
+
+
 // export default NewPost;
-export default withRouter((CalendarMonthly));
+export default withRouter((Calendar));
 
