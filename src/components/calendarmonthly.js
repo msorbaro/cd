@@ -40,7 +40,7 @@ class Calendar extends React.Component {
       <div className="allCal">
       <div className="calSearchBar">
         <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
-        <input type="text" width="10px" className="shortSearch" ></input>
+        <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input>
       </div>
       <div className="cal">
       <FullCalendar 
@@ -58,7 +58,7 @@ class Calendar extends React.Component {
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
       <div className="addEventModal">
-        <Modal show={this.state.show} handleClose={this.hideModal}> Stuff </Modal>
+        <Modal show={this.state.show} handleClose={this.hideModal}>  </Modal>
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
@@ -104,10 +104,32 @@ const Modal = ({ handleClose, show }) => {
   if (show){
     return (
       <div className="modal">
-        <section className='modal-main'>
+            <div className="modalTitle"><br></br>Add New Event</div>
+        <div className="newEventInfo">
+            <div className="inputline"> 
+              Name: &nbsp;
+              <Input type="text" placeholder="Event Name"/>
+            </div>
+            <div className="inputline"> 
+              <Input  type="radio" name="eventType"/>Classes &nbsp;
+              <Input  type="radio" name="eventType"/>Clubs &nbsp;
+              <Input  type="radio" name="eventType"/>Social &nbsp;
+              <Input  type="radio" name="eventType"/>Other &nbsp;
+            </div>
+            <div className="inputline" > 
+              Date: &nbsp;
+              <Input type="date"/>
+            </div>
+            <div className="inputline"> 
+              Time: &nbsp;
+              <Input type="time"/>
+            </div>
+        </div>
+        <div className="enterorcancelbuttons" id="longButtons">
+          <Button> Save </Button> &nbsp;
           <Button onClick={handleClose}> Close </Button>
-        </section>
-      </div>
+        </div>
+    </div>
     );
   }
     return (null)
