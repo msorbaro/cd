@@ -173,3 +173,27 @@ input.shortSearch {
     text-align: center;
     color: black;
   }
+
+  .eTypeClass {
+    background: rgba(36, 216, 255, 0.44);
+    color: black;
+    border: none;
+  }
+
+  .eTypeClub {
+    background: rgba(36, 255, 58, 0.44);
+    color: black;
+    border: none;
+    }
+
+.eTypeSocial {
+    background: rgba(198, 36, 255, 0.44);
+    color: black;
+    border: none;
+    }
+
+.eTypeOther {
+    background: rgba(255, 207, 60, 0.6);
+    color: black;
+    border: none;
+}

@@ -1,0 +1,17 @@
+.clubCal {
+    position: absolute;
+    left: 55%;
+    top: 50%;
+    height: auto;
+    width: 40%;
+    background-color: white;
+}
+
+.clubPageAll{
+    background-color:  #5C6784;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+}

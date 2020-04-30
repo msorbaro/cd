@@ -46,9 +46,10 @@ class Calendar extends React.Component {
         dateClick={this.handleDateClick} 
         plugins={[ timeGridPlugin ]} 
         events={[
-          { title: 'lily', date: '2020-05-01' },
-          {title: 'is better', date: '2020-05-02'},
-          { title: 'than Scott', date: '2020-05-02' }
+          { title: 'lily', date: '2020-05-01', className:'eTypeClass'},
+          {title: 'is better', date: '2020-05-02', className:'eTypeClub'},
+          { title: 'than Scott', date: '2020-05-02', className:'eTypeSocial'},
+          { title: 'yay', date: '2020-05-02', className:'eTypeOther'}
           ]}
       />
       </div>
