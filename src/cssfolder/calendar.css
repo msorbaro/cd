@@ -4,6 +4,7 @@
 
 .allCal{
     background-color:  #5C6784;
+    z-index: 1;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     height: 150vh;
@@ -141,12 +142,35 @@ input.shortSearch {
 
 .modal {
     position: absolute;
-    flex-direction: column;
+    z-index: 1000;
     justify-content: center;
     width: 40%;
     height: 50%;
     top: 25%;
     left: 30%;
-    background-color: yellow;
-    opacity: 1;
+    background-color:#CED1DA;
+    border-radius: 50px;
 }
+
+
+.modalTitle {
+    font-weight: bolder;
+    font-size: 30px;
+    margin-bottom: 10%;
+    top:10%;
+}
+
+.accountinfo{
+    position: absolute;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    top: 30%;
+    left: 10%;
+
+    font-size: 18px;
+    line-height: 29px;
+    text-align: center;
+    color: black;
+
+  }
