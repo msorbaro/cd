@@ -100,14 +100,17 @@ export function addFriend(userID, friendID) {
     console.log(Friends)
     //console.log(typeof Friends)
     //console.log(Friends.Friends)
+    console.log("hello")
 
-  
-    if(Friends !== null){
-      //Friends.Friends.push(friendID);
-      Friends.push(friendID);
+    console.log('Friends', Friends) 
+    console.log('Friends.Friends', Friends.Friends) 
+
+    //if ( Friends !== null && Array.isArray(Friends)){
+    if(Friends && Friends.Friends){
+      Friends.Friends.push(friendID);
     }
     else {
-      Friends =[friendID]
+      Friends = {Friends: [friendID]}
     }
 
     ourDB.ref(`users/${userID}`).child('Friends').set({
