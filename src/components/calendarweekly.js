@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 //import Modal from "./addeventmodal";
 import { Input } from 'reactstrap';
-import firebase from 'firebase';
+//import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
 import userpic from '../pictures/user.png';
 import search from '../pictures/magnifying-glass.png'
 import plus from '../pictures/plus.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
 import '../cssfolder/calendar.css' 
 import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 class Calendar extends React.Component {
@@ -33,6 +33,9 @@ class Calendar extends React.Component {
     this.props.history.push('/');
   }
 
+  handleDateClick = (event) => { 
+    alert('a day has been clicked!');
+  }
 
   render() {
     return (
@@ -44,12 +47,31 @@ class Calendar extends React.Component {
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
-        plugins={[ timeGridPlugin ]} 
+        plugins={[ timeGridPlugin, interactionPlugin ]} 
+        selectable= {true}
+        slotDuration= {'00:30:00'}
         events={[
           { title: 'lily', date: '2020-05-01', className:'eTypeClass'},
           {title: 'is better', date: '2020-05-02', className:'eTypeClub'},
           { title: 'than Scott', date: '2020-05-02', className:'eTypeSocial'},
-          { title: 'yay', date: '2020-05-02', className:'eTypeOther'}
+          { title: 'yay', date: '2020-05-02', className:'eTypeOther'},
+          {
+            title: 'DFR',
+            start: '2020-04-30',
+            end: '2020-05-01',
+            className:'eTypeClub'
+          },
+          {
+            title: 'Pong',
+            start: '2020-05-02T20:30:00',
+            end: '2020-05-02T23:30:00',
+            className:'eTypeSocial'
+          },
+          {
+            title: 'Foco',
+            start: '2020-04-30T12:00:00',
+            className:'eTypeSocial'
+          }
           ]}
       />
       </div>
