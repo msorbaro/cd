@@ -65,8 +65,8 @@ class SignIn extends Component {
         </div>
       </div>
         <div className="enterorcancelbuttons">
-          <Button className="signupButton" id="createButton" onClick={this.handleSigninButtonClick}>Log In</Button> &nbsp;
-          <Button className="cancelButton" id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
+          <Button onClick={this.handleSigninButtonClick}>Log In</Button> &nbsp;
+          <Button  onClick={this.handleCancelButtonClick}>Cancel</Button>
         </div>
     </div>
     );
