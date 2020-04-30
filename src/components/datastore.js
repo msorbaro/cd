@@ -86,27 +86,34 @@ export function getClubs(userID) {
         });
   }
 
+  export function addFriend(userID, friendID, callback) {
+    firebase.database().ref('profile/${userID}/Friends').set(friendID);
+  
+    //database.ref(`Letters/${letterID}/`).child('likes').on('value', (snapshot) => {
+      //callback(snapshot.numChildren());
+    //});
+  
+  }
 
+//export function addFriend(userID, friendID) {
 
-export function addFriend(userID, friendID) {
-
-  ourDB.ref(`users/${userID}/Friends`).on('value', (snapshot) => {
-    var Friends = snapshot.val();
+  //ourDB.ref(`users/${userID}/Friends`).on('value', (snapshot) => {
+    //var Friends = snapshot.val();
     //var friendArray = Friends.values();
 
-    console.log(userID)
-    console.log("what up")
-    console.log("type" + typeof Friends)
-    console.log(Friends)
-    //console.log(typeof Friends)
-    //console.log(Friends.Friends)
-    console.log("hello")
+    // console.log(userID)
+    // console.log("what up")
+    // console.log("type" + typeof Friends)
+    // console.log(Friends)
+    // //console.log(typeof Friends)
+    // //console.log(Friends.Friends)
+    // console.log("hello")
 
-    console.log('Friends', Friends) 
-    console.log('Friends.Friends', Friends.Friends) 
+    // console.log('Friends', Friends) 
+    // console.log('Friends.Friends', Friends.Friends) 
 
     //if ( Friends !== null && Array.isArray(Friends)){
-    if(Friends && Friends.Friends){
+    /* if(Friends && Friends.Friends){
       Friends.Friends.push(friendID);
     }
     else {
@@ -115,8 +122,8 @@ export function addFriend(userID, friendID) {
 
     ourDB.ref(`users/${userID}`).child('Friends').set({
           Friends
-    })
-  });
+    }) */
+  //});
 
   //var ref = firebase.database().ref().child('/scenes/' + projId).orderByChild('wordcount');
   //ref.once('value',function(snap) {
@@ -127,6 +134,4 @@ export function addFriend(userID, friendID) {
     //for (i=0; i < keys.length; i++) {
         //counts.push(keys[i].wordcount);
     //}  
-
-}
 

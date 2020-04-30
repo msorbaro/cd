@@ -1239,7 +1239,7 @@
     "@fullcalendar/resource-common" "~4.4.0"
     "@fullcalendar/timeline" "~4.4.0"
 
-"@fullcalendar/timegrid@~4.4.0":
+"@fullcalendar/timegrid@^4.4.0", "@fullcalendar/timegrid@~4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-4.4.0.tgz#c5837cfd676afff0d95535ac4cc054ed65965976"
   integrity sha512-QwJ9oM87/ZTbXaE8PMIVp20GPtVCFmroaeR1GydJ6BKYtbxG/nsaSv7RhqvDa2jLjHaTWC2NjHo9hRfjQjtCZA==
