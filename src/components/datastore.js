@@ -91,10 +91,16 @@ export function getClubs(userID) {
 export function addFriend(userID, friendID) {
 
   ourDB.ref(`users/${userID}/Friends`).on('value', (snapshot) => {
-    var Friends = snapshot.val(); 
+    var Friends = snapshot.val();
+    //var friendArray = Friends.values();
+
+    console.log(userID)
+    console.log("what up")
+    console.log("type" + typeof Friends)
     console.log(Friends)
-    console.log(typeof Friends)
+    //console.log(typeof Friends)
     //console.log(Friends.Friends)
+
   
     if(Friends !== null){
       //Friends.Friends.push(friendID);
