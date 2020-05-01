@@ -5,10 +5,10 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
 import noUserPic from '../pictures/noUser.png'
+import blankPic from '../pictures/nofriend.png'
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/profile.css';
-import getUser from './datastore';
 import noFriends from '../pictures/nofriend.png';
 
 
@@ -22,12 +22,12 @@ class Profile extends Component {
       userEmail: 'no email',
       userFirstName: ' first ',
       userLastName: ' last ',
-      userName: 'username',
+      userFullName: 'username',
       userYear: 'no year',
-      friendsPics: [noUserPic, noUserPic, noUserPic, noUserPic, noUserPic, noUserPic],
-      friendsNames: ['', '', '', '', '', ''],
+      friendsPics: [noUserPic, noUserPic, noUserPic, noUserPic],
+      friendsNames: ['hi'],
       bio: '',
-      image: '',
+      image: noUserPic,
       classList: [],
       clubList: [],
       editing: false,
@@ -119,7 +119,7 @@ class Profile extends Component {
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>{this.state.userFirstName}</h6>
+              <h6>{`${this.state.userFirstName} ${this.state.userLastName}`}</h6>
             </div>
             <div className="indivInput">
               <h6>{this.state.userEmail}</h6>
@@ -189,37 +189,37 @@ class Profile extends Component {
             <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[0]} width="55%" height="55%"/>
-                <p>Lily Maechling</p>
+                <p>{this.state.friendsNames[0]}</p>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[1]} width="55%" height="55%"/>
-                <p>Morgan Sorbaro</p>
+                <p>{this.state.friendsNames[1]}</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[2]} width="55%" height="55%"/>
-                <p>Scott Gibbons</p>
+                <p>{this.state.friendsNames[2]}</p>
               </div>
             </div>  
             <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[3]} width="55%" height="55%"/>
-                <p>Dylan Bienstock</p>
+                <p>{this.state.friendsNames[3]}</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[4]} width="55%" height="55%"/>
-                <p>Annika Khouia</p>
+                <p>{this.state.friendsNames[4]}</p>
               </div>
             </div>
             <div class="grid-item">
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
-                <p>Varsha Iyer</p>
+                <p>{this.state.friendsNames[5]}</p>
               </div></div>   
           </div>
         </div>
