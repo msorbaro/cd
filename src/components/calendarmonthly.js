@@ -12,8 +12,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import '../cssfolder/calendar.css' 
-import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
-import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 
 
 class Calendar extends React.Component {
