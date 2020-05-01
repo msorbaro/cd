@@ -197,3 +197,7 @@ input.shortSearch {
     color: black;
     border: none;
 }
+
+input #short{
+    min-width: 100;
+}
