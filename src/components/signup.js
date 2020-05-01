@@ -90,30 +90,32 @@ class SignUp extends Component {
           DartCal
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
-          <div className="accountinfo">
-            <div className="inputline"> 
-              Dartmouth Email: 
-              <Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+          <div className="signupnameContainer">
+            <h6>Darmouth Email:</h6>
+            <h6>First Name:</h6>
+            <h6>Last Name:</h6>
+            <h6>Password:</h6>
+            <h6>Confirm Password:</h6>
+            <h6>Class Year:</h6>
+          </div>
+          <div className="signupinputContainer">
+            <div className="indivInput">
+              <h6><Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} /></h6>
             </div>
-            <div className="inputline"> 
-              First Name: 
-              <Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
+            <div className="indivInput">
+              <h6><Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} /></h6>
             </div>
-            <div className="inputline"> 
-              Last Name: 
-              <Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
+            <div className="indivInput">
+              <h6><Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} /></h6>
             </div>
-            <div className="inputline"> 
-              Password:
-              <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+            <div className="indivInput">
+              <h6><Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} /></h6>
             </div>
-            <div className="inputline"> 
-              Confirm Password: 
-              <Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
+            <div className="indivInput">
+              <h6><Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} /></h6>
             </div>
-            <div className="inputline"> 
-              Class Year: 
-              <Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023" onChange={this.onUserYearChange} value={this.state.userYear}/>
+            <div className="indivInput">
+              <h6><Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023" onChange={this.onUserYearChange} value={this.state.userYear}/></h6>
             </div>
           </div>
           <div className="enterorcancelbuttons">

@@ -42,3 +42,24 @@
   input{
     min-width:250px;
   }
+
+  .signupnameContainer {
+    position: absolute;
+    font-size: 30px;
+    line-height: 28px;
+    text-align: left;
+    left: 29%;
+    padding: 50px;
+    top: 30%;
+    color: white;
+  }
+
+  .signupinputContainer {
+    position: absolute;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    left: 47%;
+    top: 30%;
+    padding: 50px;
+  }
