@@ -78,7 +78,7 @@ class ClubProfile extends Component {
         <div className="buttonContainer">
           <Button style={{'border-radius': '100px'}}class="club">Subscribe</Button>
         </div>
-        <img class="a" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
+        <img class="b" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
         <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
         events={[
