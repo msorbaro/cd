@@ -9,6 +9,7 @@ import '../cssfolder/clubprofile.css';
 import getUser from './datastore';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import search from '../pictures/magnifying-glass.png'
 
 class ClubProfile extends Component {
     constructor(props) {
@@ -67,6 +68,17 @@ class ClubProfile extends Component {
     render() {
       return (
       <div className="clubPageAll">  
+        <div className="clubName">
+          Dartmouth Formula Racing
+        </div>
+        <div className="searchBar">
+          <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
+          <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
+        </div>
+        <div className="buttonContainer">
+          <Button style={{'border-radius': '100px'}}class="club">Subscribe</Button>
+        </div>
+        <img class="a" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
         <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
         events={[
