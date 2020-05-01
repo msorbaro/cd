@@ -5,6 +5,7 @@ import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
 import noUserPic from '../pictures/noUser.png'
+import blankPic from '../pictures/nofriend.png'
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/profile.css';
@@ -23,8 +24,8 @@ class Profile extends Component {
       userLastName: ' last ',
       userFullName: 'username',
       userYear: 'no year',
-      friendsPics: [noUserPic, noUserPic, noUserPic, noUserPic, noUserPic, noUserPic],
-      friendsNames: ['friend 1', 'friend 2', 'friend 3', 'friend 4', 'friend 5', 'friend 6'],
+      friendsPics: [noUserPic, noUserPic, noUserPic, noUserPic],
+      friendsNames: ['hi'],
       bio: '',
       image: noUserPic,
       classList: [],
