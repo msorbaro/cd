@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //       alert('Invalid date.');
         //     }
         //   }
-        }
+        
 
       //}
     });
