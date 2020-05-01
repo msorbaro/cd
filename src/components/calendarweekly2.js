@@ -41,8 +41,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-  dateClick={this.handleDateClick} 
-  plugins={[ timeGridPlugin, interactionPlugin ]} 
-  selectable= {true}
-  slotDuration= {'00:30:00'}
-  events={[
