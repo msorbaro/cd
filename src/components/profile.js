@@ -26,7 +26,7 @@ class Profile extends Component {
       userYear: 'no year',
       friendsIDs: [],
       friendsPics: [],
-      friendsNames: [],
+      friendsNames: ["hi"],
       bio: '',
       image: noUserPic,
       classList: [],
@@ -38,7 +38,6 @@ class Profile extends Component {
     setFriendsNamesAndPics = (Friends) => {
 
       this.state.friendsIDs = Friends;
-      console.log(this.state.friendsIDs);
   
       for (let i = 0; i < Object.keys(Friends).length; i += 1) {
         const currentKey = Object.keys(Friends)[i];
@@ -48,24 +47,19 @@ class Profile extends Component {
       }
     }
       
-   
     setFriendInfo = (user) => {
-      console.log(user.userPic)
-      
       this.state.friendsPics.push(user.userPic);
       this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
-      console.log(this.state.friendsNames)
     }
   
-  
+
     componentDidMount() {
-  
         db.getCurrUser(this.setCurrUser);
     }
   
   setCurrUser = (currUser) => {
     //console.log("hello");
-    console.log(currUser.userID);
+    //console.log(currUser.userID);
     //console.log(currUser.userFirstName);
     //console.log(currUser.userEmail);
     //console.log(currUser.userYear);

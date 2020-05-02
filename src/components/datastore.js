@@ -34,6 +34,14 @@ const firebaseConfig = {
     });
 }
 
+export function signOut () {
+firebase.auth().signOut().then(() => {
+  console.log('logged out');
+      }).catch((error) => {
+  console.log('wait, could not sign out');
+      });
+  }
+
 export function getCurrUser(callBack) {
   console.log("getting user");
   firebase.auth().onAuthStateChanged((user) => {
@@ -69,9 +77,9 @@ export function getFriends(userID, callback) {
 }
 
 // will return either 0 or 1
-export function getFriendStatus(userID, friendID, callback) {
+export function getFriendStatus(userID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
-    ref.orderByValue().equalTo(friendID).on('value', (snapshot) => {
+    ref.orderByValue().equalTo(userID).on('value', (snapshot) => {
       callback(snapshot.numChildren());
     });
   }
@@ -105,21 +113,25 @@ export function getClubs(userID, callback) {
         });
   }
 
-  export function getClubStatus(userID, cludID, callback) {
-    const ref = ourDB.ref(`users/${userID}/`);
-    ref.orderByValue().equalTo(cludID).on('value', (snapshot) => {
-      callback(snapshot.numChildren());
-    });
-  }
+  export function addFriend(userID, friendID, callback) {
+    
 
-  export function addFriend(userID, friendID) {
-    if (Number(getFriendStatus(userID, friendID)) === 0) {
+    // loop though and make sure it isn't there
+
+    // add to the list
     firebase.database().ref(`users/${userID}/Friends`).push(friendID);
-    }
+  
+  
   }
 
-  export function addClub(userID, clubID) {
-    if (Number(getFriendStatus(userID, clubID)) === 0) {
+  export function addClass(userID, classBlock, className) {
+    firebase.database().ref(`users/${userID}/Classes/${classBlock}`).push(className);
+
+  }
+
+
+  export function addClub(userID, clubID, callback) {
     firebase.database().ref(`users/${clubID}/Clubs`).push(clubID);
   }
-}
+
+  
