@@ -34,27 +34,41 @@ class Profile extends Component {
     };  
   }
 
-  assignFriendsNamesAndPics = () => {
-    const f = db.getFriends(this.state.userID);
-    //index = 0;
-  
-   
+  setFriendsNamesAndPics = (Friends) => {
 
-   // Object.keys(f).map((id) => {
-      //  this.state.friendsPics[index] = db.getImage(f[id]);
-       // this.setState.friendsNames[index] = db.getName(f[id]);   
-    //  })
-    }
-
-  componentDidMount() {
+    const temp = [Friends]
+    db.getUser(temp[0], this.setFriendInfo);
     
-      db.getCurrUser(this.setCurrUser);
-      this.assignFriendsNamesAndPics();
-      this.state.classList = db.getClass(this.state.userID);
-      this.state.clubList = db.getClubs(this.state.userID);
-      
+    }
+    
+  setFriendInfo = (user) => {
+    this.state.friendsPics.set(0,user.userPic);
   }
 
+
+  componentDidMount() {
+      db.getCurrUser(this.setCurrUser);
+
+      db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
+  }
+
+  setCurrUser = (currUser) => {
+    console.log("hello");
+    console.log(currUser.userID);
+    console.log(currUser.userFirstName);
+    console.log(currUser.userEmail);
+    console.log(currUser.userYear);
+
+     this.setState({
+        userID: currUser.userID,
+        userEmail: currUser.userEmail,
+        userFirstName: currUser.userFirstName,
+        userLastName: currUser.userLastName,
+        userYear: currUser.userYear,
+        image: currUser.userPic,
+      });
+  }
+  
   setCurrUser = (currUser) => {
     console.log("hello");
     console.log(currUser.userID);

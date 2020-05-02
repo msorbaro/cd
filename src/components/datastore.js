@@ -47,91 +47,71 @@ export function getCurrUser(callBack) {
 });
 }
 
-export function getUser(userID, callback) {
-  ourDB.ref(`users/${userID}/`).on('value', (snapshot) => {
-    const User = snapshot.val(); 
-    callback(User);
+export function getUser(userID, callBack) {
+  console.log("getting user");
+  
+      // get the user id and accept a snapshot of information
+      ourDB.ref(`users/${userID}`).on('value', (snapshot) => { 
+        const currUser = snapshot.val(); // return the current user
+        callBack(currUser); // call user into
   });
 }
  
-export function getFriends(userID) {
-  ourDB.ref(`users/${userID}/`).child('FriendsID').on('value', (snapshot) => {
+// returns an object/array
+export function getFriends(userID, callback) {
+  ourDB.ref(`users/${userID}/`).child('Friends').on('value', (snapshot) => {
     const friends = snapshot.val(); 
-    return friends;
+    callback(friends)
   });
 }
 
-export function getImage(userID) {
+// will return either 0 or 1
+export function getFriendStatus(userID, callback) {
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(userID).on('value', (snapshot) => {
+      callback(snapshot.numChildren());
+    });
+  }
+
+export function getImage(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('userPic').on('value', (snapshot) => {
     const pic = snapshot.val(); 
-    return pic;
+    callback(pic)
   });
 }
-export function getName(userID) {
+
+export function getName(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('userName').on('value', (snapshot) => {
   const name = snapshot.val(); 
-  return name;
+  callback(name)
   });
 }
-export function getClass(userID) {
+
+export function getClass(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('classList').on('value', (snapshot) => {
     const classes = snapshot.val(); 
-    return classes;
+    //callback(classes)
   });
 }
-export function getClubs(userID) {
+
+export function getClubs(userID, callback) {
       ourDB.ref(`users/${userID}/`).child('clubList').on('value', (snapshot) => {
         const clubs = snapshot.val(); 
-        return clubs;
+        //callback(clubs)
         });
   }
 
   export function addFriend(userID, friendID, callback) {
-    firebase.database().ref('profile/${userID}/Friends').set(friendID);
+    
+
+    // loop though and make sure it isn't there
+
+    // add to the list
+    firebase.database().ref(`users/${userID}/Friends`).push(friendID);
   
-    //database.ref(`Letters/${letterID}/`).child('likes').on('value', (snapshot) => {
-      //callback(snapshot.numChildren());
-    //});
   
   }
 
-//export function addFriend(userID, friendID) {
-
-  //ourDB.ref(`users/${userID}/Friends`).on('value', (snapshot) => {
-    //var Friends = snapshot.val();
-    //var friendArray = Friends.values();
-
-    // console.log(userID)
-    // console.log("what up")
-    // console.log("type" + typeof Friends)
-    // console.log(Friends)
-    // //console.log(typeof Friends)
-    // //console.log(Friends.Friends)
-    // console.log("hello")
-
-    // console.log('Friends', Friends) 
-    // console.log('Friends.Friends', Friends.Friends) 
-
-    //if ( Friends !== null && Array.isArray(Friends)){
-    /* if(Friends && Friends.Friends){
-      Friends.Friends.push(friendID);
-    }
-    else {
-      Friends = {Friends: [friendID]}
-    }
-
-    ourDB.ref(`users/${userID}`).child('Friends').set({
-          Friends
-    }) */
-  //});
-
-  //var ref = firebase.database().ref().child('/scenes/' + projId).orderByChild('wordcount');
-  //ref.once('value',function(snap) {
-    //snap.forEach(function(item) {
-        //var itemVal = item.val();
-        //keys.push(itemVal);
-    //});
-    //for (i=0; i < keys.length; i++) {
-        //counts.push(keys[i].wordcount);
-    //}  
-
+  export function addClub(userID, clubID, callback) {
+    firebase.database().ref(`users/${clubID}/Clubs`).push(clubID);
+  }
