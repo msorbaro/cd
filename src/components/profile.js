@@ -32,13 +32,11 @@ class Profile extends Component {
       clubList: [],
       editing: false,
     };  
-  }
+    }
 
   setFriendsNamesAndPics = (Friends) => {
-
     const temp = [Friends]
-    db.getUser(temp[0], this.setFriendInfo);
-    
+    //db.getUser(temp[0], this.setFriendInfo);
     }
     
   setFriendInfo = (user) => {
@@ -48,7 +46,6 @@ class Profile extends Component {
 
   componentDidMount() {
       db.getCurrUser(this.setCurrUser);
-
       db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
   }
 
