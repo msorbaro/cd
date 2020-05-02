@@ -16,8 +16,12 @@ class Home extends Component {
         authenticated: false, }
       };
 addID =() => {
-    db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "9L", "BIO10");
-    db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "12", "CS50");
+    db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "r48jVmIbLGas73K1f28Jh9eiUku2");
+    db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2");
+      
+
+    //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "9L", "BIO10");
+    //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "12", "CS50");
       
       
       }

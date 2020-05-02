@@ -29,6 +29,7 @@ class Profile extends Component {
       friendsNames: ["hi"],
       bio: '',
       image: noUserPic,
+      classes: '',
       classList: [],
       clubList: [],
       editing: false,
@@ -50,9 +51,27 @@ class Profile extends Component {
     setFriendInfo = (user) => {
       this.state.friendsPics.push(user.userPic);
       this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+     // console.log(this.state.friendsNames)
     }
-  
 
+    setClassInfo = (classes) => {
+
+      this.state.classes = classes
+
+
+      for (let i = 0; i < Object.keys(classes).length; i += 1) {
+        const currentKey = Object.keys(classes)[i];
+        const currItem = classes[currentKey];
+        this.state.classList.push(` ${currItem} (${currentKey})`);
+        console.log(this.state.classList);
+
+        
+      
+      }
+
+    }
+
+  
     componentDidMount() {
         db.getCurrUser(this.setCurrUser);
     }
@@ -75,6 +94,8 @@ class Profile extends Component {
 
       //IDK why this is here but it works now
       db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
+
+      db.getClass(this.state.userID, this.setClassInfo)
 
   }
   

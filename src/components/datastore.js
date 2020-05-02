@@ -100,7 +100,7 @@ export function getName(userID, callback) {
 }
 
 export function getClass(userID, callback) {
-  ourDB.ref(`users/${userID}/`).child('classList').on('value', (snapshot) => {
+  ourDB.ref(`users/${userID}/`).child('Classes').on('value', (snapshot) => {
     const classes = snapshot.val(); 
     callback(classes)
   });
@@ -119,19 +119,19 @@ export function getClubs(userID, callback) {
     // loop though and make sure it isn't there
 
     // add to the list
-    firebase.database().ref(`users/${userID}/Friends`).push(friendID);
+    firebase.database().ref(`users/${userID}/Friends/${friendID}`).set(friendID);
   
   
   }
 
   export function addClass(userID, classBlock, className) {
-    firebase.database().ref(`users/${userID}/Classes/${classBlock}`).push(className);
+    firebase.database().ref(`users/${userID}/Classes/${classBlock}`).set(className);
 
   }
 
 
   export function addClub(userID, clubID, callback) {
-    firebase.database().ref(`users/${clubID}/Clubs`).push(clubID);
+    firebase.database().ref(`users/${clubID}/Clubs/${clubID}`).set(clubID);
   }
 
   
