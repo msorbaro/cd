@@ -15,6 +15,8 @@ import CalendarWeekly from './calendarweekly';
 import SearchFriends from './searchfriends';
 import ClubProfile from './clubprofile';
 
+//import 'bulma/bulma'
+
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
