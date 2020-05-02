@@ -26,7 +26,7 @@ class Profile extends Component {
       userYear: 'no year',
       friendsIDs: [],
       friendsPics: [],
-      friendsNames: ["hi"],
+      friendsNames: [],
       bio: '',
       image: noUserPic,
       classes: '',
@@ -44,6 +44,8 @@ class Profile extends Component {
         const currentKey = Object.keys(Friends)[i];
         const currItem = Friends[currentKey];
        db.getUser(currItem, this.setFriendInfo);
+       console.log(this.state.friendsNames);
+
       
       }
     }
@@ -63,7 +65,6 @@ class Profile extends Component {
         const currentKey = Object.keys(classes)[i];
         const currItem = classes[currentKey];
         this.state.classList.push(` ${currItem} (${currentKey})`);
-        console.log(this.state.classList);
 
         
       

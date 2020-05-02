@@ -76,7 +76,6 @@ export function getFriends(userID, callback) {
   });
 }
 
-// will return either 0 or 1
 export function getFriendStatus(userID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(userID).on('value', (snapshot) => {
@@ -114,24 +113,34 @@ export function getClubs(userID, callback) {
   }
 
   export function addFriend(userID, friendID, callback) {
-    
-
-    // loop though and make sure it isn't there
-
-    // add to the list
+    //db.getFriendStatus(userID, friendID);
     firebase.database().ref(`users/${userID}/Friends/${friendID}`).set(friendID);
-  
-  
+    //}
   }
 
   export function addClass(userID, classBlock, className) {
+    //if (getClassStatus(userID, className) == 0) {
     firebase.database().ref(`users/${userID}/Classes/${classBlock}`).set(className);
-
+    //}
   }
-
 
   export function addClub(userID, clubID, callback) {
+    //if (getClubStatus(userID, clubID) === 0) {
     firebase.database().ref(`users/${clubID}/Clubs/${clubID}`).set(clubID);
+    //}
   }
 
+  export function getClubStatus(userID, clubID, callback) {
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {
+      callback(snapshot.numChildren());
+    });
+  }
+
+  export function getClassStatus(userID, classID, callback) {
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(classID).on('value', (snapshot) => {
+      callback(snapshot.numChildren());
+    });
+  }
   
