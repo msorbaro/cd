@@ -32,29 +32,24 @@ class Profile extends Component {
       clubList: [],
       editing: false,
     };  
-  }
-
-  assignFriendsNamesAndPics = () => {
-    const f = db.getFriends(this.state.userID);
-    //index = 0;
-  
-   
-
-   // Object.keys(f).map((id) => {
-      //  this.state.friendsPics[index] = db.getImage(f[id]);
-       // this.setState.friendsNames[index] = db.getName(f[id]);   
-    //  })
     }
 
-  componentDidMount() {
+  setFriendsNamesAndPics = (Friends) => {
+    const temp = [Friends]
+    //db.getUser(temp[0], this.setFriendInfo);
+    }
     
-      db.getCurrUser(this.setCurrUser);
-      this.assignFriendsNamesAndPics();
-      this.state.classList = db.getClass(this.state.userID);
-      this.state.clubList = db.getClubs(this.state.userID);
-      
+  setFriendInfo = (user) => {
+    this.state.friendsPics.set(0,user.userPic);
   }
 
+
+  componentDidMount() {
+      db.getCurrUser(this.setCurrUser);
+      db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
+  }
+
+  
   setCurrUser = (currUser) => {
     console.log("hello");
     console.log(currUser.userID);
