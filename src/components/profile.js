@@ -27,6 +27,7 @@ class Profile extends Component {
       friendsIDs: [],
       friendsPics: [],
       friendsNames: [],
+      friendsNamesOfficial: [],
       bio: '',
       image: noUserPic,
       classes: '',
@@ -49,34 +50,41 @@ class Profile extends Component {
       
       }
     }
-      
     setFriendInfo = (user) => {
       this.state.friendsPics.push(user.userPic);
-      this.state.friendsNames[this.state.friendsNames.length] = (`${user.userFirstName} ${user.userLastName}`);
-      //this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+      this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+
+      this.setState({
+
+      })
 
     }
 
     setClassInfo = (classes) => {
 
-      this.state.classes = classes
-
-
       for (let i = 0; i < Object.keys(classes).length; i += 1) {
         const currentKey = Object.keys(classes)[i];
         const currItem = classes[currentKey];
+  
         this.state.classList.push(` ${currItem} (${currentKey})`);
-
-        
-      
+    
       }
 
     }
 
+    setClubsInfo = (clubs) => {
+
+      for (let i = 0; i < Object.keys(clubs).length; i += 1) {
+        const currentKey = Object.keys(clubs)[i];
+        const currItem = clubs[currentKey];
   
+        this.state.clubList.push(currItem);
+    
+      }
+
+    }
     componentDidMount() {
         db.getCurrUser(this.setCurrUser);
-
     }
   
   setCurrUser = (currUser) => {
@@ -93,7 +101,10 @@ class Profile extends Component {
 
       //IDK why this is here but it works now bc of syncronizatin issues
       db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
-      db.getClass(this.state.userID, this.setClassInfo)
+      db.getClass(this.state.userID, this.setClassInfo);
+      db.getClubs(this.state.userID, this.setClubsInfo);
+
+     
   }
   
  
@@ -166,7 +177,6 @@ class Profile extends Component {
               <li>{this.state.classList[0]}</li>
               <li>{this.state.classList[1]}</li>
               <li>{this.state.classList[2]}</li>
-              <li>{this.state.classList[3]}</li>
               <li>
                 <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onEmailChange} value={this.state.email} />
                 <div class="dropdown">
@@ -198,8 +208,9 @@ class Profile extends Component {
           </div>
           <div className="listStyle">
             <ul>
-              <li>Dartmouth Formula Racing</li>
-              <li>Dali</li>
+              <li>{this.state.clubList[0]}</li>
+              <li>{this.state.clubList[1]}</li>
+              <li>{this.state.clubList[2]}</li>
               <li>
                 <Input className="response" id="emailInputBar" placeholder="ex. Tri team" onChange={this.onEmailChange} value={this.state.email} />
               </li>

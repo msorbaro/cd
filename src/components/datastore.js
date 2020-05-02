@@ -106,7 +106,7 @@ export function getClass(userID, callback) {
 }
 
 export function getClubs(userID, callback) {
-      ourDB.ref(`users/${userID}/`).child('clubList').on('value', (snapshot) => {
+      ourDB.ref(`users/${userID}/`).child('Clubs').on('value', (snapshot) => {
         const clubs = snapshot.val(); 
         callback(clubs)
         });
@@ -126,7 +126,7 @@ export function getClubs(userID, callback) {
 
   export function addClub(userID, clubID, callback) {
     //if (getClubStatus(userID, clubID) === 0) {
-    firebase.database().ref(`users/${clubID}/Clubs/${clubID}`).set(clubID);
+    firebase.database().ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
     //}
   }
 
