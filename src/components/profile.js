@@ -44,7 +44,7 @@ class Profile extends Component {
         const currentKey = Object.keys(Friends)[i];
         const currItem = Friends[currentKey];
        db.getUser(currItem, this.setFriendInfo);
-       console.log(this.state.friendsNames);
+       //console.log(this.state.friendsNames);
 
       
       }
@@ -53,7 +53,7 @@ class Profile extends Component {
     setFriendInfo = (user) => {
       this.state.friendsPics.push(user.userPic);
       this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
-     // console.log(this.state.friendsNames)
+
     }
 
     setClassInfo = (classes) => {
@@ -75,6 +75,7 @@ class Profile extends Component {
   
     componentDidMount() {
         db.getCurrUser(this.setCurrUser);
+
     }
   
   setCurrUser = (currUser) => {
@@ -97,6 +98,7 @@ class Profile extends Component {
       db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
 
       db.getClass(this.state.userID, this.setClassInfo)
+      console.log(this.state.friendsNames)
 
   }
   
