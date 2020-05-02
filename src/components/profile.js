@@ -33,37 +33,35 @@ class Profile extends Component {
       clubList: [],
       editing: false,
     };  
-  }
-
-  setFriendsNamesAndPics = (Friends) => {
-
-    this.state.friendsIDs = Friends;
-    console.log(this.state.friendsIDs);
-
-    for (let i = 0; i < Object.keys(Friends).length; i += 1) {
-      const currentKey = Object.keys(Friends)[i];
-      const currItem = Friends[currentKey];
-     db.getUser(currItem, this.setFriendInfo);
-    
     }
-  }
-    
- 
 
-  setFriendInfo = (user) => {
-    console.log(user.userPic)
-    
-    this.state.friendsPics.push(user.userPic);
-    this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
-    console.log(this.state.friendsNames)
-  }
+    setFriendsNamesAndPics = (Friends) => {
 
-
-  componentDidMount() {
-
-      db.getCurrUser(this.setCurrUser);
-  }
-
+      this.state.friendsIDs = Friends;
+      console.log(this.state.friendsIDs);
+  
+      for (let i = 0; i < Object.keys(Friends).length; i += 1) {
+        const currentKey = Object.keys(Friends)[i];
+        const currItem = Friends[currentKey];
+       db.getUser(currItem, this.setFriendInfo);
+      
+      }
+    }
+      
+   
+    setFriendInfo = (user) => {
+      console.log(user.userPic)
+      
+      this.state.friendsPics.push(user.userPic);
+      this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+      console.log(this.state.friendsNames)
+    }
+  
+  
+    componentDidMount() {
+  
+        db.getCurrUser(this.setCurrUser);
+    }
   
   setCurrUser = (currUser) => {
     //console.log("hello");
