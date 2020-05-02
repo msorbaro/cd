@@ -90,14 +90,14 @@ export function getName(userID, callback) {
 export function getClass(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('classList').on('value', (snapshot) => {
     const classes = snapshot.val(); 
-    //callback(classes)
+    callback(classes)
   });
 }
 
 export function getClubs(userID, callback) {
       ourDB.ref(`users/${userID}/`).child('clubList').on('value', (snapshot) => {
         const clubs = snapshot.val(); 
-        //callback(clubs)
+        callback(clubs)
         });
   }
 
