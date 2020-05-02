@@ -76,7 +76,7 @@ class ClubProfile extends Component {
           <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
         </div>
         <div className="buttonContainer">
-          <Button style={{'border-radius': '100px'}}class="club">Subscribe</Button>
+          <Button id="club">Subscribe</Button>
         </div>
         <img class="b" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
@@ -87,6 +87,12 @@ class ClubProfile extends Component {
           { title: 'is', date: '2020-05-02' }
           ]}
         />
+        </div>
+        <div className="description">
+          <h2 class="clubHeader" style={{'top': '-7%'}}>Description</h2>
+          <p class="clubInfo" style={{'top': '15%', 'left': '3%'}}>This is where a club can add information about the club.</p>
+          <h2 class="clubHeader" style={{'top': '60%'}}>Contact Info</h2>
+          <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>katherine.lasonde.23@dartmouth.edu</p>
         </div>
       </div>
       );
