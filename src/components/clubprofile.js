@@ -76,7 +76,7 @@ class ClubProfile extends Component {
           <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
         </div>
         <div className="buttonContainer">
-          <Button id="club">Subscribe</Button>
+          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
         </div>
         <img class="b" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
