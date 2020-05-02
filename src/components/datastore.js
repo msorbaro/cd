@@ -61,7 +61,10 @@ export function getUser(userID, callBack) {
 export function getFriends(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('Friends').on('value', (snapshot) => {
     const friends = snapshot.val(); 
-    callback(friends)
+    console.log("hi");
+    console.log(friends)
+    console.log("boo")
+    callback(friends);
   });
 }
 
@@ -81,9 +84,10 @@ export function getImage(userID, callback) {
 }
 
 export function getName(userID, callback) {
-  ourDB.ref(`users/${userID}/`).child('userName').on('value', (snapshot) => {
+  ourDB.ref(`users/${userID}/`).child('userFirstName').on('value', (snapshot) => {
   const name = snapshot.val(); 
-  callback(name)
+  
+  callback(name);
   });
 }
 

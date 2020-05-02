@@ -16,8 +16,8 @@ class Home extends Component {
         authenticated: false, }
       };
 addID =() => {
-    db.addFriend("G7dCfxkE6rSt3RoZMmt4bpCt6rS2", "a0uL79bAGfQuexUqxTxo7M34qgt1");
-    db.addFriend("G7dCfxkE6rSt3RoZMmt4bpCt6rS2", "a0uL79bAGfQuexUqxTxo7M34qgt1");
+    db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "r48jVmIbLGas73K1f28Jh9eiUku2");
+    db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2");
       
         //db.addFriend()
       
