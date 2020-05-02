@@ -52,7 +52,8 @@ class Profile extends Component {
       
     setFriendInfo = (user) => {
       this.state.friendsPics.push(user.userPic);
-      this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+      this.state.friendsNames[this.state.friendsNames.length] = (`${user.userFirstName} ${user.userLastName}`);
+      //this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
 
     }
 
@@ -79,11 +80,7 @@ class Profile extends Component {
     }
   
   setCurrUser = (currUser) => {
-    //console.log("hello");
-    //console.log(currUser.userID);
-    //console.log(currUser.userFirstName);
-    //console.log(currUser.userEmail);
-    //console.log(currUser.userYear);
+    
 
      this.setState({
         userID: currUser.userID,
@@ -94,12 +91,9 @@ class Profile extends Component {
         image: currUser.userPic,
       });
 
-      //IDK why this is here but it works now
+      //IDK why this is here but it works now bc of syncronizatin issues
       db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
-
       db.getClass(this.state.userID, this.setClassInfo)
-      console.log(this.state.friendsNames)
-
   }
   
  
@@ -169,8 +163,10 @@ class Profile extends Component {
           </div>
           <div className="listStyle">
             <ul>
-              <li>COSC10 (10)</li>
-              <li>BIOL13 (9L)</li>
+              <li>{this.state.classList[0]}</li>
+              <li>{this.state.classList[1]}</li>
+              <li>{this.state.classList[2]}</li>
+              <li>{this.state.classList[3]}</li>
               <li>
                 <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onEmailChange} value={this.state.email} />
                 <div class="dropdown">
