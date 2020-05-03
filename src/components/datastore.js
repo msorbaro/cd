@@ -130,6 +130,15 @@ export function getClubs(userID, callback) {
     //}
   }
 
+  export function addCalEvent(cocktailName, cocktailRecipe, cocktailImage) {
+    //please fill this in dylan and kat
+   };
+
+   export function getCalEvents(userID, callback) {
+     //please fill in kat and dylan <3 lily
+   }; 
+   
+
   export function getClubStatus(userID, clubID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {

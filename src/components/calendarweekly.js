@@ -1,7 +1,6 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-//import * as Modal from "./addevent.js";
 import Modal from './modal';
 import { Input } from 'reactstrap';
 //import firebase from 'firebase';
@@ -14,12 +13,13 @@ import FullCalendar from '@fullcalendar/react'
 import '../cssfolder/calendar.css' 
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import * as db from './datastore';
 
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false, eventTitle:"", eventDateStart:"", eventTimeStart:"", eventDateEnd:"", eventTimeEnd:"", eventType:"" };
+    this.state = { isOpen: false, eventTitle:"", eventDateStart:"", eventDateEnd:"", eventType:"" };
   }
 
   showModal = () => {
@@ -44,9 +44,44 @@ class Calendar extends React.Component {
     });
   }
 
-  changeNewTitle = (event) => {
+  createEventTitle = (event) => {
     this.setState({eventTitle: event.target.value});
   }
+
+  createEventType = (event) => {
+    this.setState({eventType: event.target.value});
+  }
+
+  createDateStart = (event) => {
+    this.setState({eventDateStart: event.target.value});
+  }
+
+  createDateEnd = (event) => {
+    this.setState({eventDateEnd: event.target.value});
+  }
+
+
+
+  saveInfo = () => {
+    var eType = new String('eType' + this.state.eventType)
+    if (!isNaN(this.state.eventDateStart.valueOf()) && !isNaN(this.state.eventDateEnd.valueOf())) { // valid dates
+      FullCalendar.addEvent({
+        title: this.state.eventTitle,
+        start: this.state.eventDateStart,
+        end: this.state.eventDateEnd,
+        className: eType
+      });
+    
+    // db.addCalEvent(this.state.eventTitle, this.state.eventType, this.state.eventDateStart, this.eventDateEnd)
+    // this.setState({
+    //     eventTitle: "",
+    //     eventType: "",
+    //     eventDateStart: "",
+    //     eventDateEnd: ""
+    // })
+    // db.getCalEvents("this is a getter for all cal events? please fix ");
+}}
+
 
 
   render() {
@@ -92,29 +127,25 @@ class Calendar extends React.Component {
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
       <div className="addEventModal">
-        <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+        <Modal show={this.state.isOpen} save={this.saveInfo} onClose={this.toggleModal}>
         <div className="newEventInfo">
                 <div className="inputline"> 
                   Name: &nbsp;
-                  <Input type="text" placeholder="Event Name" value={this.state.eventTitle} onChange={this.changeNewTitle}/>
+                  <Input type="text" placeholder="Event Name" value={this.state.eventTitle} onChange={this.createEventTitle}/>
                 </div>
                 <div className="inputline"> 
-                  <Input  type="radio" name="eventType" value="classes"/>Classes &nbsp;
-                  <Input  type="radio" name="eventType"  value="clubs"/>Clubs &nbsp;
-                  <Input  type="radio" name="eventType" value="social"/>Social &nbsp;
-                  <Input  type="radio" name="eventType"  value="other"/>Other &nbsp;
+                  <Input  type="radio" name="eventType" value="Class" onChange={this.createEventType}/>Classes &nbsp;
+                  <Input  type="radio" name="eventType"  value="Club" onChange={this.createEventType}/>Clubs &nbsp;
+                  <Input  type="radio" name="eventType" value="Social" onChange={this.createEventType}/>Social &nbsp;
+                  <Input  type="radio" name="eventType"  value="Other" onChange={this.createEventType}/>Other &nbsp;
                 </div>
-                <div className="inputline" > 
-                  Start Date: &nbsp;
-                  <Input type="date" id="short" value={this.state.eventDateStart}/>
-                  Start Time: &nbsp;
-                  <Input type="time" id="short" value={this.state.eventTimeStart}/>
+                <div className="inputlinecal" > 
+                  Start Date and Time: 
+                  <Input type="datetime-local"value={this.state.eventDateStart} onChange={this.createDateStart}/>
                 </div>
-                <div className="inputline"> 
-                  End Date: &nbsp;
-                  <Input type="date" id="short" value={this.state.eventDateEnd}/>
-                  End Time: &nbsp;
-                  <Input type="time" id="short" value={this.state.eventTimeEnd}/>
+                <div className="inputlinecal"> 
+                  End Date and Time: 
+                  <Input type="datetime-local"  value={this.state.eventDateEnd} onChange={this.createDateEnd}/>
                 </div>
             </div>  
         </Modal>
@@ -184,8 +215,10 @@ class Calendar extends React.Component {
                 <div className="inputline"> 
                   End Date: &nbsp;
                   <Input type="date" id="short" value={Calendar.state.eventDateEnd}/>
+                <div className="inputline"> 
                   End Time: &nbsp;
                   <Input type="time" id="short" value={Calendar.state.eventTimeEnd}/>
+                </div>
                 </div>
             </div>
             <div className="enterorcancelbuttons" id="longButtons">
