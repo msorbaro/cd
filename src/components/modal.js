@@ -15,7 +15,7 @@ class Modal extends React.Component {
         <div className="modalTitle"><br></br>Add New Event</div>
           {this.props.children}
           <div className="enterorcancelbuttons" id="longButtons">
-            <Button onClick={this.props.saveInfo}> Save </Button> &nbsp;
+            <Button onClick={this.props.save}> Save </Button> &nbsp;
             <Button onClick={this.props.onClose}>Close</Button>
           </div>
       </div>

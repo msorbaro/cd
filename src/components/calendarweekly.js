@@ -13,13 +13,23 @@ import FullCalendar from '@fullcalendar/react'
 import '../cssfolder/calendar.css' 
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid'
 import * as db from './datastore';
 
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false, eventTitle:"", eventDateStart:"", eventDateEnd:"", eventType:"" };
+    this.state = { 
+      isOpen: false, 
+      eventTitle:"", 
+      eventDateStart:"", 
+      eventDateEnd:"", 
+      eventType:"",
+      calendarEvents: [
+        { title: "Lily can make calendar events", start: '2020-05-02' }
+      ] 
+    };
   }
 
   showModal = () => {
@@ -34,8 +44,14 @@ class Calendar extends React.Component {
     this.props.history.push('/');
   }
 
-  handleDateClick = (event) => { 
-    alert('a day has been clicked!');
+  handleDateClick = arg => { 
+    this.setState({
+      calendarEvents: this.state.calendarEvents.concat({
+        title: "New Event",
+        start: arg.date,
+        allDay: arg.allDay
+      })
+    });
   }
 
   toggleModal = () => {
@@ -63,24 +79,25 @@ class Calendar extends React.Component {
 
 
   saveInfo = () => {
+    console.log("here")
     var eType = new String('eType' + this.state.eventType)
-    if (!isNaN(this.state.eventDateStart.valueOf()) && !isNaN(this.state.eventDateEnd.valueOf())) { // valid dates
-      FullCalendar.addEvent({
+    //create a new array entry 
+    this.setState({
+      calendarEvents: this.state.calendarEvents.concat({
         title: this.state.eventTitle,
         start: this.state.eventDateStart,
         end: this.state.eventDateEnd,
         className: eType
-      });
-    
-    // db.addCalEvent(this.state.eventTitle, this.state.eventType, this.state.eventDateStart, this.eventDateEnd)
-    // this.setState({
-    //     eventTitle: "",
-    //     eventType: "",
-    //     eventDateStart: "",
-    //     eventDateEnd: ""
-    // })
-    // db.getCalEvents("this is a getter for all cal events? please fix ");
-}}
+      })
+    })
+    //reset values
+    this.setState({
+        eventTitle: '',
+        eventDateStart:'',
+        eventDateEnd: '',
+        eventType:''
+    });
+}
 
 
 
@@ -94,32 +111,15 @@ class Calendar extends React.Component {
       <div className="cal">
       <FullCalendar 
         dateClick={this.handleDateClick} 
-        plugins={[ timeGridPlugin, interactionPlugin ]} 
+        plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+        header={{
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+        }}
         selectable= {true}
         slotDuration= {'00:30:00'}
-        events={[
-          { title: 'lily', date: '2020-05-01', className:'eTypeClass'},
-          {title: 'is better', date: '2020-05-02', className:'eTypeClub'},
-          { title: 'than Scott', date: '2020-05-02', className:'eTypeSocial'},
-          { title: 'yay', date: '2020-05-02', className:'eTypeOther'},
-          {
-            title: 'DFR',
-            start: '2020-04-30',
-            end: '2020-05-01',
-            className:'eTypeClub'
-          },
-          {
-            title: 'Pong',
-            start: '2020-05-02T20:30:00',
-            end: '2020-05-02T23:30:00',
-            className:'eTypeSocial'
-          },
-          {
-            title: 'Foco',
-            start: '2020-04-30T12:00:00',
-            className:'eTypeSocial'
-          }
-          ]}
+        events={this.state.calendarEvents}
       />
       </div>
       <div className="dartCalLogoCal">
@@ -155,9 +155,6 @@ class Calendar extends React.Component {
             <img width="20px" src={plus}/> 
             <Button onClick={this.toggleModal}>Add Event</Button>
          </div>
-         <div className="toggleMonthWeek">
-          <NavLink to="/calendarmonthly">Monthly View</NavLink>
-         </div>
          <div className="toggleCalendarView">
            Calendar View Options
            <div className="checkbox"> 
@@ -189,49 +186,6 @@ class Calendar extends React.Component {
     )
   }
 }
-
-    const oldModal = ({ handleClose, show }) => {
-      if (show){
-        return (
-          <div className="modal">
-                <div className="modalTitle"><br></br>Add New Event</div>
-            <div className="newEventInfo">
-                <div className="inputline"> 
-                  Name: &nbsp;
-                  <Input type="text" placeholder="Event Name" value={Calendar.state.eventTitle} onChange={Calendar.changeNewTitle()}/>
-                </div>
-                <div className="inputline"> 
-                  <Input  type="radio" name="eventType" value="classes"/>Classes &nbsp;
-                  <Input  type="radio" name="eventType"  value="clubs"/>Clubs &nbsp;
-                  <Input  type="radio" name="eventType" value="social"/>Social &nbsp;
-                  <Input  type="radio" name="eventType"  value="other"/>Other &nbsp;
-                </div>
-                <div className="inputline" > 
-                  Start Date: &nbsp;
-                  <Input type="date" id="short" value={Calendar.state.eventDateStart}/>
-                  Start Time: &nbsp;
-                  <Input type="time" id="short" value={Calendar.state.eventTimeStart}/>
-                </div>
-                <div className="inputline"> 
-                  End Date: &nbsp;
-                  <Input type="date" id="short" value={Calendar.state.eventDateEnd}/>
-                <div className="inputline"> 
-                  End Time: &nbsp;
-                  <Input type="time" id="short" value={Calendar.state.eventTimeEnd}/>
-                </div>
-                </div>
-            </div>
-            <div className="enterorcancelbuttons" id="longButtons">
-              <Button onClick={Calendar.submit}> Save </Button> &nbsp;
-              <Button onClick={handleClose}> Close </Button>
-            </div>
-        </div>
-        );
-      }
-        return (null)
-    };
-
-
 
 const container = document.createElement('div');
 document.body.appendChild(container);

@@ -73,7 +73,7 @@
     flex-direction: row;
     width: 100%;
     height: auto;
-    top: 30%;
+    top: 25%;
     color: white;
     font-weight: bolder;
     font-size: 22px;
@@ -100,6 +100,7 @@
     color: #1D263B;
     margin-left: 15%;
     text-align: left;
+    margin-top: 2%;
 }
 
 .friendsCal {
