@@ -113,29 +113,47 @@ export function getClubs(userID, callback) {
   }
 
   export function addFriend(userID, friendID, callback) {
-    //db.getFriendStatus(userID, friendID);
-    firebase.database().ref(`users/${userID}/Friends/${friendID}`).set(friendID);
-    //}
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(userID).on('value', (snapshot) => {
+      if (callback(snapshot.numChildren()) === 0) {
+        firebase.database().ref(`users/${userID}/Friends/${friendID}`).set(friendID);
+      }
+    });
   }
 
-  export function addClass(userID, classBlock, className) {
-    //if (getClassStatus(userID, className) == 0) {
-    firebase.database().ref(`users/${userID}/Classes/${classBlock}`).set(className);
-    //}
+  export function addClass(userID, classID, classBlock, className) {
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(classID).on('value', (snapshot) => {
+      if (snapshot.numChildren() === 0) {
+        firebase.database().ref(`users/${userID}/Classes/${classBlock}`).set(className);
+      }
+    });
   }
 
   export function addClub(userID, clubID, callback) {
-    //if (getClubStatus(userID, clubID) === 0) {
-    firebase.database().ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
-    //}
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {
+      if (snapshot.numChildren() === 0) {
+        firebase.database().ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
+      }
+    });
   }
 
-  export function addCalEvent(cocktailName, cocktailRecipe, cocktailImage) {
-    //please fill this in dylan and kat
+  export function addCalEvent(userID, calEventID, calEventName, calEventBlock) {
+    const ref = ourDB.ref(`users/${userID}/`);
+    ref.orderByValue().equalTo(calEventID).on('value', (snapshot) => {
+      if (snapshot.numChildren() === 0) {
+        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventName);
+        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventBlock);
+      }
+    });
    };
 
    export function getCalEvents(userID, callback) {
-     //please fill in kat and dylan <3 lily
+     ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
+      const calEvents = snapshot.val(); 
+      callback(calEvents)
+    });
    }; 
    
 
