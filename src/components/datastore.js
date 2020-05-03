@@ -139,12 +139,11 @@ export function getClubs(userID, callback) {
     });
   }
 
-  export function addCalEvent(userID, calEventID, calEventName, calEventBlock) {
+  export function addCalEvent(userID, calEventID, calEventInfo) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(calEventID).on('value', (snapshot) => {
       if (snapshot.numChildren() === 0) {
-        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventName);
-        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventBlock);
+        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
       }
     });
    };

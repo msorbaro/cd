@@ -32,9 +32,13 @@ class Calendar extends React.Component {
       showClubs: true,
       showSocial: true,
       showOther: true,
-      calendarEvents: [
-        { title: "Lily can make calendar events", start: '2020-05-02', className:'eTypeSocial'}
-      ] 
+      userID: '',
+      userEmail: '',
+      userFirstName: '',
+      userLastName: '',
+      userYear: '',
+      image: '',
+      calendarEvents: []
     };
   }
 
@@ -97,23 +101,44 @@ class Calendar extends React.Component {
   handleCheckboxChangeOther = (event) =>
     this.setState({ showOther: event.target.showOther })
 
-  saveInfo = () => {
-    //create a new array entry 
+  getEvents = (allEvents) => {
+    this.setState({ calendarEvents: allEvents })
+  }
+
+  setCurrUser = (currUser) => {
     this.setState({
-      calendarEvents: this.state.calendarEvents.concat({
+       userID: currUser.userID,
+       userEmail: currUser.userEmail,
+       userFirstName: currUser.userFirstName,
+       userLastName: currUser.userLastName,
+       userYear: currUser.userYear,
+       image: currUser.userPic,
+     });
+  }
+
+  componentDidMount() {
+    db.getCurrUser(this.setCurrUser);
+  }
+
+  saveInfo = () => {
+    db.addCalEvent(
+      db.getCurrUser(this.setCurrUser),
+      this.state.eventTitle,
+      {
         title: this.state.eventTitle,
         start: this.state.eventDateStart,
         end: this.state.eventDateEnd,
-        className: 'eType' + this.state.eventType
-      })
-    })
+        className: 'eType' + this.state.eventType,
+      }
+    )
     //reset values
     this.setState({
         eventTitle: '',
         eventDateStart:'',
         eventDateEnd: '',
-        eventType:''
+        eventType:'',
     });
+    db.getCalEvents(db.getCurrUser(this.setCurrUser), this.getEvents);
   }
 
 
