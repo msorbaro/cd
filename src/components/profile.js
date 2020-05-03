@@ -132,7 +132,38 @@ class Profile extends Component {
     this.props.history.push('/');
   }
 
+ 
   render() {
+
+    const renderClubs = () => {
+      console.log("visit");
+    
+      if (this.state.showClubs == 0){
+        return(
+          <div>
+            <p>
+              hi
+            </p>
+          </div>
+
+        )
+      }
+      return <p> hi</p>
+    
+      // return (
+      //   <div> 
+      //     <ul>
+      //     <li>{this.state.clubList[0]}</li>
+      //     <li>{this.state.clubList[1]}</li>
+          
+      //     <li>
+      //       <Input className="response" id="emailInputBar" placeholder="ex. Tri team" onChange={this.onEmailChange} value={this.state.email} />
+      //     </li>
+      //     </ul>
+      //    </div>
+      // );
+    }
+
     return (
       <div className="all">
         <div className="dartCalLogoProfile">
@@ -207,14 +238,9 @@ class Profile extends Component {
             <h3 className="sectionHeader">Clubs</h3>
           </div>
           <div className="listStyle">
-            <ul>
-              <li>{this.state.clubList[0]}</li>
-              <li>{this.state.clubList[1]}</li>
-              <li>{this.state.clubList[2]}</li>
-              <li>
-                <Input className="response" id="emailInputBar" placeholder="ex. Tri team" onChange={this.onEmailChange} value={this.state.email} />
-              </li>
-            </ul>
+
+          <renderClubs>HELLO </renderClubs> 
+                   
           </div>
         </div>
 
@@ -264,6 +290,8 @@ class Profile extends Component {
     );
   }
 }
+
+
 
 // export default NewPost;
 export default withRouter((Profile));
