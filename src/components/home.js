@@ -35,7 +35,7 @@ render() {
       <div >
     <NavLink to="/signup" ><Button >Sign Up</Button></NavLink>
     <NavLink to="/signin" ><Button >Sign In</Button></NavLink>
-    <NavLink to="/calendarweekly" ><Button >Calendar</Button></NavLink>
+    <NavLink to="/calendar" ><Button >Calendar</Button></NavLink>
     <NavLink to="/profile" ><Button>View your profile</Button></NavLink>
     <NavLink to="/searchfriends" ><Button>Search for your friends!</Button></NavLink>
     <NavLink to="/clubprofile" ><Button>View club profile</Button></NavLink>
