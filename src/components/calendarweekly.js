@@ -1,7 +1,8 @@
 /* eslint no-alert: 0 */
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import * as Modal from "./addevent.js";
+//import * as Modal from "./addevent.js";
+import Modal from './modal';
 import { Input } from 'reactstrap';
 //import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
@@ -18,7 +19,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false, eventTitle:"", eventDateStart:"", eventTimeStart:"", eventDateEnd:"", eventTimeEnd:"", eventType:"" };
+    this.state = { isOpen: false, eventTitle:"", eventDateStart:"", eventTimeStart:"", eventDateEnd:"", eventTimeEnd:"", eventType:"" };
   }
 
   showModal = () => {
@@ -37,8 +38,15 @@ class Calendar extends React.Component {
     alert('a day has been clicked!');
   }
 
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
-
+  changeNewTitle = (event) => {
+    this.setState({eventTitle: event.target.value});
+  }
 
 
   render() {
@@ -84,12 +92,37 @@ class Calendar extends React.Component {
         <div className="scheduleLogo"><img width="30px" src={logo} /></div>
       </div>
       <div className="addEventModal">
-        {Modal}
+        <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+        <div className="newEventInfo">
+                <div className="inputline"> 
+                  Name: &nbsp;
+                  <Input type="text" placeholder="Event Name" value={this.state.eventTitle} onChange={this.changeNewTitle}/>
+                </div>
+                <div className="inputline"> 
+                  <Input  type="radio" name="eventType" value="classes"/>Classes &nbsp;
+                  <Input  type="radio" name="eventType"  value="clubs"/>Clubs &nbsp;
+                  <Input  type="radio" name="eventType" value="social"/>Social &nbsp;
+                  <Input  type="radio" name="eventType"  value="other"/>Other &nbsp;
+                </div>
+                <div className="inputline" > 
+                  Start Date: &nbsp;
+                  <Input type="date" id="short" value={this.state.eventDateStart}/>
+                  Start Time: &nbsp;
+                  <Input type="time" id="short" value={this.state.eventTimeStart}/>
+                </div>
+                <div className="inputline"> 
+                  End Date: &nbsp;
+                  <Input type="date" id="short" value={this.state.eventDateEnd}/>
+                  End Time: &nbsp;
+                  <Input type="time" id="short" value={this.state.eventTimeEnd}/>
+                </div>
+            </div>  
+        </Modal>
       </div>
       <div className="sidebar">
          <div className="addNewEvent">
             <img width="20px" src={plus}/> 
-            <Button onClick={this.showModal}>Add Event</Button>
+            <Button onClick={this.toggleModal}>Add Event</Button>
          </div>
          <div className="toggleMonthWeek">
           <NavLink to="/calendarmonthly">Monthly View</NavLink>
@@ -126,44 +159,44 @@ class Calendar extends React.Component {
   }
 }
 
-// const Modal = ({ handleClose, show }) => {
-//   if (show){
-//     return (
-//       <div className="modal">
-//             <div className="modalTitle"><br></br>Add New Event</div>
-//         <div className="newEventInfo">
-//             <div className="inputline"> 
-//               Name: &nbsp;
-//               <Input type="text" placeholder="Event Name" value={Calendar.state.eventTitle} onChange={Calendar.changeNewTitle()}/>
-//             </div>
-//             <div className="inputline"> 
-//               <Input  type="radio" name="eventType" value="classes"/>Classes &nbsp;
-//               <Input  type="radio" name="eventType"  value="clubs"/>Clubs &nbsp;
-//               <Input  type="radio" name="eventType" value="social"/>Social &nbsp;
-//               <Input  type="radio" name="eventType"  value="other"/>Other &nbsp;
-//             </div>
-//             <div className="inputline" > 
-//               Start Date: &nbsp;
-//               <Input type="date" id="short" value={Calendar.state.eventDateStart}/>
-//               Start Time: &nbsp;
-//               <Input type="time" id="short" value={Calendar.state.eventTimeStart}/>
-//             </div>
-//             <div className="inputline"> 
-//               End Date: &nbsp;
-//               <Input type="date" id="short" value={Calendar.state.eventDateEnd}/>
-//               End Time: &nbsp;
-//               <Input type="time" id="short" value={Calendar.state.eventTimeEnd}/>
-//             </div>
-//         </div>
-//         <div className="enterorcancelbuttons" id="longButtons">
-//           <Button onClick={Calendar.submit}> Save </Button> &nbsp;
-//           <Button onClick={handleClose}> Close </Button>
-//         </div>
-//     </div>
-//     );
-//   }
-//     return (null)
-// };
+    const oldModal = ({ handleClose, show }) => {
+      if (show){
+        return (
+          <div className="modal">
+                <div className="modalTitle"><br></br>Add New Event</div>
+            <div className="newEventInfo">
+                <div className="inputline"> 
+                  Name: &nbsp;
+                  <Input type="text" placeholder="Event Name" value={Calendar.state.eventTitle} onChange={Calendar.changeNewTitle()}/>
+                </div>
+                <div className="inputline"> 
+                  <Input  type="radio" name="eventType" value="classes"/>Classes &nbsp;
+                  <Input  type="radio" name="eventType"  value="clubs"/>Clubs &nbsp;
+                  <Input  type="radio" name="eventType" value="social"/>Social &nbsp;
+                  <Input  type="radio" name="eventType"  value="other"/>Other &nbsp;
+                </div>
+                <div className="inputline" > 
+                  Start Date: &nbsp;
+                  <Input type="date" id="short" value={Calendar.state.eventDateStart}/>
+                  Start Time: &nbsp;
+                  <Input type="time" id="short" value={Calendar.state.eventTimeStart}/>
+                </div>
+                <div className="inputline"> 
+                  End Date: &nbsp;
+                  <Input type="date" id="short" value={Calendar.state.eventDateEnd}/>
+                  End Time: &nbsp;
+                  <Input type="time" id="short" value={Calendar.state.eventTimeEnd}/>
+                </div>
+            </div>
+            <div className="enterorcancelbuttons" id="longButtons">
+              <Button onClick={Calendar.submit}> Save </Button> &nbsp;
+              <Button onClick={handleClose}> Close </Button>
+            </div>
+        </div>
+        );
+      }
+        return (null)
+    };
 
 
 
