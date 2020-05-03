@@ -26,6 +26,8 @@ class Calendar extends React.Component {
       eventDateStart:"", 
       eventDateEnd:"", 
       eventType:"",
+      eventTimeStart: "",
+      eventTimeEnd: "",
       calendarEvents: [
         { title: "Lily can make calendar events", start: '2020-05-02' }
       ] 
@@ -45,9 +47,10 @@ class Calendar extends React.Component {
   }
 
   handleDateClick = arg => { 
+    var name = prompt('Enter event name');
     this.setState({
       calendarEvents: this.state.calendarEvents.concat({
-        title: "New Event",
+        title: name,
         start: arg.date,
         allDay: arg.allDay
       })
@@ -79,7 +82,6 @@ class Calendar extends React.Component {
 
 
   saveInfo = () => {
-    console.log("here")
     var eType = new String('eType' + this.state.eventType)
     //create a new array entry 
     this.setState({
@@ -97,7 +99,8 @@ class Calendar extends React.Component {
         eventDateEnd: '',
         eventType:''
     });
-}
+  }
+
 
 
 

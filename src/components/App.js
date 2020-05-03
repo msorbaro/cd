@@ -11,7 +11,7 @@ import Signup from './signup';
 import CalendarMonthly from './calendarmonthly';
 import Profile from './profile';
 import Home from './home';
-//import CalendarWeekly from './calendarweekly';
+import Calendar from './calendar';
 import SearchFriends from './searchfriends';
 import ClubProfile from './clubprofile';
 
@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/signin" component={Signin} />
-            <Route exact path="/calendarmonthly" component={CalendarMonthly} />
+            <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/searchfriends" component={SearchFriends} />
             <Route exact path="/clubprofile" component={ClubProfile} />

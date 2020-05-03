@@ -115,6 +115,10 @@
     font-size: 22px;
 }
 
+.addEventModalFromClick{
+    height: 80%;
+}
+
 a {
     color: white;
 }
