@@ -28,8 +28,12 @@ class Calendar extends React.Component {
       eventType:"",
       eventTimeStart: "",
       eventTimeEnd: "",
+      showClasses: true,
+      showClubs: true,
+      showSocial: true,
+      showOther: true,
       calendarEvents: [
-        { title: "Lily can make calendar events", start: '2020-05-02' }
+        { title: "Lily can make calendar events", start: '2020-05-02', className:'eTypeSocial'}
       ] 
     };
   }
@@ -63,6 +67,8 @@ class Calendar extends React.Component {
     });
   }
 
+  
+
   createEventTitle = (event) => {
     this.setState({eventTitle: event.target.value});
   }
@@ -79,17 +85,26 @@ class Calendar extends React.Component {
     this.setState({eventDateEnd: event.target.value});
   }
 
+  handleCheckboxChangeClasses = (event) =>
+    this.setState({ showClasses: event.target.showClasses })
 
+  handleCheckboxChangeClubs = (event) =>
+    this.setState({ showClubs: event.target.showClubs })  
+
+  handleCheckboxChangeSocial = (event) =>
+    this.setState({ showSocial: event.target.showSocial })  
+
+  handleCheckboxChangeOther = (event) =>
+    this.setState({ showOther: event.target.showOther })
 
   saveInfo = () => {
-    var eType = new String('eType' + this.state.eventType)
     //create a new array entry 
     this.setState({
       calendarEvents: this.state.calendarEvents.concat({
         title: this.state.eventTitle,
         start: this.state.eventDateStart,
         end: this.state.eventDateEnd,
-        className: eType
+        className: 'eType' + this.state.eventType
       })
     })
     //reset values
@@ -161,16 +176,16 @@ class Calendar extends React.Component {
          <div className="toggleCalendarView">
            Calendar View Options
            <div className="checkbox"> 
-            <input type="checkbox"></input> Classes
+            <input type="checkbox" checked={this.state.showClasses} onChange={this.handleCheckboxChangeClasses}></input> Classes
            </div>
            <div className="checkbox"> 
-            <input type="checkbox"></input> Clubs
+            <input type="checkbox" checked={this.state.showClubs} onChange={this.handleCheckboxChangeClubs}></input> Clubs
            </div>
            <div className="checkbox"> 
-            <input type="checkbox"></input> Social Events
+            <input type="checkbox" checked={this.state.showSocial} onChange={this.handleCheckboxChangeSocial}></input> Social Events
            </div>
            <div className="checkbox"> 
-            <input type="checkbox"></input> Other
+            <input type="checkbox" checked={this.state.showOther} onChange={this.handleCheckboxChangeOther}></input> Other
            </div>
         </div>
         <div className="friendsCal">
