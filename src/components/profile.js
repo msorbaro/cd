@@ -368,6 +368,10 @@ class Profile extends Component {
 
     }
 
+  renderButton = () => {
+
+
+  }
   render() {
     return (
       <div className="all">
@@ -463,9 +467,17 @@ class Profile extends Component {
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
                 <p>{this.state.friendsNames[5]}</p>
-              </div></div>   
+              </div></div> 
+              <div className="addFriends">
+                <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
+                <NavLink to="/searchfriends">Add Friends</NavLink>
+              </div>
           </div>
         </div>
+        <div className="editOrFollowButton">
+          <Button>Edit Profile</Button>
+        </div>
+
       </div>
     );
   }

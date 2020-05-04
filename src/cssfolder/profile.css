@@ -67,6 +67,7 @@ h6 {
   top: 120%;
   padding: 50px;
   
+  
 }
 .indivInput{
   background-color: #C4C4C4;
@@ -134,6 +135,7 @@ img.a{
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  bottom: 38px;
 }
 
 .dropdown-content a {
@@ -143,7 +145,7 @@ img.a{
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #C4C4C4;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
@@ -187,4 +189,22 @@ p{
   font-weight: bold;
   font-size: 12px;
   text-align: center;
+}
+
+.editOrFollowButton{
+  position: absolute;
+  top: 90%;
+  left: 42%;
+}
+
+.addFriends{
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    top: 220%;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
 }
