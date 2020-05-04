@@ -73,7 +73,7 @@
     flex-direction: row;
     width: 100%;
     height: auto;
-    top: 30%;
+    top: 25%;
     color: white;
     font-weight: bolder;
     font-size: 22px;
@@ -100,6 +100,7 @@
     color: #1D263B;
     margin-left: 15%;
     text-align: left;
+    margin-top: 2%;
 }
 
 .friendsCal {
@@ -112,6 +113,10 @@
     color: white;
     font-weight: bolder;
     font-size: 22px;
+}
+
+.addEventModalFromClick{
+    height: 80%;
 }
 
 a {
@@ -145,7 +150,7 @@ input.shortSearch {
     z-index: 1000;
     justify-content: center;
     width: 40%;
-    height: 50%;
+    height: 60%;
     top: 25%;
     left: 30%;
     background-color:#CED1DA;
@@ -198,6 +203,10 @@ input.shortSearch {
     border: none;
 }
 
-input #short{
-    min-width: 100;
-}
+
+.inputlinecal{
+    display: absolute;
+    flex-direction: row;
+    margin-top: 2%;
+    margin-left: 5%;
+  }

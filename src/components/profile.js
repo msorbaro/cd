@@ -63,7 +63,6 @@ class Profile extends Component {
         friendsPics: pics,
         friendsNames: names,
       })
-
     }
 
     setClassInfo = (classes) => {
