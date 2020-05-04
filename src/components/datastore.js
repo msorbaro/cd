@@ -119,7 +119,7 @@ export function getClubs(userID, callback) {
     //}
   }
 
-  export function addClub(userID, clubID, callback) {
+  export function addClub(userID, clubID) {
     //if (getClubStatus(userID, clubID) === 0) {
     firebase.database().ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
     //}
