@@ -45,6 +45,8 @@ class Calendar extends React.Component {
     };
   }
 
+  calendarRef = React.createRef()
+
   showModal = () => {
     this.setState({ show: true });
   };
@@ -61,11 +63,11 @@ class Calendar extends React.Component {
     var name = prompt('Enter event name');
     var event = {
       title: name,
-      start: arg.date,
+      start: arg.dateStr,
     }
     this.setState({
       eventTitle: name,
-      eventDateStart: arg.date
+      eventDateStart: arg.dateStr
     });
 
     db.addCalEvent(this.state.userID, this.state.eventTitle, event)
@@ -151,14 +153,24 @@ class Calendar extends React.Component {
 
   saveInfo = () => {
     //console.log(this.state.userID)
-    var event = {
+
+    var event =  {
+      title: this.state.eventTitle,
+      start: this.state.eventDateStart +":00",
+      end: this.state.eventDateEnd +":00",
+      className: 'eType' + this.state.eventType,
+    }
+    
+    db.addCalEvent(
+      this.state.userID, 
+      this.state.eventTitle+this.state.eventDateStart, 
+      {
         title: this.state.eventTitle,
         start: this.state.eventDateStart +":00",
         end: this.state.eventDateEnd +":00",
         className: 'eType' + this.state.eventType,
-    }
-    
-    db.addCalEvent(this.state.userID, this.state.eventTitle, event)
+      }
+    )
     
     
   this.state.calendarEvents.push(event);
@@ -172,11 +184,25 @@ class Calendar extends React.Component {
         isOpen: false
     });
     db.getCalEvents(this.state.userID, this.setCalInfo);
+
   }
 
 
   render() {
     console.log(this.state.calendarEvents);
+    var cal = 
+      <FullCalendar 
+      dateClick={this.handleDateClick} 
+      plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+      header={{
+        left: "prev,next today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+      }}
+      selectable= {true}
+      slotDuration= {'00:30:00'}
+      events= {this.state.calendarEvents}
+    />
     return (
       <div className="allCal">
       <div className="calSearchBar">
@@ -194,7 +220,7 @@ class Calendar extends React.Component {
         }}
         selectable= {true}
         slotDuration= {'00:30:00'}
-        events={this.state.calendarEvents}
+        events= {this.state.calendarEvents}
       />
       </div>
       <div className="dartCalLogoCal">
