@@ -8,7 +8,6 @@ import '../cssfolder/App.css';
 
 import Signin from './signin';
 import Signup from './signup';
-import CalendarMonthly from './calendarmonthly';
 import Profile from './profile';
 import Home from './home';
 import Calendar from './calendar';

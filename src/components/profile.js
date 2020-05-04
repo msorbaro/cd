@@ -55,9 +55,7 @@ class Profile extends Component {
       this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
 
       this.setState({
-
       })
-
     }
 
     setClassInfo = (classes) => {

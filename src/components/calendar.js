@@ -38,7 +38,10 @@ class Calendar extends React.Component {
       userLastName: '',
       userYear: '',
       image: '',
-      calendarEvents: []
+      calendarEvents: [
+        { title: 'event 1', start: '2020-05-01T00:00:00', end: '2020-05-01T14:00:00' },
+        { title: 'event 2', start: '2020-05-02' }
+      ]
     };
   }
 
@@ -54,13 +57,24 @@ class Calendar extends React.Component {
     this.props.history.push('/');
   }
 
-  handleDateClick = arg => { 
+  handleDateClick = (arg) => { 
     var name = prompt('Enter event name');
+    var event = {
+      title: name,
+      start: arg.date,
+    }
     this.setState({
-        eventTitle: name,
-        eventStart: arg.date,
-      });
-    this.saveInfo();
+      eventTitle: name,
+      eventDateStart: arg.date
+    });
+
+    db.addCalEvent(this.state.userID, this.state.eventTitle, event)
+    
+    this.setState({
+      eventTitle: ''
+    });
+
+    db.getCalEvents(this.state.userID, this.getEvents);
   }
 
   toggleModal = () => {
@@ -112,6 +126,23 @@ class Calendar extends React.Component {
        userYear: currUser.userYear,
        image: currUser.userPic,
      });
+
+     db.getCalEvents(this.state.userID, this.setCalInfo);
+
+  }
+
+  setCalInfo = (calendarEvents) => {
+  
+    for (let i = 0; i < Object.keys(calendarEvents).length; i += 1) {
+      const currentKey = Object.keys(calendarEvents)[i];
+      const currItem = calendarEvents[currentKey];
+
+
+      this.state.calendarEvents.push(currItem);
+      //console.log(this.state.calendarEvents);
+      this.setState({ 
+        });
+    }
   }
 
   componentDidMount() {
@@ -119,16 +150,19 @@ class Calendar extends React.Component {
   }
 
   saveInfo = () => {
-    console.log(this.state.userID)
+    //console.log(this.state.userID)
     var event = {
         title: this.state.eventTitle,
-        start: this.state.eventDateStart,
-        end: this.state.eventDateEnd,
+        start: this.state.eventDateStart +":00",
+        end: this.state.eventDateEnd +":00",
         className: 'eType' + this.state.eventType,
     }
     
     db.addCalEvent(this.state.userID, this.state.eventTitle, event)
     
+    
+  this.state.calendarEvents.push(event);
+
     //reset values
     this.setState({
         eventTitle: '',
@@ -137,13 +171,12 @@ class Calendar extends React.Component {
         eventType:'',
         isOpen: false
     });
-    db.getCalEvents(this.state.userID, this.getEvents);
+    db.getCalEvents(this.state.userID, this.setCalInfo);
   }
 
 
-
-
   render() {
+    console.log(this.state.calendarEvents);
     return (
       <div className="allCal">
       <div className="calSearchBar">

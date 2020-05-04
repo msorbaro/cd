@@ -167,11 +167,13 @@ export function getClubs(userID, callback) {
    };
 
    export function getCalEvents(userID, callback) {
-     ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
-      const calEvents = snapshot.val(); 
-      callback(calEvents)
-    });
-   }; 
+    ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
+     const calEvents = snapshot.val(); 
+     callback(calEvents)
+   });
+
+   
+  }; 
    
 
   // export function getClubStatus(userID, clubID) {
@@ -184,6 +186,7 @@ export function getClubs(userID, callback) {
   export function getClassStatus(userID, classID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(classID).on('value', (snapshot) => {
+      console.log(snapshot);
       callback(snapshot.numChildren());
     });
   }
