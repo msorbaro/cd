@@ -47,7 +47,7 @@ class Calendar extends React.Component {
         events={[
           { title: 'Scott is cooler than Dylan', date: '2020-05-01' },
           {title: 'bc he doesnt know how it works', date: '2020-05-02'},
-          { title: '*Kat can\'t change this', date: '2020-05-02' }
+          { title: '*KAT CAN', date: '2020-05-02' }
           ]}
       />
       </div>

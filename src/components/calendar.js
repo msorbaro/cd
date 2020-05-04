@@ -57,12 +57,10 @@ class Calendar extends React.Component {
   handleDateClick = arg => { 
     var name = prompt('Enter event name');
     this.setState({
-      calendarEvents: this.state.calendarEvents.concat({
-        title: name,
-        start: arg.date,
-        allDay: arg.allDay
-      })
-    });
+        eventTitle: name,
+        eventStart: arg.date,
+      });
+    this.saveInfo();
   }
 
   toggleModal = () => {
@@ -121,24 +119,25 @@ class Calendar extends React.Component {
   }
 
   saveInfo = () => {
-    db.addCalEvent(
-      db.getCurrUser(this.setCurrUser),
-      this.state.eventTitle,
-      {
+    console.log(this.state.userID)
+    var event = {
         title: this.state.eventTitle,
         start: this.state.eventDateStart,
         end: this.state.eventDateEnd,
         className: 'eType' + this.state.eventType,
-      }
-    )
+    }
+    
+    db.addCalEvent(this.state.userID, this.state.eventTitle, event)
+    
     //reset values
     this.setState({
         eventTitle: '',
         eventDateStart:'',
         eventDateEnd: '',
         eventType:'',
+        isOpen: false
     });
-    db.getCalEvents(db.getCurrUser(this.setCurrUser), this.getEvents);
+    db.getCalEvents(this.state.userID, this.getEvents);
   }
 
 

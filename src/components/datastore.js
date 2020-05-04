@@ -62,6 +62,7 @@ export function getUser(userID, callBack) {
       ourDB.ref(`users/${userID}`).on('value', (snapshot) => { 
         const currUser = snapshot.val(); // return the current user
         callBack(currUser); // call user into
+        console.log(snapshot);
   });
 }
  
@@ -142,10 +143,27 @@ export function getClubs(userID, callback) {
   export function addCalEvent(userID, calEventID, calEventInfo) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(calEventID).on('value', (snapshot) => {
-      if (snapshot.numChildren() === 0) {
-        firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
-      }
+     if (snapshot.numChildren() === 0) {
+       firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
+     }
     });
+
+    // calItem.push({
+    //   userID, calEventID, calEventInfo,
+    // });
+
+    // firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
+
+    // firebase.database.ref(`users/${userID}/CalEvents/${calEventID}`).on('value', (snapshot) => {
+    //   const temp = snapshot.value;  
+    //   callback(temp);
+    //   });
+
+    // const uID = userID;
+    // const cID = calEventID;
+    // const cEI = calEventInfo;
+    // calItem.push({uID, calEventID, cEI,});
+
    };
 
    export function getCalEvents(userID, callback) {
@@ -156,12 +174,12 @@ export function getClubs(userID, callback) {
    }; 
    
 
-  export function getClubStatus(userID, clubID, callback) {
-    const ref = ourDB.ref(`users/${userID}/`);
-    ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {
-      callback(snapshot.numChildren());
-    });
-  }
+  // export function getClubStatus(userID, clubID) {
+  //   const ref = ourDB.ref(`users/${userID}/`);
+  //   ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {
+  //     callback(snapshot.numChildren());
+  //   });
+  // }
 
   export function getClassStatus(userID, classID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
