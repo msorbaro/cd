@@ -63,8 +63,29 @@ export function getUser(userID, callBack) {
         const currUser = snapshot.val(); // return the current user
         callBack(currUser); // call user into
         console.log(snapshot);
-  });
+      });
 }
+
+
+export function getUserAndCal(callBack) {
+  console.log("getting user");
+  
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      // get the user id and accept a snapshot of information
+      ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
+        const currUser = snapshot.val(); // return the current user
+       // callBack(currUser); // call user into
+    
+        ourDB.ref(`users/${currUser.userID}/`).child('CalEvents').on('value', (snapshot) => {
+          const calEvents = snapshot.val(); 
+          callBack(calEvents, currUser)
+  });
+});
+}
+});
+}
+
  
 // returns an object/array
 export function getFriends(userID, callback) {
@@ -170,6 +191,8 @@ export function getClubs(userID, callback) {
     ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
      const calEvents = snapshot.val(); 
      callback(calEvents)
+     console.log("printing")
+     console.log(calEvents)
    });
 
    

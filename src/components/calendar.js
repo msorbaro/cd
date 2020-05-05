@@ -38,10 +38,8 @@ class Calendar extends React.Component {
       userLastName: '',
       userYear: '',
       image: '',
-      calendarEvents: [
-        { title: 'event 1', start: '2020-05-01T00:00:00', end: '2020-05-01T14:00:00' },
-        { title: 'event 2', start: '2020-05-02' }
-      ]
+      calID: 0,
+      calendarEvents: []
     };
   }
 
@@ -70,10 +68,11 @@ class Calendar extends React.Component {
       eventDateStart: arg.dateStr
     });
 
-    db.addCalEvent(this.state.userID, this.state.eventTitle, event)
+    db.addCalEvent(this.state.userID, this.state.calID, event)
     
     this.setState({
-      eventTitle: ''
+      eventTitle: '',
+      calID: this.state.calID+1
     });
 
     db.getCalEvents(this.state.userID, this.getEvents);
@@ -130,7 +129,6 @@ class Calendar extends React.Component {
      });
 
      db.getCalEvents(this.state.userID, this.setCalInfo);
-
   }
 
   setCalInfo = (calendarEvents) => {
@@ -139,20 +137,38 @@ class Calendar extends React.Component {
       const currentKey = Object.keys(calendarEvents)[i];
       const currItem = calendarEvents[currentKey];
 
-
       this.state.calendarEvents.push(currItem);
-      //console.log(this.state.calendarEvents);
-      this.setState({ 
-        });
     }
   }
 
   componentDidMount() {
-    db.getCurrUser(this.setCurrUser);
+    db.getUserAndCal(this.callback)
   }
 
+  callback = (events, user) => {
+    
+    if(events != null) {
+    console.log(user)
+    console.log(events)
+    console.log(this.state.calendarEvents)
+
+    var array = []
+    console.log("length: ")
+    for(let i = 0 ; i < Object.keys(events).length; i++) {
+      console.log("time for event")
+      console.log(events.indexOf(i))
+      //console.log(Object.values(events.indexOf(i)))
+      array.push(events[i]);
+    }
+
+    console.log(array)
+    this.setState({calendarEvents: array})
+  }
+  }
+  
+  
+
   saveInfo = () => {
-    //console.log(this.state.userID)
 
     var event =  {
       title: this.state.eventTitle,
@@ -163,7 +179,7 @@ class Calendar extends React.Component {
     
     db.addCalEvent(
       this.state.userID, 
-      this.state.eventTitle+this.state.eventDateStart, 
+      this.state.calID, 
       {
         title: this.state.eventTitle,
         start: this.state.eventDateStart +":00",
@@ -181,16 +197,29 @@ class Calendar extends React.Component {
         eventDateStart:'',
         eventDateEnd: '',
         eventType:'',
-        isOpen: false
+        isOpen: false,
+        calID: this.state.calID+1
     });
-    db.getCalEvents(this.state.userID, this.setCalInfo);
+    //db.getCalEvents(this.state.userID, this.setCalInfo);
 
   }
 
 
   render() {
     console.log(this.state.calendarEvents);
-    var cal = 
+    var cal =  <FullCalendar 
+    dateClick={this.handleDateClick} 
+    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+    header={{
+      left: "prev,next today",
+      center: "title",
+      right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+    }}
+    selectable= {true}
+    slotDuration= {'00:30:00'}
+    />;
+    if(this.state.calendarEvents.length != 0  && this.state.calendarEvents != null){
+     cal = 
       <FullCalendar 
       dateClick={this.handleDateClick} 
       plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
@@ -203,6 +232,7 @@ class Calendar extends React.Component {
       slotDuration= {'00:30:00'}
       events= {this.state.calendarEvents}
     />
+    }
     return (
       <div className="allCal">
       <div className="calSearchBar">
@@ -210,18 +240,7 @@ class Calendar extends React.Component {
         <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input>
       </div>
       <div className="cal">
-      <FullCalendar 
-        dateClick={this.handleDateClick} 
-        plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
-        header={{
-          left: "prev,next today",
-          center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
-        }}
-        selectable= {true}
-        slotDuration= {'00:30:00'}
-        events= {this.state.calendarEvents}
-      />
+        {cal}
       </div>
       <div className="dartCalLogoCal">
         DartCal
