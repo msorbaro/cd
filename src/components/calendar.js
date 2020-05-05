@@ -39,7 +39,7 @@ class Calendar extends React.Component {
       userYear: '',
       image: '',
       calID: 0,
-      calendarEvents: []
+      calendarEvents: [{event:"Dartmouth founding", start:"1769-12-13"}]
     };
   }
 
@@ -146,7 +146,7 @@ class Calendar extends React.Component {
   }
 
   callback = (events, user) => {
-    
+    console.log(events)
     if(events != null) {
     console.log(user)
     console.log(events)
@@ -200,7 +200,7 @@ class Calendar extends React.Component {
         isOpen: false,
         calID: this.state.calID+1
     });
-    //db.getCalEvents(this.state.userID, this.setCalInfo);
+    db.getCalEvents(this.state.userID, this.setCalInfo);
 
   }
 
