@@ -23,12 +23,18 @@ addID =() => {
     //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "9L", "BIO10");
     //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "12", "CS50");
 
-    //db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Dali");
-    //db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "DFR");
-    //db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Pong");
+    db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Dali");
+    db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "DFR");
+    db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Pong");
       
       
       }
+    
+  logOut = () => {
+
+    db.signOut();
+  }
+  
 
 render() {
     return ( 
@@ -40,6 +46,9 @@ render() {
     <NavLink to="/searchfriends" ><Button>Search for your friends!</Button></NavLink>
     <NavLink to="/clubprofile" ><Button>View club profile</Button></NavLink>
     <Button onClick={this.addID}>add friends</Button>
+    <NavLink to="/" ><Button onClick={this.logOut} >Sign off</Button></NavLink>
+   
+
     </div>
     );
 }

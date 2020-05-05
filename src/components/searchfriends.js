@@ -101,7 +101,9 @@ class SearchFriends extends React.Component {
             </div>
           </div>
         </div>
-        <div className="friend-triangle-left"></div>
+        <Button>
+          <div className="friend-triangle-left"></div>
+        </Button>
         <div className="friend-triangle-right"></div>
       </div>
     )

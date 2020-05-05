@@ -43,7 +43,6 @@ firebase.auth().signOut().then(() => {
   }
 
 export function getCurrUser(callBack) {
-  console.log("getting user");
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // get the user id and accept a snapshot of information
@@ -56,8 +55,7 @@ export function getCurrUser(callBack) {
 }
 
 export function getUser(userID, callBack) {
-  console.log("getting user");
-  
+   
       // get the user id and accept a snapshot of information
       ourDB.ref(`users/${userID}`).on('value', (snapshot) => { 
         const currUser = snapshot.val(); // return the current user
@@ -91,9 +89,6 @@ export function getUserAndCal(callBack) {
 export function getFriends(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('Friends').on('value', (snapshot) => {
     const friends = snapshot.val(); 
-    console.log("hi");
-    console.log(friends)
-    console.log("boo")
     callback(friends);
   });
 }
@@ -152,6 +147,10 @@ export function getClubs(userID, callback) {
     });
   }
 
+
+
+ 
+ 
   export function addClub(userID, clubID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {

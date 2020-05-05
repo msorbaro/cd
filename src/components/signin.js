@@ -34,6 +34,9 @@ class SignIn extends Component {
       if (user) {
         this.props.history.push('/profile');
       }
+      else {
+        this.props.history.push('/signin');
+      }
     });
   }
 

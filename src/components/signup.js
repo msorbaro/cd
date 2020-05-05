@@ -65,11 +65,9 @@ class SignUp extends Component {
         db.createUser(
           user.uid, this.state.email, this.state.firstusername,
           this.state.lastusername, this.state.userYear,)
-       
-        
     
           console.log('pushing history');
-          this.props.history.push('/');
+          this.props.history.push('/profile');
         }
       });
     } else if (!this.state.email.endsWith('@dartmouth.edu')) {
@@ -80,7 +78,7 @@ class SignUp extends Component {
   }
 
   handleCancelButtonClick = (event) => {
-    this.props.history.push('/');
+    this.props.history.push('/signin');
   }
 
   render() {

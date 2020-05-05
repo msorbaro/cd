@@ -30,6 +30,8 @@ class Profile extends Component {
       friendsNamesOfficial: [],
       bio: '',
       image: noUserPic,
+      newClub: '',
+      newClass: '',
       classes: '',
       classList: [],
       clubList: [],
@@ -39,7 +41,8 @@ class Profile extends Component {
 
     setFriendsNamesAndPics = (Friends) => {
 
-      this.state.friendsIDs = Friends;
+      this.state.friendsPics = []
+      this.state.friendsNames = []
   
       for (let i = 0; i < Object.keys(Friends).length; i += 1) {
         const currentKey = Object.keys(Friends)[i];
@@ -51,32 +54,45 @@ class Profile extends Component {
       }
     }
     setFriendInfo = (user) => {
-      this.state.friendsPics.push(user.userPic);
-      this.state.friendsNames.push(`${user.userFirstName} ${user.userLastName}`);
+      var pics = this.state.friendsPics
+      var names = this.state.friendsNames
+      pics.push(user.userPic);
+      names.push(`${user.userFirstName} ${user.userLastName}`);
 
       this.setState({
+        friendsPics: pics,
+        friendsNames: names,
       })
     }
 
     setClassInfo = (classes) => {
-
+      var Class = []
       for (let i = 0; i < Object.keys(classes).length; i += 1) {
         const currentKey = Object.keys(classes)[i];
         const currItem = classes[currentKey];
   
-        this.state.classList.push(` ${currItem} (${currentKey})`);
+       Class.push(` ${currItem} (${currentKey})`);
+
+       this.setState ({
+         classList: Class
+       })
     
       }
 
     }
 
     setClubsInfo = (clubs) => {
-
+      var ClubList = []
       for (let i = 0; i < Object.keys(clubs).length; i += 1) {
         const currentKey = Object.keys(clubs)[i];
         const currItem = clubs[currentKey];
   
-        this.state.clubList.push(currItem);
+        ClubList.push(currItem);
+
+        this.setState ({
+          clubList: ClubList,
+
+        })
     
       }
 
@@ -106,8 +122,31 @@ class Profile extends Component {
   }
   
  
-  onEmailChange = (event) => {
-    this.setState({ email: event.target.value });
+  onClubChange = (event) => {
+    this.setState({ newClub: event.target.value });
+  }
+  addNewClub = () => {
+    
+    this.state.clubList.push(this.state.newClub);
+    db.addClub(this.state.userID, this.state.newClub);
+    this.setState({
+        newClub: '',
+    });
+
+  }
+
+  onClassChange = (event) => {
+    this.setState({ newClass: event.target.value });
+
+  }
+
+  addNewClass = (block) => {
+    console.log("new class")
+    this.state.classList.push(this.state.newClass);
+    db.addClass(this.state.userID, block, this.state.newClass);
+    this.setState({
+        newClass: '',
+    });
   }
 
   onPasswordChange= (event) => {
@@ -130,6 +169,209 @@ class Profile extends Component {
     this.props.history.push('/');
   }
 
+  renderClubs = () => {
+    if (this.state.clubList.length == 0){
+      return (
+        <div> 
+           <ul>
+           <li>
+           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
+           <Button onClick={this.addNewClub}>Add Club</Button>      
+            </li>
+           </ul>
+          </div>
+       );
+    }
+
+    else if (this.state.clubList.length == 1){
+      return (
+        <div> 
+           <ul>
+           <li>{this.state.clubList[0]}</li>
+           <li>
+           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
+           <Button onClick={this.addNewClub}>Add Club</Button>
+             </li>
+           </ul>
+          </div>
+       );
+    }
+
+    else if (this.state.clubList.length == 2){
+      return (
+        <div> 
+           <ul>
+           <li>{this.state.clubList[0]}</li>
+           <li>{this.state.clubList[1]}</li>
+
+           <li>
+           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
+           <Button onClick={this.addNewClub}>Add Club</Button>
+           </li>
+           </ul>
+          </div>
+       );
+    }
+
+    else if (this.state.clubList.length == 3){
+     return (
+      <div> 
+         <ul>
+         <li>{this.state.clubList[0]}</li>
+         <li>{this.state.clubList[1]}</li>
+         <li>{this.state.clubList[2]}</li>
+         <li>
+           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
+           <Button onClick={this.addNewClub}>Add Club</Button>
+
+         </li>
+         </ul>
+        </div>
+     );
+  }
+
+  if (this.state.clubList.length >3){
+    return (
+      <div> 
+         <ul>
+         <li>{this.state.clubList[0]}</li>
+         <li>{this.state.clubList[1]}</li>
+         <li>{this.state.clubList[2]}</li>
+         <li>{this.state.clubList[3]}</li>
+         </ul>
+        </div>
+     );
+  }
+
+
+}
+
+
+    renderClasses = () =>  {
+      if (this.state.classList.length == 0){
+        return (
+      <ul>
+      <li>
+        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+        <div class="dropdown">
+          <button class="dropbtn">Class Block</button>
+          <div class="dropdown-content">
+            <a href="#">8</a>
+            <a href="#">9S</a>
+            <a href="#">9L</a>
+            <a href="#">10</a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+            <a href="#">2</a>
+            <a href="#">3A</a>
+            <a href="#">6A</a>
+            <a href="#">10A</a>
+            <a href="#">2A</a>
+            <a href="#">3B</a>
+            <a href="#">6B</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+        );
+      }
+
+      if (this.state.classList.length == 1){
+        return (
+      <ul>
+       <li>{this.state.classList[0]}</li>
+      <li>
+        <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+        <div class="dropdown">
+          <button class="dropbtn">Class Block</button>
+          <div class="dropdown-content">
+            <a href="#">8</a>
+            <a href="#">9S</a>
+            <a href="#">9L</a>
+            <a href="#">10</a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+            <a href="#">2</a>
+            <a href="#">3A</a>
+            <a href="#">6A</a>
+            <a href="#">10A</a>
+            <a href="#">2A</a>
+            <a href="#">3B</a>
+            <a href="#">6B</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+        );
+      }
+
+      if (this.state.classList.length == 2){
+     return (
+      <ul>
+      <li>{this.state.classList[0]}</li>
+       <li>{this.state.classList[1]}</li>
+      <li>
+        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+        <div class="dropdown">
+          <button class="dropbtn" onClick={this.addNewClass}>Class Block</button>
+          <div class="dropdown-content">
+            <a href="#">8</a>
+            <a href="#">9S</a>
+            <a href="#">9L</a>
+            <a href="#">10 </a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+            <a href="#">2</a>
+            <a href="#">3A</a>
+            <a href="#">6A</a>
+            <a href="#">10A</a>
+            <a href="#">2A</a>
+            <a href="#">3B</a>
+            <a href="#">6B</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+        );
+      }
+
+      if (this.state.classList.length == 3){
+        return (
+      <ul>
+        <li>{this.state.classList[0]}</li>
+        <li>{this.state.classList[1]}</li>
+        <li>{this.state.classList[2]}</li>
+      <li>
+        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+        <div class="dropdown">
+          <button class="dropbtn">Class Block</button>
+          <div class="dropdown-content">
+            <a href="#">8</a>
+            <a href="#">9S</a>
+            <a href="#">9L</a>
+            <a href="#">10</a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+            <a href="#">2</a>
+            <a href="#">3A</a>
+            <a href="#">6A</a>
+            <a href="#">10A</a>
+            <a href="#">2A</a>
+            <a href="#">3B</a>
+            <a href="#">6B</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+        );
+      }
+
+    }
+
+  renderButton = () => {
+
+
+  }
   render() {
     return (
       <div className="all">
@@ -171,32 +413,7 @@ class Profile extends Component {
             <h3 className="sectionHeader">Classes</h3>
           </div>
           <div className="listStyle">
-            <ul>
-              <li>{this.state.classList[0]}</li>
-              <li>{this.state.classList[1]}</li>
-              <li>{this.state.classList[2]}</li>
-              <li>
-                <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onEmailChange} value={this.state.email} />
-                <div class="dropdown">
-                  <button class="dropbtn">Class Block</button>
-                  <div class="dropdown-content">
-                    <a href="#">8</a>
-                    <a href="#">9S</a>
-                    <a href="#">9L</a>
-                    <a href="#">10</a>
-                    <a href="#">11</a>
-                    <a href="#">12</a>
-                    <a href="#">2</a>
-                    <a href="#">3A</a>
-                    <a href="#">6A</a>
-                    <a href="#">10A</a>
-                    <a href="#">2A</a>
-                    <a href="#">3B</a>
-                    <a href="#">6B</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+           {this.renderClasses()}
           </div>
         </div>
 
@@ -205,14 +422,9 @@ class Profile extends Component {
             <h3 className="sectionHeader">Clubs</h3>
           </div>
           <div className="listStyle">
-            <ul>
-              <li>{this.state.clubList[0]}</li>
-              <li>{this.state.clubList[1]}</li>
-              <li>{this.state.clubList[2]}</li>
-              <li>
-                <Input className="response" id="emailInputBar" placeholder="ex. Tri team" onChange={this.onEmailChange} value={this.state.email} />
-              </li>
-            </ul>
+
+          {this.renderClubs()}
+                   
           </div>
         </div>
 
@@ -255,13 +467,23 @@ class Profile extends Component {
               <div className="imgStyle">
                 <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
                 <p>{this.state.friendsNames[5]}</p>
-              </div></div>   
+              </div></div> 
+              <div className="addFriends">
+                <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
+                <NavLink to="/searchfriends">Add Friends</NavLink>
+              </div>
           </div>
         </div>
+        <div className="editOrFollowButton">
+          <Button>Edit Profile</Button>
+        </div>
+
       </div>
     );
   }
 }
+
+
 
 // export default NewPost;
 export default withRouter((Profile));
