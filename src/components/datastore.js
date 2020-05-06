@@ -171,31 +171,17 @@ export function getClubs(userID, callback) {
       ourDB.ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
      }
     });
+  }
 
-    // calItem.push({
-    //   userID, calEventID, calEventInfo,
-    // });
+    export function deleteCalEvent(userID, calEventID) {
+      firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).child(calEventID).remove();
+    }
 
-    // firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
-
-    // firebase.database.ref(`users/${userID}/CalEvents/${calEventID}`).on('value', (snapshot) => {
-    //   const temp = snapshot.value;  
-    //   callback(temp);
-    //   });
-
-    // const uID = userID;
-    // const cID = calEventID;
-    // const cEI = calEventInfo;
-    // calItem.push({uID, calEventID, cEI,});
-
-   };
 
    export function getCalEvents(userID, callback) {
     ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
      const calEvents = snapshot.val(); 
      callback(calEvents)
-     console.log("printing")
-     console.log(calEvents)
    });
 
    
