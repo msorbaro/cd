@@ -60,7 +60,7 @@ class Calendar extends React.Component {
   handleEventClick = (calEvent) => {
     console.log(calEvent)
     var event = calEvent.event
-    event.remove()
+    db.deleteCalEvent(this.state.userID, event.calID)
 
   }
 
@@ -152,26 +152,30 @@ class Calendar extends React.Component {
     db.getUserAndCal(this.callback)
   }
 
-  callback = (events, user) => {
-    console.log(events)
+  callback = (events, currUser) => {
     if(events != null) {
-    console.log(user)
-    console.log(events)
-    console.log(this.state.calendarEvents)
 
-    var array = []
-    console.log("length: ")
-    for(let i = 0 ; i < Object.keys(events).length; i++) {
-      console.log("time for event")
-      console.log(events.indexOf(i))
-      //console.log(Object.values(events.indexOf(i)))
-      array.push(events[i]);
+      var array = []
+      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.calendarEvents)[i];
+        const currItem = this.state.calendarEvents[currentKey];
+
+        array.push(currItem);
+      }
+      this.setState({calendarEvents: array})
     }
-
-    console.log(array)
-    this.setState({calendarEvents: array})
+    if(currUser != null){
+      this.setState({
+        userID: currUser.userID,
+        userEmail: currUser.userEmail,
+        userFirstName: currUser.userFirstName,
+        userLastName: currUser.userLastName,
+        userYear: currUser.userYear,
+        image: currUser.userPic,
+      });
+    }
   }
-  }
+  
   
   
 
