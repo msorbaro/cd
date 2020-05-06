@@ -29,7 +29,7 @@ const firebaseConfig = {
           userLastName,
           userYear,
           userPic: noUserPic,
-          Friends: [],
+          
 
         });
       }
@@ -91,7 +91,8 @@ export function getUserAndCal(callBack) {
 export function getFriends(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('Friends').on('value', (snapshot) => {
     const friends = snapshot.val(); 
-    callback(friends);
+    if (friends != null) {
+    callback(friends); }
   });
 }
 
@@ -120,14 +121,17 @@ export function getName(userID, callback) {
 export function getClass(userID, callback) {
   ourDB.ref(`users/${userID}/`).child('Classes').on('value', (snapshot) => {
     const classes = snapshot.val(); 
-    callback(classes)
+    if (classes != null) {
+    callback(classes);
+    }
   });
 }
 
 export function getClubs(userID, callback) {
       ourDB.ref(`users/${userID}/`).child('Clubs').on('value', (snapshot) => {
         const clubs = snapshot.val(); 
-        callback(clubs)
+        if(clubs != null) {
+        callback(clubs);}
         });
   }
 
@@ -141,10 +145,10 @@ export function getClubs(userID, callback) {
   }
 
   export function addClass(userID, classBlock, className) {
-    const ref = ourDB.ref(`users/${userID}/Class/`);
+    const ref = ourDB.ref(`users/${userID}/Classes/`);
     ref.orderByValue().equalTo(classBlock).on('value', (snapshot) => {
       if ((snapshot.numChildren()) === 0) {
-        ourDB.ref(`users/${userID}/Class/${classBlock}`).set(className);
+        ourDB.ref(`users/${userID}/Classes/${classBlock}`).set(className);
       }
     });
   }
