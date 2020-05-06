@@ -16,16 +16,16 @@ class Home extends Component {
         authenticated: false, }
       };
 addID =() => {
-    //b.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "r48jVmIbLGas73K1f28Jh9eiUku2");
-    //db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2");
+db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "r48jVmIbLGas73K1f28Jh9eiUku2");
+    db.addFriend("qWMU14UjmHNdFWAGGXucS1eqZHj2", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2");
       
 
-    //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "9L", "BIO10");
-    //db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "12", "CS50");
+    db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "9L", "BIO10");
+    db.addClass("qWMU14UjmHNdFWAGGXucS1eqZHj2", "12", "CS50");
 
     db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Dali");
-    db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "DFR");
-    db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Pong");
+   db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "DFR");
+   db.addClub("qWMU14UjmHNdFWAGGXucS1eqZHj2", "Pong");
       
       
       }

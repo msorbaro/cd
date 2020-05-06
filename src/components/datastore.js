@@ -29,6 +29,8 @@ const firebaseConfig = {
           userLastName,
           userYear,
           userPic: noUserPic,
+          Friends: [],
+
         });
       }
     });
@@ -129,33 +131,31 @@ export function getClubs(userID, callback) {
         });
   }
 
-  export function addFriend(userID, friendID, callback) {
-    const ref = ourDB.ref(`users/${userID}/`);
-    ref.orderByValue().equalTo(userID).on('value', (snapshot) => {
-      if (callback(snapshot.numChildren()) === 0) {
-        firebase.database().ref(`users/${userID}/Friends/${friendID}`).set(friendID);
+  export function addFriend(userID, friendID) {
+    const ref = ourDB.ref(`users/${userID}/Friends/`);
+    ref.orderByValue().equalTo(friendID).on('value', (snapshot) => {
+      if ((snapshot.numChildren()) === 0) {
+        ourDB.ref(`users/${userID}/Friends/${friendID}`).set(friendID);
       }
     });
   }
 
-  export function addClass(userID, classID, classBlock, className) {
-    const ref = ourDB.ref(`users/${userID}/`);
-    ref.orderByValue().equalTo(classID).on('value', (snapshot) => {
-      if (snapshot.numChildren() === 0) {
-        firebase.database().ref(`users/${userID}/Classes/${classBlock}`).set(className);
+  export function addClass(userID, classBlock, className) {
+    const ref = ourDB.ref(`users/${userID}/Class/`);
+    ref.orderByValue().equalTo(classBlock).on('value', (snapshot) => {
+      if ((snapshot.numChildren()) === 0) {
+        ourDB.ref(`users/${userID}/Class/${classBlock}`).set(className);
       }
     });
   }
 
 
 
- 
- 
-  export function addClub(userID, clubID, callback) {
-    const ref = ourDB.ref(`users/${userID}/`);
+  export function addClub(userID, clubID) {
+    const ref = ourDB.ref(`users/${userID}/Clubs/`);
     ref.orderByValue().equalTo(clubID).on('value', (snapshot) => {
       if (snapshot.numChildren() === 0) {
-        firebase.database().ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
+        ourDB.ref(`users/${userID}/Clubs/${clubID}`).set(clubID);
       }
     });
   }
@@ -164,7 +164,7 @@ export function getClubs(userID, callback) {
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(calEventID).on('value', (snapshot) => {
      if (snapshot.numChildren() === 0) {
-       firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
+      ourDB.ref(`users/${userID}/CalEvents/${calEventID}`).set(calEventInfo);
      }
     });
 
