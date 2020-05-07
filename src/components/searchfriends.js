@@ -11,18 +11,63 @@ import '../cssfolder/calendar.css' // webpack must be configured to do this
 import '../cssfolder/searchfriends.css'
 import search from '../pictures/magnifying-glass.png'
 
+import ReactSearchBox from 'react-search-box';
+
+
 //import './calendar.css';
 
 class SearchFriends extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allUsers: [],
     };
   }
 
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
+
+
+  searchUserList = (userList) => {
+
+    var userList = []
+      for (let i = 0; i < Object.keys(userList).length; i += 1) {
+        const currentKey = Object.keys(userList)[i]; // a user
+        const currItem = userList[currentKey];
+  
+        userList.push(currItem);
+
+        this.setState ({
+          allUsers: userList,
+        })
+      }
+  }
+  
+
+
+  data = [
+    {
+      key: 'a',
+      value: 'Annika Kouhia',
+  },
+  {
+    key: 'd',
+    value: 'Dylan Bienstock',
+  },
+    {
+      key: 'k',
+      value: 'Katherine Lasonde',
+    },
+    {
+        key: 'l',
+        value: 'Lily Maechling',
+    },
+    {
+      key: 'm',
+      value: 'Morgan Sorbaro',
+    }
+  ]
 
   render() {
     return (
@@ -32,9 +77,16 @@ class SearchFriends extends React.Component {
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
         <div className="searchBar">
-          <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
-          <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
+          <p></p>
+          <ReactSearchBox
+          placeholder="Search Here!"
+          value=""
+          data={this.data}
+          callback={record => console.log(record)}
+        />  
         </div>
+
+
         <div className="clubHeader">Clubs:</div>
         <div className="clubSection">
           <div class="clubBrowse">

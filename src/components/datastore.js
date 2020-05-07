@@ -56,6 +56,8 @@ export function getCurrUser(callBack) {
 });
 }
 
+
+
 export function getUser(userID, callBack) {
    
       // get the user id and accept a snapshot of information
@@ -173,6 +175,16 @@ export function getClubs(userID, callback) {
     });
   }
 
+  export function getListOfUsers(callback) {
+    const ref = ourDB.ref(`users/`); 
+    ref.orderByChild().on('value', (snapshot) => {
+      callback(snapshot);
+    });
+  }
+
+  
+
+
     export function deleteCalEvent(userID, calEventID) {
       firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).child(calEventID).remove();
     }
@@ -201,5 +213,6 @@ export function getClubs(userID, callback) {
       console.log(snapshot);
       callback(snapshot.numChildren());
     });
-  }
+
   
+}
