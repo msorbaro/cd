@@ -11,6 +11,9 @@ import '../cssfolder/calendar.css' // webpack must be configured to do this
 import '../cssfolder/searchfriends.css'
 import search from '../pictures/magnifying-glass.png'
 
+import ReactSearchBox from 'react-search-box';
+
+
 //import './calendar.css';
 
 class SearchFriends extends React.Component {
@@ -24,6 +27,29 @@ class SearchFriends extends React.Component {
     this.props.history.push('/');
   }
 
+  data = [
+    {
+      key: 'a',
+      value: 'Annika Kouhia',
+  },
+  {
+    key: 'd',
+    value: 'Dylan Bienstock',
+  },
+    {
+      key: 'k',
+      value: 'Katherine Lasonde',
+    },
+    {
+        key: 'l',
+        value: 'Lily Maechling',
+    },
+    {
+      key: 'm',
+      value: 'Morgan Sorbaro',
+    }
+  ]
+
   render() {
     return (
       <div className="all">
@@ -32,9 +58,16 @@ class SearchFriends extends React.Component {
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
         </div>
         <div className="searchBar">
-          <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
-          <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
+          <p></p>
+          <ReactSearchBox
+          placeholder="Search Here!"
+          value=""
+          data={this.data}
+          callback={record => console.log(record)}
+        />  
         </div>
+
+
         <div className="clubHeader">Clubs:</div>
         <div className="clubSection">
           <div class="clubBrowse">
