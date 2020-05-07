@@ -469,8 +469,10 @@ class Profile extends Component {
                 <p>{this.state.friendsNames[5]}</p>
               </div></div> 
               <div className="addFriends">
-                <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-                <NavLink to="/searchfriends">Add Friends</NavLink>
+                <NavLink to="/searchfriends">
+                  <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
+                  Add Friends
+                </NavLink>
               </div>
           </div>
         </div>
@@ -482,8 +484,10 @@ class Profile extends Component {
           <NavLink to="/searchfriends">Logout</NavLink>
         </div>
         <div className="calendarContainer">
-          <img width="50px" src={logo} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
-          <NavLink to="/calendar">Calendar</NavLink>
+          <NavLink to="/calendar">
+            <img width="50px" src={logo} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
+            Calendar
+          </NavLink>
         </div>
       </div>
     );
