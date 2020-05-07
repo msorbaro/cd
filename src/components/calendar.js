@@ -58,9 +58,9 @@ class Calendar extends React.Component {
   }
 
   handleEventClick = (calEvent) => {
-    console.log(calEvent)
     var event = calEvent.event
-    db.deleteCalEvent(this.state.userID, event.calID)
+    console.log(event)
+    db.deleteCalEvent(this.state.userID, event.id)
 
   }
 
@@ -69,16 +69,12 @@ class Calendar extends React.Component {
     var event = {
       title: name,
       start: arg.dateStr,
+      id: this.state.calID,
     }
-    this.setState({
-      eventTitle: name,
-      eventDateStart: arg.dateStr
-    });
 
     db.addCalEvent(this.state.userID, this.state.calID, event)
     
     this.setState({
-      eventTitle: '',
       calID: this.state.calID+1
     });
 
@@ -196,6 +192,7 @@ class Calendar extends React.Component {
         start: this.state.eventDateStart +":00",
         end: this.state.eventDateEnd +":00",
         className: 'eType' + this.state.eventType,
+        id: this.state.calID,
       }
     )
     
@@ -229,7 +226,7 @@ class Calendar extends React.Component {
     selectable= {true}
     slotDuration= {'00:30:00'}
     />;
-    if(this.state.calendarEvents.length != 0  && this.state.calendarEvents != null){
+    if(this.state.calendarEvents != null && this.state.calendarEvents.length != 0){
      cal = 
       <FullCalendar 
       dateClick={this.handleDateClick} 
