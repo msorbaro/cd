@@ -38,7 +38,7 @@ class Calendar extends React.Component {
       userLastName: '',
       userYear: '',
       image: '',
-      calID: 0,
+      calID: '',
       calendarEvents: [{event:"Dartmouth founding", start:"1769-12-13"}]
     };
   }
@@ -60,8 +60,7 @@ class Calendar extends React.Component {
   handleEventClick = (calEvent) => {
     var event = calEvent.event
     console.log(event)
-    db.deleteCalEvent(this.state.userID, event.id)
-
+    db.deleteCalEvent(this.state.userID, event.id, this.setCalInfo)
   }
 
   handleDateClick = (arg) => { 
@@ -69,16 +68,16 @@ class Calendar extends React.Component {
     var event = {
       title: name,
       start: arg.dateStr,
-      id: this.state.calID,
+      id: name+arg.dateStr,
     }
 
-    db.addCalEvent(this.state.userID, this.state.calID, event)
+    db.addCalEvent(this.state.userID, name+arg.dateStr, event)
     
-    this.setState({
-      calID: this.state.calID+1
-    });
+    // this.setState({
+    //   calID: this.state.calID+1
+    // });
 
-    db.getCalEvents(this.state.userID, this.getEvents);
+    db.getCalEvents(this.state.userID, this.setCalInfo);
   }
 
   toggleModal = () => {
@@ -117,8 +116,15 @@ class Calendar extends React.Component {
   handleCheckboxChangeOther = (event) =>
     this.setState({ showOther: event.target.showOther })
 
-  getEvents = (allEvents) => {
-    this.setState({ calendarEvents: allEvents })
+  getEvents = (calendarE) => {
+    var array = []
+    for (let i = 0; i < Object.keys(calendarE).length; i += 1) {
+      const currentKey = Object.keys(calendarE)[i];
+      const currItem = calendarE[currentKey];
+
+      array.push(currItem);
+    }
+    this.setState({calendarEvents: array})
   }
 
   setCurrUser = (currUser) => {
@@ -134,27 +140,31 @@ class Calendar extends React.Component {
      db.getCalEvents(this.state.userID, this.setCalInfo);
   }
 
-  setCalInfo = (calendarEvents) => {
-  
-    for (let i = 0; i < Object.keys(calendarEvents).length; i += 1) {
-      const currentKey = Object.keys(calendarEvents)[i];
-      const currItem = calendarEvents[currentKey];
+  setCalInfo = (calendarE) => {
+    if(calendarE != null){
+      var array = []
+      for (let i = 0; i < Object.keys(calendarE).length; i += 1) {
+        const currentKey = Object.keys(calendarE)[i];
+        const currItem = calendarE[currentKey];
 
-      this.state.calendarEvents.push(currItem);
+        array.push(currItem);
+      }
+      this.setState({calendarEvents: array})
     }
   }
 
   componentDidMount() {
     db.getUserAndCal(this.callback)
+    console.log("setting info")
   }
 
   callback = (events, currUser) => {
     if(events != null) {
 
       var array = []
-      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
-        const currentKey = Object.keys(this.state.calendarEvents)[i];
-        const currItem = this.state.calendarEvents[currentKey];
+      for (let i = 0; i < Object.keys(events).length; i += 1) {
+        const currentKey = Object.keys(events)[i];
+        const currItem = events[currentKey];
 
         array.push(currItem);
       }
@@ -179,25 +189,24 @@ class Calendar extends React.Component {
 
     var event =  {
       title: this.state.eventTitle,
-      start: this.state.eventDateStart +":00",
-      end: this.state.eventDateEnd +":00",
+      start: this.state.eventDateStart,
+      end: this.state.eventDateEnd,
       className: 'eType' + this.state.eventType,
     }
     
     db.addCalEvent(
       this.state.userID, 
-      this.state.calID, 
+      this.state.eventTitle+this.state.eventDateStart +":00",
       {
         title: this.state.eventTitle,
         start: this.state.eventDateStart +":00",
         end: this.state.eventDateEnd +":00",
         className: 'eType' + this.state.eventType,
-        id: this.state.calID,
-      }
+        id: this.state.eventTitle+this.state.eventDateStart +":00",
+      },
     )
-    
-    
-  this.state.calendarEvents.push(event);
+  
+  //this.state.calendarEvents.push(event);
 
     //reset values
     this.setState({

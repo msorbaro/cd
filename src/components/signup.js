@@ -78,7 +78,7 @@ class SignUp extends Component {
   }
 
   handleCancelButtonClick = (event) => {
-    this.props.history.push('/signin');
+    this.props.history.push('/');
   }
 
   render() {
