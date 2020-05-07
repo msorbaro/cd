@@ -20,12 +20,31 @@ class SearchFriends extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allUsers: [],
     };
   }
 
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
+
+
+  searchUserList = (userList) => {
+
+    var userList = []
+      for (let i = 0; i < Object.keys(userList).length; i += 1) {
+        const currentKey = Object.keys(userList)[i]; // a user
+        const currItem = userList[currentKey];
+  
+        userList.push(currItem);
+
+        this.setState ({
+          allUsers: userList,
+        })
+      }
+  }
+  
+
 
   data = [
     {
