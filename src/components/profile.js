@@ -477,7 +477,14 @@ class Profile extends Component {
         <div className="editOrFollowButton">
           <Button>Edit Profile</Button>
         </div>
-
+        <div className="logoutContainer">
+          <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
+          <NavLink to="/searchfriends">Logout</NavLink>
+        </div>
+        <div className="calendarContainer">
+          <img width="50px" src={logo} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
+          <NavLink to="/calendar">Calendar</NavLink>
+        </div>
       </div>
     );
   }

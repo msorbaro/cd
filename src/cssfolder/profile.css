@@ -208,3 +208,27 @@ p{
     font-weight: bolder;
     font-size: 22px;
 }
+
+.logoutContainer{
+  position: absolute;
+  top: 88%;
+  left: 20%;
+  position: flex;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+.calendarContainer{
+  position: absolute;
+  top: 88%;
+  left: 70%;
+  position: flex;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
