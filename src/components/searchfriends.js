@@ -92,26 +92,34 @@ class SearchFriends extends React.Component {
           <div class="clubBrowse">
             <div class="clubContainer">
               <div>
-                <img class="a" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="65%" height="65%"/>
-                <p>Dartmouth Formula Racing</p>
+                <NavLink to="/dfr">
+                  <img class="a" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="65%" height="65%"/>
+                  <p>Dartmouth Formula Racing</p>
+                </NavLink>
               </div>
             </div>
             <div class="clubContainer">
               <div>
-                <img class="a" src="https://live.staticflickr.com/7271/7088587775_35b4b1efc1_b.jpg" width="65%" height="65%"/>
-                <p>Dartmouth Chess Club</p>
+                <NavLink to="/chessclub">
+                  <img class="a" src="https://live.staticflickr.com/7271/7088587775_35b4b1efc1_b.jpg" width="65%" height="65%"/>
+                  <p>Dartmouth Chess Club</p>
+                </NavLink>
               </div>
             </div>
             <div class="clubContainer">
               <div>
-                <img class="a" src="https://i.ytimg.com/vi/if-2M3K1tqk/maxresdefault.jpg" width="65%" height="65%"/>
-                <p>Dartmouth D-Trade</p>
+                <NavLink to="/dtrade">
+                  <img class="a" src="https://i.ytimg.com/vi/if-2M3K1tqk/maxresdefault.jpg" width="65%" height="65%"/>
+                  <p>Dartmouth D-Trade</p>
+                </NavLink>
               </div>
             </div> 
             <div class="clubContainer">
               <div>
-                <img class="a" src="https://web.cs.dartmouth.edu/sites/cs.dartmouth.edu/files/styles/basic_article_slideshow/public/1_Entry.jpg?itok=BJ3MfsH0" width="65%" height="65%"/>
-                <p>Dali Lab</p>
+                <NavLink to="clublax">
+                  <img class="a" src="https://admissions.dartmouth.edu/sites/admissions.prod/files/styles/wysiwyg_width_only_590/public/admissions/wysiwyg/img_1597.jpg?itok=ZJSFJ94r" width="65%" height="65%"/>
+                  <p>Women's Club Lax</p>
+                </NavLink>
               </div>
             </div>
           </div>

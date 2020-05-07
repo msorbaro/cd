@@ -11,7 +11,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import search from '../pictures/magnifying-glass.png'
 
-class ClubProfile extends Component {
+class DTrade extends Component {
     constructor(props) {
       super(props);
   
@@ -69,7 +69,7 @@ class ClubProfile extends Component {
       return (
       <div className="clubPageAll">  
         <div className="clubName">
-          Women's Club Lax
+          Dartmouth D-Trade
         </div>
         <div className="searchBar">
           <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
@@ -78,23 +78,24 @@ class ClubProfile extends Component {
         <div className="buttonContainer">
           <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
         </div>
-        <img class="b" src="https://admissions.dartmouth.edu/sites/admissions.prod/files/styles/wysiwyg_width_only_590/public/admissions/wysiwyg/img_1597.jpg?itok=ZJSFJ94r" width="28%" height="35%"/>
+        <img class="b" src="https://i.ytimg.com/vi/if-2M3K1tqk/maxresdefault.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
         <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
         events={[
-          { title: 'Practice', date: '2020-05-14' },
-          { title: 'Practice', date: '2020-05-12' },
-          { title: 'Practice', date: '2020-05-19' },
-          {title: 'Practice', date: '2020-05-21'},
-          { title: 'Practice', date: '2020-05-26' },
-          {title: 'Practice', date: '2020-05-28'},
-          { title: 'Tournament', date: '2020-05-30' },
+          { title: 'Meeting', date: '2020-05-14' },
+          {title: 'Meeting', date: '2020-05-21'},
+          {title: 'Meeting', date: '2020-05-28'},
+          { title: 'Hand shaking practice', date: '2020-05-17' },
+          {title: 'Meeting', date: '2020-05-7'},
           ]}
         />
         </div>
         <div className="description">
           <h2 class="clubHeader" style={{'top': '-7%'}}>Description</h2>
-          <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>In order to play sports here at Dartmouth, you don’t need to be a Division 1 athlete. You also don’t need to commit hours and hours of time to practice and lift if you don’t want to, but you can still get all the advantages of having a team and getting to be athletic on a "chill" level. Club sports are a fun, casual outlet for playing all of your favorite sports. Club Lax is a great way to meet other girls and show off your skills from highschool!</p>
+          <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>Come learn about Wall Street and what traders do each day. Connect with other students who like trading that is similar to the trading that institutional investors do on a daily basis. At our meetings, we trade equities on the trading floor and look to jazz it up with some derivatives. D-Trade is Dartmouth's only fully closed trading platform in which students can learn how to trade like a Wall Street trader or institutional investor.
+
+
+            Famous alumni have worked at/will work at: Credit Suisse, Societe Generale, Morgan Stanley and Goldman Sachs</p>
           <h2 class="clubHeader" style={{'top': '60%'}}>Contact Info</h2>
           <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>d.trade@dartmouth.edu</p>
         </div>
@@ -104,4 +105,4 @@ class ClubProfile extends Component {
   }
   
   // export default NewPost;
-  export default withRouter((ClubProfile));
+  export default withRouter((DTrade));

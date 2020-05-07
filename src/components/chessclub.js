@@ -11,7 +11,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import search from '../pictures/magnifying-glass.png'
 
-class ClubProfile extends Component {
+class ChessClub extends Component {
     constructor(props) {
       super(props);
   
@@ -69,7 +69,7 @@ class ClubProfile extends Component {
       return (
       <div className="clubPageAll">  
         <div className="clubName">
-          Women's Club Lax
+          Dartmouth Chess Club
         </div>
         <div className="searchBar">
           <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
@@ -78,25 +78,28 @@ class ClubProfile extends Component {
         <div className="buttonContainer">
           <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
         </div>
-        <img class="b" src="https://admissions.dartmouth.edu/sites/admissions.prod/files/styles/wysiwyg_width_only_590/public/admissions/wysiwyg/img_1597.jpg?itok=ZJSFJ94r" width="28%" height="35%"/>
+        <img class="b" src="https://students.dartmouth.edu/coso/sites/students_coso.prod/files/styles/slide/public/council_student_organizations/images/chess_club_summer_.jpg?itok=dzBOaD9Z" width="35%" height="35%"/>
         <div className="clubCal"> 
         <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
         events={[
-          { title: 'Practice', date: '2020-05-14' },
-          { title: 'Practice', date: '2020-05-12' },
-          { title: 'Practice', date: '2020-05-19' },
-          {title: 'Practice', date: '2020-05-21'},
-          { title: 'Practice', date: '2020-05-26' },
-          {title: 'Practice', date: '2020-05-28'},
-          { title: 'Tournament', date: '2020-05-30' },
+          { title: 'Weekly Match', date: '2020-05-13' },
+          {title: 'Weekly Match', date: '2020-05-20'},
+          {title: 'Weekly Match', date: '2020-05-27'},
+          { title: 'Tournament', date: '2020-05-16' },
+          {title: 'Regionals', date: '2020-05-23'},
+          {title: 'Weekly Match', date: '2020-05-6'},
           ]}
         />
         </div>
         <div className="description">
           <h2 class="clubHeader" style={{'top': '-7%'}}>Description</h2>
-          <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>In order to play sports here at Dartmouth, you don’t need to be a Division 1 athlete. You also don’t need to commit hours and hours of time to practice and lift if you don’t want to, but you can still get all the advantages of having a team and getting to be athletic on a "chill" level. Club sports are a fun, casual outlet for playing all of your favorite sports. Club Lax is a great way to meet other girls and show off your skills from highschool!</p>
+          <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>Dartmouth Chess Club is a quickly expanding group of chess players.
+
+            We participate in tournaments, offer instruction to new players, and meet weekly.
+
+            Come and enjoy everything from a long, serious game to chess variants like atomic chess and bughouse!</p>
           <h2 class="clubHeader" style={{'top': '60%'}}>Contact Info</h2>
-          <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>d.trade@dartmouth.edu</p>
+          <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>dartmouth.chess.club@dartmouth.edu</p>
         </div>
       </div>
       );
@@ -104,4 +107,4 @@ class ClubProfile extends Component {
   }
   
   // export default NewPost;
-  export default withRouter((ClubProfile));
+  export default withRouter((ChessClub));

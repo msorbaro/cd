@@ -11,7 +11,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import search from '../pictures/magnifying-glass.png'
 
-class ClubProfile extends Component {
+class ClubLax extends Component {
     constructor(props) {
       super(props);
   
@@ -104,4 +104,4 @@ class ClubProfile extends Component {
   }
   
   // export default NewPost;
-  export default withRouter((ClubProfile));
+  export default withRouter((ClubLax));
