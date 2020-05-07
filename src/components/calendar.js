@@ -60,8 +60,7 @@ class Calendar extends React.Component {
   handleEventClick = (calEvent) => {
     var event = calEvent.event
     console.log(event)
-    db.deleteCalEvent(this.state.userID, event.id)
-
+    db.deleteCalEvent(this.state.userID, event.id, this.setCalInfo)
   }
 
   handleDateClick = (arg) => { 
@@ -117,8 +116,15 @@ class Calendar extends React.Component {
   handleCheckboxChangeOther = (event) =>
     this.setState({ showOther: event.target.showOther })
 
-  getEvents = (allEvents) => {
-    this.setState({ calendarEvents: allEvents })
+  getEvents = (calendarE) => {
+    var array = []
+    for (let i = 0; i < Object.keys(calendarE).length; i += 1) {
+      const currentKey = Object.keys(calendarE)[i];
+      const currItem = calendarE[currentKey];
+
+      array.push(currItem);
+    }
+    this.setState({calendarEvents: array})
   }
 
   setCurrUser = (currUser) => {
@@ -134,14 +140,16 @@ class Calendar extends React.Component {
      db.getCalEvents(this.state.userID, this.setCalInfo);
   }
 
-  setCalInfo = (calendarEvents) => {
+  setCalInfo = (calendarE) => {
   
-    for (let i = 0; i < Object.keys(calendarEvents).length; i += 1) {
-      const currentKey = Object.keys(calendarEvents)[i];
-      const currItem = calendarEvents[currentKey];
+    var array = []
+    for (let i = 0; i < Object.keys(calendarE).length; i += 1) {
+      const currentKey = Object.keys(calendarE)[i];
+      const currItem = calendarE[currentKey];
 
-      this.state.calendarEvents.push(currItem);
+      array.push(currItem);
     }
+    this.setState({calendarEvents: array})
   }
 
   componentDidMount() {

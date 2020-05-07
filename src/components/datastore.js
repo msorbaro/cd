@@ -185,10 +185,15 @@ export function getClubs(userID, callback) {
   
 
 
-  export function deleteCalEvent(userID, calEventID) {
+  export function deleteCalEvent(userID, calEventID, callback) {
     console.log(userID);
     console.log(calEventID);
-    firebase.database().ref(`users/${userID}/CalEvents/${calEventID}`).child(calEventID).remove();
+    firebase.database().ref(`users/${userID}/CalEvents`).child(calEventID).remove();
+    ourDB.ref(`users/${userID}/`).child('CalEvents').on('value', (snapshot) => {
+      const calEvents = snapshot.val(); 
+      console.log(calEvents)
+      callback(calEvents)
+   });
   }
 
 
