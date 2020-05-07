@@ -127,12 +127,13 @@ a {
     position: absolute;
     flex-direction: row;
     justify-content: center;
-    width: 30%;
-    height: auto;
+    width: 20%;
+    height: 5%; /* auto */
     top: 1%;
     left: 68%;
     margin-left: 5%;
     margin-right: 5%;
+    /* z-index:-1 */
 }
 
 img {

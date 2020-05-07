@@ -13,23 +13,11 @@ import Home from './home';
 import Calendar from './calendar';
 import SearchFriends from './searchfriends';
 import ClubProfile from './clubprofile';
-//import Friends from '/friends';
-
-//import 'bulma/bulma'
-
-//<Friends friends = {friends} />
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
 
-// const[friends] = useState([
-//   {name: "Kat Lasonde"},
-//   {name: "Lily Maechling"},
-//   {name: "Dylan Bienstock"},
-//   {name: "William Gibbons"}
-
-// ]);
 
 function App() {
   return (

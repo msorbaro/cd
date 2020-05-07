@@ -15,7 +15,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid'
 import * as db from './datastore';
-
+import ReactSearchBox from 'react-search-box';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -212,6 +212,17 @@ class Calendar extends React.Component {
 
   }
 
+  data = [
+    {
+      key: 'a',
+      value: 'Annika Kouhia',
+  },
+  {
+    key: 'm',
+    value: 'Morgan Sorbaro',
+  }
+  ]
+
 
   render() {
     console.log(this.state.calendarEvents);
@@ -281,11 +292,19 @@ class Calendar extends React.Component {
       events= {this.state.calendarEvents}
     />
     }
+    
+
     return (
       <div className="allCal">
       <div className="calSearchBar">
-        <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
-        <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input>
+      <ReactSearchBox
+          placeholder="Search for events in your calendar"
+          value=""
+          data={this.data}
+          callback={record => console.log(record)}
+        />  
+        {/* <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
+        <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input> */}
       </div>
       <div className="cal">
         {cal}

@@ -9,12 +9,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import '../cssfolder/calendar.css' // webpack must be configured to do this
 import '../cssfolder/searchfriends.css'
-import search from '../pictures/magnifying-glass.png'
-
 import ReactSearchBox from 'react-search-box';
-
-
-//import './calendar.css';
 
 class SearchFriends extends React.Component {
   constructor(props) {
