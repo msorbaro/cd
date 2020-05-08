@@ -44,6 +44,33 @@ class SearchFriends extends React.Component {
         uL.push(object); 
         console.log(uL);
       }
+      
+      // remove this eventually when we stop hard coding the clubs
+      var dfr = {
+        key: 'd',
+        value: 'Dartmouth Formula Racing',
+      }
+      uL.push(dfr); 
+
+      var dchess = {
+        key: 'd',
+        value: 'Dartmouth Chess Club',
+      }
+      uL.push(dchess); 
+
+
+      var dtrade = {
+        key: 'd',
+        value: 'DTrade',
+      }
+      uL.push(dtrade); 
+
+      var lax = {
+        key: 'c',
+        value: 'Club Lacrosse',
+      }
+      uL.push(lax); 
+
         this.setState ({
           allUsers: uL,
         })
