@@ -124,7 +124,7 @@ class ClubLax extends Component {
           <h2 class="clubHeader" style={{'top': '-7%'}}>Description</h2>
           <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>In order to play sports here at Dartmouth, you don’t need to be a Division 1 athlete. You also don’t need to commit hours and hours of time to practice and lift if you don’t want to, but you can still get all the advantages of having a team and getting to be athletic on a "chill" level. Club sports are a fun, casual outlet for playing all of your favorite sports. Club Lax is a great way to meet other girls and show off your skills from highschool!</p>
           <h2 class="clubHeader" style={{'top': '60%'}}>Contact Info</h2>
-          <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>d.trade@dartmouth.edu</p>
+          <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>lax@dartmouth.edu</p>
         </div>
       </div>
       );
