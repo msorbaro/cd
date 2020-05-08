@@ -65,19 +65,16 @@ class Calendar extends React.Component {
 
   handleDateClick = (arg) => { 
     var name = prompt('Enter event name');
-    var event = {
-      title: name,
-      start: arg.dateStr,
-      id: name+arg.dateStr,
+    if (name != null){
+      var event = {
+        title: name,
+        start: arg.dateStr,
+        id: name+arg.dateStr,
+      }
+
+      db.addCalEvent(this.state.userID, name+arg.dateStr, event)
+      db.getCalEvents(this.state.userID, this.setCalInfo);
     }
-
-    db.addCalEvent(this.state.userID, name+arg.dateStr, event)
-    
-    // this.setState({
-    //   calID: this.state.calID+1
-    // });
-
-    db.getCalEvents(this.state.userID, this.setCalInfo);
   }
 
   toggleModal = () => {
@@ -259,45 +256,6 @@ class Calendar extends React.Component {
       selectable= {true}
       slotDuration= {'00:30:00'}
       eventClick = {this.handleEventClick}
-    
-      // eventRender = {({ event, el }) => {
-      //   const duration = moment.duration(moment(event.end).diff(event.start))
-      //   const hours = duration.asHours()
-      
-      //   el.style.border = `1px solid ${event.backgroundColor}`
-      //   el.className = `${el.className} event-class` // allows showing the edit and remove buttons only when hovering over the event
-      
-      //   if (!event.extendedProps.published && !event.allDay) {
-      //       el.className = el.className + ' unpublished'  //it grays out the event if it hasn't been published
-      //   }
-      
-      //   const child = document.createElement('div')
-      //   child.innerHTML = `
-      //       <div>
-      //         <div  style="${styles.title}" class="pt-4">
-      //           <strong>${hours} hrs </strong>      
-      //         </div>
-      
-      //         <div class="event-actions">
-      //           <button style="${styles.editStyle}" data-event-id=${event.id}> 
-      //             <i class='fa fa-edit'></i>
-      //           </button>
-      //           <button style="${styles.removeStyle}" data-event-id=${event.id}> 
-      //             <i class='fa fa-trash-o'></i> 
-      //           </button>
-      //         </div>
-      //     </div>`
-      
-      //   el.appendChild(child)
-      //   const btns = el.getElementsByTagName('button')
-      //   const self = this
-      //   btns[0].addEventListener('click', e => {
-      //     self.onEditEvent(e)
-      //   })
-      //   btns[1].addEventListener('click', e => {
-      //     self.onRemoveEvent(e)
-      //  })
-      // }}
       events= {this.state.calendarEvents}
     />
     }

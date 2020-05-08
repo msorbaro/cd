@@ -7,9 +7,11 @@ import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
 import '../cssfolder/clubprofile.css';
 import getUser from './datastore';
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import search from '../pictures/magnifying-glass.png'
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import search from '../pictures/magnifying-glass.png';
 
 class ClubLax extends Component {
     constructor(props) {
@@ -25,11 +27,21 @@ class ClubLax extends Component {
         image:'',
         clubList: '',
         editing: false,
+        clubEvents: [
+          { title: 'Practice', start: '2020-05-14', className:"eTypeClub", id:'e1'},
+          { title: 'Practice', start: '2020-05-12', className:"eTypeClub", id:'e2' },
+          { title: 'Practice', start: '2020-05-19', className:"eTypeClub", id:'e3' },
+          {title: 'Practice', start: '2020-05-21', className:"eTypeClub", id:'e4'},
+          { title: 'Practice', start: '2020-05-26', className:"eTypeClub", id:'e5'},
+          {title: 'Practice', start: '2020-05-28', className:"eTypeClub", id:'e6'},
+          { title: 'Tournament', start: '2020-05-30', className:"eTypeClub", id:'e7'},
+          ]
       };  
     }
 
-    compoundDidMount() {
+    componentDidMount() {
         db.getCurrUser(this.setCurrUser);
+        console.log("setting user")
     }
   
     setCurrUser = (currUser) => {
@@ -64,6 +76,20 @@ class ClubLax extends Component {
     handleCancelButtonClick = (event) => {
       this.props.history.push('/');
     }
+
+    subscribe = () => {
+      alert("You have successfully subscribed!")
+      for (let i = 0; i < Object.keys(this.state.clubEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.clubEvents)[i];
+        const currItem = this.state.clubEvents[currentKey];
+
+        db.addCalEvent(
+          this.state.userID,
+          currItem.title+currItem.start,
+          currItem,
+        );
+      }
+    }
   
     render() {
       return (
@@ -76,20 +102,22 @@ class ClubLax extends Component {
           <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
         </div>
         <div className="buttonContainer">
-          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
+          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}} onClick={this.subscribe}>Subscribe</Button>
         </div>
         <img class="b" src="https://admissions.dartmouth.edu/sites/admissions.prod/files/styles/wysiwyg_width_only_590/public/admissions/wysiwyg/img_1597.jpg?itok=ZJSFJ94r" width="28%" height="35%"/>
         <div className="clubCal"> 
-        <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
-        events={[
-          { title: 'Practice', date: '2020-05-14' },
-          { title: 'Practice', date: '2020-05-12' },
-          { title: 'Practice', date: '2020-05-19' },
-          {title: 'Practice', date: '2020-05-21'},
-          { title: 'Practice', date: '2020-05-26' },
-          {title: 'Practice', date: '2020-05-28'},
-          { title: 'Tournament', date: '2020-05-30' },
-          ]}
+        <FullCalendar 
+          dateClick={this.handleDateClick} 
+          plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+          header={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+          }}
+          selectable= {true}
+          slotDuration= {'00:30:00'}
+          eventClick = {this.handleEventClick}
+          events= {this.state.clubEvents}
         />
         </div>
         <div className="description">

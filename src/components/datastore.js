@@ -170,7 +170,11 @@ export function getClubs(userID, callback) {
     ourDB.ref(`users/${userID}/calID`).updateData({'calID': num.increment(1)});
   }
 
-  export function addCalEvent(userID, calEventID, calEventInfo, callback) {
+  export function addCalEvent(userID, calEventID, calEventInfo) {
+    console.log("adding cal event")
+    console.log(userID)
+    console.log(calEventID)
+    console.log(calEventInfo)
     const ref = ourDB.ref(`users/${userID}/`);
     ref.orderByValue().equalTo(calEventID).on('value', (snapshot) => {
      if (snapshot.numChildren() === 0) {
