@@ -67,23 +67,23 @@ class SearchFriends extends React.Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogoSearch">
-          DartCal
-          <div className="scheduleLogo">
-              <a href="calendar" > 
-              <img width="80px" src={logo}/>
-              </a>
+          <NavLink to="/calendar" class="logo">
+            <div className="dartCalLogoSearch">
+              DartCal
+              <div className="scheduleLogo"> 
+                <img width="80px" src={logo}/>
               </div>
-        </div>
-        <div className="searchBar">
-          <p></p>
-          <ReactSearchBox
-          placeholder="Search Here!"
-          value=""
-          data={this.data}
-          callback={record => console.log(record)}
-        />  
-        </div>
+            </div>
+          </NavLink>
+          <div className="searchBarFriend">
+            <p></p>
+            <ReactSearchBox
+            placeholder="Search Here!"
+            value=""
+            data={this.data}
+            callback={record => console.log(record)}
+          />  
+          </div>
 
 
         <div className="clubHeader">Clubs:</div>

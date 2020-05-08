@@ -375,14 +375,14 @@ class Profile extends Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogoProfile">
-          DartCal
-          <div className="scheduleLogo">
-              <a href="calendar" > 
+        <NavLink to="/calendar" class="logo">
+          <div className="dartCalLogoProfile">
+            DartCal
+            <div className="scheduleLogo">
               <img width="80px" src={logo}/>
-              </a>
               </div>
-        </div>
+          </div>
+        </NavLink>
         <div className="profileinfo">
           <div>
             <h3 className="sectionHeader">Profile</h3>

@@ -23,6 +23,7 @@ import Lily from './lily';
 import Dylan from './dylan';
 import Annika from './annika';
 import Morgan from './morgan';
+import FriendProfile from './friendprofile';
 
 
 
@@ -53,6 +54,7 @@ function App() {
             <Route exact path="/Lily" component={Lily} />
             <Route exact path="/Annika" component={Annika} />
             <Route exact path="/Morgan" component={Morgan} />
+            <Route exact path="/friendprofile" component={FriendProfile} />
             <Route component={FallBack} />
            </Switch>
            

@@ -90,6 +90,11 @@
     color: #C4C4C4;
     border: none;
   }
+  Button:hover{
+    background-color: #C4C4C4;
+    color: #1D263B;
+    transition-duration: 500ms;
+  }
 
   #longButtons {
     width: 100%;
