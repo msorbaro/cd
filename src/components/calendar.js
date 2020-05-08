@@ -115,7 +115,7 @@ class Calendar extends React.Component {
     // take other type events out
     else {
       var array = Array.from(this.state.calendarEvents) //copies the array
-      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+      for (let i = Object.keys(this.state.calendarEvents).length -1 ; i >= 0; i -= 1) {
         const currentKey = Object.keys(this.state.calendarEvents)[i];
         const currItem = this.state.calendarEvents[currentKey];
         if(currItem.className === 'eTypeClass'){
@@ -144,17 +144,18 @@ class Calendar extends React.Component {
       // take other type events out
       else {
         var array = Array.from(this.state.calendarEvents) //copies the array
-        for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+        for (let i = Object.keys(this.state.calendarEvents).length -1 ; i >= 0; i -= 1) {
           const currentKey = Object.keys(this.state.calendarEvents)[i];
           const currItem = this.state.calendarEvents[currentKey];
           if(currItem.className === 'eTypeClub'){
             this.state.unshownEvents.push(currItem);
+            console.log(i)
             array.splice(i, 1)
           }       
         }
         this.setState({calendarEvents: array})
       }
-      this.setState({ showClubc: !this.state.showClubs })
+      this.setState({ showClubs: !this.state.showClubs })
     }
 
     handleCheckboxChangeSocial = () => {
@@ -173,7 +174,7 @@ class Calendar extends React.Component {
       // take social type events out
       else {
         var array = Array.from(this.state.calendarEvents) //copies the array
-        for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+        for (let i = Object.keys(this.state.calendarEvents).length -1 ; i >= 0; i -= 1) {
           const currentKey = Object.keys(this.state.calendarEvents)[i];
           const currItem = this.state.calendarEvents[currentKey];
           if(currItem.className === 'eTypeSocial'){
@@ -202,7 +203,7 @@ class Calendar extends React.Component {
     // take other type events out
     else {
       var array = Array.from(this.state.calendarEvents) //copies the array
-      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+      for (let i = Object.keys(this.state.calendarEvents).length-1; i >= 0; i -= 1) {
         const currentKey = Object.keys(this.state.calendarEvents)[i];
         const currItem = this.state.calendarEvents[currentKey];
         if(currItem.className === 'eTypeOther'){
