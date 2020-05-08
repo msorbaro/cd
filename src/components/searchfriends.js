@@ -69,7 +69,11 @@ class SearchFriends extends React.Component {
       <div className="all">
         <div className="dartCalLogoSearch">
           DartCal
-          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+          <div className="scheduleLogo">
+              <a href="calendar" > 
+              <img width="80px" src={logo}/>
+              </a>
+              </div>
         </div>
         <div className="searchBar">
           <p></p>
@@ -126,32 +130,42 @@ class SearchFriends extends React.Component {
           <div class="friendBrowse">
             <div class="friendContainer">
               <div>
+              <a href="morgan">
                 <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/scott-gibbons.jpg" width="65%" height="65%"/>
                 <p>Scott Gibbons</p>
+                </a>
               </div>
             </div>
             <div class="friendContainer">
               <div>
+                <a href="morgan">
                 <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="65%" height="65%"/>
                 <p>Morgan Sorbaro</p>
+                </a>
               </div>
             </div>
             <div class="friendContainer">
               <div>
+              <a href="lily">
                 <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/lily-maechling.jpg" width="65%" height="65%"/>
                 <p>Lily Maechling</p>
+                </a>
               </div>
             </div> 
             <div class="friendContainer">
               <div>
+              <a href="dylan">
                 <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/dylan-bienstock.jpg" width="65%" height="65%"/>
                 <p>Dylan Bienstock</p>
+              </a>
               </div>
             </div>
             <div class="friendContainer">
               <div>
+                <a href="annika">
                 <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="65%" height="65%"/>
                 <p>Annika Kouhia</p>
+                </a>
               </div>
             </div>
           </div>
