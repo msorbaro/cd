@@ -28,12 +28,12 @@ class ClubLax extends Component {
         clubList: '',
         editing: false,
         clubEvents: [
-          { title: 'Lax Practice', start: '2020-05-14', className:"eTypeClub", id:'Lax Practice2020-05-14'},
-          { title: 'Lax Practice', start: '2020-05-12', className:"eTypeClub", id:'Lax Practice2020-05-12' },
-          { title: 'Lax Practice', start: '2020-05-19', className:"eTypeClub", id:'Lax Practice2020-05-19' },
-          {title: 'Lax Practice', start: '2020-05-21', className:"eTypeClub", id:'Lax Practice2020-05-21'},
-          { title: 'Lax Practice', start: '2020-05-26', className:"eTypeClub", id:'Lax Practice2020-05-26'},
-          {title: 'Lax Practice', start: '2020-05-28', className:"eTypeClub", id:'Lax Practice2020-05-28'},
+          { title: 'Lax Practice', start: '2020-05-14T17:00:00', end: '2020-05-14T19:00:00', className:"eTypeClub", id:'Lax Practice2020-05-14T17:00:00'},
+          { title: 'Lax Practice', start: '2020-05-12T17:00:00', end: '2020-05-12T19:00:00',className:"eTypeClub", id:'Lax Practice2020-05-12T17:00:00' },
+          { title: 'Lax Practice', start: '2020-05-19T17:00:00', end: '2020-05-19T19:00:00',className:"eTypeClub", id:'Lax Practice2020-05-19T17:00:00' },
+          {title: 'Lax Practice', start: '2020-05-21T17:00:00', end: '2020-05-21T19:00:00',className:"eTypeClub", id:'Lax Practice2020-05-21T17:00:00'},
+          { title: 'Lax Practice', start: '2020-05-26T17:00:00', end: '2020-05-26T19:00:00',className:"eTypeClub", id:'Lax Practice2020-05-26T17:00:00'},
+          {title: 'Lax Practice', start: '2020-05-28T17:00:00', end: '2020-05-28T19:00:00',className:"eTypeClub", id:'Lax Practice2020-05-28T17:00:00'},
           { title: 'Lax Tournament', start: '2020-05-30', className:"eTypeClub", id:'Lax Tournament2020-05-30'},
           ]
       };  

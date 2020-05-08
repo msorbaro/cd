@@ -28,13 +28,11 @@ class Dali extends Component {
         clubList: '',
         editing: false,
         clubEvents: [
-          { title: 'PM Meeting', start: '2020-05-11', className:'eTypeClub',id:'DALI Meeting2020-05-11' },
-          {title: 'SWE Meeting ', start: '2020-05-18', className:'eTypeClub',id:'DALI Meeting2020-05-18'},
-          {title: 'PM Meetingg', start: '2020-05-4', className:'eTypeClub',id:'DALI Meeting2020-05-4'},
-          {title: 'SWE Meeting', start: '2020-05-25', className:'eTypeClub',id:'DALI Meeting2020-05-25'},
+          {title: 'SWE Meeting ', start: '2020-05-18', className:'eTypeClub',id:'SWE Meeting2020-05-18'},
+          {title: 'SWE Meeting', start: '2020-05-25', className:'eTypeClub',id:'SWE Meeting2020-05-25'},
           {title: 'DALI Pong', start: '2020-05-15', className:'eTypeClub',id:'DALI Pong2020-05-15'},
           {title: 'DALI Formal', start: '2020-05-22', className:'eTypeClub',id:'DALI Formal2020-05-22'},
-          {title: 'MINI DALI GRADUATION', start: '2020-05-07', className:'eTypeClub',id:'DALI Formal2020-05-22'},
+          {title: 'MINI DALI GRADUATION', start: '2020-05-12', className:'eTypeClub',id:'MINI DALI GRADUATION2020-05-12'},
           ]
       };  
     }

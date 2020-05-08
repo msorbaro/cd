@@ -28,12 +28,11 @@ class ChessClub extends Component {
         clubList: '',
         editing: false,
         clubEvents: [
-          { title: 'Chess Weekly Match', start: '2020-05-13', className:'eTypeClub',id:'Chess Weekly Match2020-05-13'},
-          {title: 'Chess Weekly Match', start: '2020-05-20', className:'eTypeClub',id:'Chess Weekly Match2020-05-20'},
-          {title: 'Chess Weekly Match', start: '2020-05-27', className:'eTypeClub',id:'Chess Weekly Match2020-05-27'},
-          { title: 'Chess Tournament', start: '2020-05-16', className:'eTypeClub',id:'Chess Weekly Match2020-05-16' },
+          { title: 'Chess Weekly Match', start: '2020-05-13T16:00:00', className:'eTypeClub',id:'Chess Weekly Match2020-05-13T16:00:00'},
+          {title: 'Chess Weekly Match', start: '2020-05-20T16:00:00', className:'eTypeClub',id:'Chess Weekly Match2020-05-20T16:00:00'},
+          {title: 'Chess Weekly Match', start: '2020-05-27T16:00:00', className:'eTypeClub',id:'Chess Weekly Match2020-05-27T16:00:00'},
+          { title: 'Chess Tournament', start: '2020-05-16', className:'eTypeClub',id:'Chess Tournament2020-05-16' },
           {title: 'Chess Regionals', start: '2020-05-23', className:'eTypeClub',id:'Chess Regionals2020-05-23'},
-          {title: 'Chess Weekly Match', start: '2020-05-6', className:'eTypeClub',id:'Chess Weekly Match2020-05-6'},
           ]
       };  
     }
