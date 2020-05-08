@@ -39,7 +39,8 @@ class Calendar extends React.Component {
       userYear: '',
       image: '',
       calID: '',
-      calendarEvents: [{event:"Dartmouth founding", start:"1769-12-13"}]
+      calendarEvents: [{event:"Dartmouth founding", start:"1769-12-13"}],
+      unshownEvents: []
     };
   }
 
@@ -83,8 +84,6 @@ class Calendar extends React.Component {
     });
   }
 
-  
-
   createEventTitle = (event) => {
     this.setState({eventTitle: event.target.value});
   }
@@ -100,18 +99,121 @@ class Calendar extends React.Component {
   createDateEnd = (event) => {
     this.setState({eventDateEnd: event.target.value});
   }
+  handleCheckboxChangeClasses = () => {
+    //add other type events back in 
+    if(this.state.showClasses === false){
+      var array = Array.from(this.state.calendarEvents) //copies the array
+      for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.unshownEvents)[i];
+        const currItem = this.state.unshownEvents[currentKey];
+        if(currItem.className === "eTypeClass"){
+          array.push(currItem);
+        }
+      }
+      this.setState({calendarEvents: array})
+    }
+    // take other type events out
+    else {
+      var array = Array.from(this.state.calendarEvents) //copies the array
+      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.calendarEvents)[i];
+        const currItem = this.state.calendarEvents[currentKey];
+        if(currItem.className === 'eTypeClass'){
+          this.state.unshownEvents.push(currItem);
+          array.splice(i, 1)
+        }       
+      }
+      this.setState({calendarEvents: array})
+    }
+    this.setState({ showClasses: !this.state.showClasses })
+  }
 
-  handleCheckboxChangeClasses = (event) =>
-    this.setState({ showClasses: event.target.showClasses })
+    handleCheckboxChangeClubs = () => {
+      //add other type events back in 
+      if(this.state.showClubs === false){
+        var array = Array.from(this.state.calendarEvents) //copies the array
+        for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+          const currentKey = Object.keys(this.state.unshownEvents)[i];
+          const currItem = this.state.unshownEvents[currentKey];
+          if(currItem.className === "eTypeClub"){
+            array.push(currItem)
+          }
+        }
+        this.setState({calendarEvents: array})
+      }
+      // take other type events out
+      else {
+        var array = Array.from(this.state.calendarEvents) //copies the array
+        for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+          const currentKey = Object.keys(this.state.calendarEvents)[i];
+          const currItem = this.state.calendarEvents[currentKey];
+          if(currItem.className === 'eTypeClub'){
+            this.state.unshownEvents.push(currItem);
+            array.splice(i, 1)
+          }       
+        }
+        this.setState({calendarEvents: array})
+      }
+      this.setState({ showClubc: !this.state.showClubs })
+    }
 
-  handleCheckboxChangeClubs = (event) =>
-    this.setState({ showClubs: event.target.showClubs })  
+    handleCheckboxChangeSocial = () => {
+      //add social type events back in 
+      if(this.state.showSocial === false){
+        var array = Array.from(this.state.calendarEvents) //copies the array
+        for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+          const currentKey = Object.keys(this.state.unshownEvents)[i];
+          const currItem = this.state.unshownEvents[currentKey];
+          if(currItem.className === 'eTypeSocial'){
+            array.push(currItem);
+          }
+        }
+        this.setState({calendarEvents: array})
+      }
+      // take social type events out
+      else {
+        var array = Array.from(this.state.calendarEvents) //copies the array
+        for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+          const currentKey = Object.keys(this.state.calendarEvents)[i];
+          const currItem = this.state.calendarEvents[currentKey];
+          if(currItem.className === 'eTypeSocial'){
+            this.state.unshownEvents.push(currItem);
+            array.splice(i, 1)
+          }       
+        }
+        this.setState({calendarEvents: array})
+      }
+      this.setState({ showSocial: !this.state.showSocial })
+    }
 
-  handleCheckboxChangeSocial = (event) =>
-    this.setState({ showSocial: event.target.showSocial })  
-
-  handleCheckboxChangeOther = (event) =>
-    this.setState({ showOther: event.target.showOther })
+  handleCheckboxChangeOther = () => {
+    //add other type events back in 
+    if(this.state.showOther === false){
+      var array = Array.from(this.state.calendarEvents) //copies the array
+      for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.unshownEvents)[i];
+        const currItem = this.state.unshownEvents[currentKey];
+        if(currItem.className === "eTypeOther"){
+          array.push(currItem);
+        }
+      }
+      this.setState({calendarEvents: array})
+    }
+    // take other type events out
+    else {
+      var array = Array.from(this.state.calendarEvents) //copies the array
+      for (let i = 0; i < Object.keys(this.state.calendarEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.calendarEvents)[i];
+        const currItem = this.state.calendarEvents[currentKey];
+        if(currItem.className === 'eTypeOther'){
+          this.state.unshownEvents.push(currItem);
+          array.splice(i, 1)
+        }       
+      }
+      this.setState({calendarEvents: array})
+    }
+    this.setState({ showOther: !this.state.showOther })
+  }
 
   getEvents = (calendarE) => {
     var array = []
