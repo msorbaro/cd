@@ -192,7 +192,8 @@ class Morgan extends Component {
       <ul>
         <li> CS 1 TA </li>
         <li> CS 10 TA </li>
-        <li> Google SWE </li>
+        <li> CS 52 TA </li>
+        <li> Facebook! </li>
     </ul>
         );
       }
@@ -213,7 +214,7 @@ class Morgan extends Component {
           <div>
             <h3 className="sectionHeader">Profile</h3>
             <div className="imgStyle">
-              <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="250" height="250"/>
+              <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width ="250" height="250"/>
             </div>
           </div>
           <div>
@@ -225,10 +226,10 @@ class Morgan extends Component {
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>Annika Kouhia</h6>
+              <h6>Morgan Sorbaro</h6>
             </div>
             <div className="indivInput">
-              <h6>annika.kouhia.20@dartmouth.edu</h6>
+              <h6>ms.20@dartmouth.edu</h6>
             </div>
             <div className="indivInput">
               <h6>2020 #SeniorSzn</h6>
@@ -258,7 +259,7 @@ class Morgan extends Component {
 
         <div className="friendsinfo">
           <div>
-            <h3 className="sectionHeader">Annika's Friends</h3>
+            <h3 className="sectionHeader">Morgan's Friends</h3>
           </div>
           <div class="grid-container">
             <div class="grid-item">
@@ -268,8 +269,8 @@ class Morgan extends Component {
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="45%" height="45%"/>
-                <p>Morgan Sorbaro</p>
+                <img class="a" src= "https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="45%" height="45%"/>
+                <p>Annika Kouhia</p>
               </div>
             </div>
             <div class="grid-item">
@@ -298,7 +299,7 @@ class Morgan extends Component {
           </div>
         </div>
         <div className="editOrFollowButton">
-    <Button onClick={this.follow}>Request Annika as a Friend!</Button> 
+    <Button onClick={this.follow}>Request Morgan as a Friend!</Button> 
         </div>
         <div className="logoutContainer">
           <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
