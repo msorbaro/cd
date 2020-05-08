@@ -94,7 +94,7 @@ class Dali extends Component {
         return (
             <div className="clubPageAll">  
               <div className="clubName">
-                Dartmouth Formula Racing
+                Digital Arts Leadership and Innovation Lab (DALI)
               </div>
               <div className="searchBar">
                 <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
@@ -103,7 +103,7 @@ class Dali extends Component {
               <div className="buttonContainer">
                 <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}onClick={this.subscribe}>Subscribe </Button>
               </div>
-              <img class="b" src="https://engineering.dartmouth.edu/assets/mag/2011/08/KML_2576_adj.jpg" width="35%" height="35%"/>
+              <img class="b" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnews.dartmouth.edu%2Fnews%2F2018%2F02%2Fredesigned-dali-lab-wins-architecture-award&psig=AOvVaw2E4ZZCAFmuEbgNap8rffZB&ust=1588997054464000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjAybuxo-kCFQAAAAAdAAAAABAD" width="35%" height="35%"/>
               <div className="clubCal"> 
               <FullCalendar 
                 dateClick={this.handleDateClick} 
