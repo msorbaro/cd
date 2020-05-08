@@ -8,12 +8,12 @@ import noUserPic from '../pictures/noUser.png'
 import blankPic from '../pictures/nofriend.png'
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
-import '../cssfolder/profile.css';
+import '../cssfolder/fakeprofile.css';
 import noFriends from '../pictures/nofriend.png';
 
 
 
-class Profile extends Component {
+class Dylan extends Component {
   constructor(props) {
     super(props);
 
@@ -169,81 +169,21 @@ class Profile extends Component {
     this.props.history.push('/');
   }
 
+  follow = () => {
+    alert("Request sent!")
+  }
+
   renderClubs = () => {
-    if (this.state.clubList.length == 0){
-      return (
-        <div> 
-           <ul>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>      
-            </li>
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 1){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-             </li>
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 2){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           <li>{this.state.clubList[1]}</li>
-
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-           </li>
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 3){
+     if (this.state.clubList.length == 3){
      return (
       <div> 
-         <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-
-         </li>
+         <ul> 
+             <a href = 'dfr'> <li>Dartmouth Formula Racing</li></a>
+             <a href = 'chessclub'> <li>Chess Club</li></a>
          </ul>
         </div>
      );
   }
-
-  if (this.state.clubList.length >3){
-    return (
-      <div> 
-         <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         <li>{this.state.clubList[3]}</li>
-         </ul>
-        </div>
-     );
-  }
-
-
 }
 
 
@@ -251,163 +191,49 @@ class Profile extends Component {
       if (this.state.classList.length == 0){
         return (
       <ul>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
+        <li> MATH 22 </li>
+        <li> MATH 23 </li>
+        <li> PHYS 14 </li>
+        <li> GERMAN 40 </li>
     </ul>
         );
       }
-
-      if (this.state.classList.length == 1){
-        return (
-      <ul>
-       <li>{this.state.classList[0]}</li>
-      <li>
-        <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 2){
-     return (
-      <ul>
-      <li>{this.state.classList[0]}</li>
-       <li>{this.state.classList[1]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn" onClick={this.addNewClass}>Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10 </a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 3){
-        return (
-      <ul>
-        <li>{this.state.classList[0]}</li>
-        <li>{this.state.classList[1]}</li>
-        <li>{this.state.classList[2]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
-
     }
 
-  renderButton = () => {
-
-
-  }
   render() {
     return (
       <div className="all">
-        <NavLink to="/calendar" class="logo">
-          <div className="dartCalLogoProfile">
-            DartCal
-            <div className="scheduleLogo">
+        <div className="dartCalLogoProfile">
+          DartCal
+          <div className="scheduleLogo">
+              <a href="calendar" > 
               <img width="80px" src={logo}/>
+              </a>
               </div>
-          </div>
-        </NavLink>
+        </div>
         <div className="profileinfo">
           <div>
             <h3 className="sectionHeader">Profile</h3>
             <div className="imgStyle">
-              <img class="a" src={this.state.image} width="150" height="150"/>
+              <img class="a" src="https://www.noozhawk.com/images/made/images/uploads/100918-Dylan-Bienstock-Block_400_278_80_c1.jpg" width ="250" height="250"/>
             </div>
+          </div>
+          <div>
           </div>
           <div className="nameContainer">
             <h6>Name</h6>
             <h6>Email</h6>
-            <h6>Password</h6>
             <h6>Year</h6>
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>{`${this.state.userFirstName} ${this.state.userLastName}`}</h6>
+              <h6>Dylan Bienstock</h6>
             </div>
             <div className="indivInput">
-              <h6>{this.state.userEmail}</h6>
+              <h6>dylan.bienstock.23@dartmouth.edu</h6>
             </div>
             <div className="indivInput">
-              <h6>***********</h6>
-            </div>
-            <div className="indivInput">
-              <h6>{this.state.userYear}</h6>
+              <h6>2023</h6>
             </div>
           </div>
         </div>
@@ -434,19 +260,18 @@ class Profile extends Component {
 
         <div className="friendsinfo">
           <div>
-            <h3 className="sectionHeader">Friends</h3>
+            <h3 className="sectionHeader">Dylan's Friends</h3>
           </div>
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[0]} width="55%" height="55%"/>
-                <p>{this.state.friendsNames[0]}</p>
+              <img class="a" src={this.state.friendsNames[2]} width="55%" height="35%"/>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[1]} width="55%" height="55%"/>
-                <p>{this.state.friendsNames[1]}</p>
+                <img class="a" src= "https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="200" height="200"/>
+                <p>Annika Kouhia</p>
               </div>
             </div>
             <div class="grid-item">
@@ -472,16 +297,10 @@ class Profile extends Component {
                 <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
                 <p>{this.state.friendsNames[5]}</p>
               </div></div> 
-              <div className="addFriends">
-                <NavLink to="/searchfriends">
-                  <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-                  Add Friends
-                </NavLink>
-              </div>
           </div>
         </div>
         <div className="editOrFollowButton">
-          <Button>Edit Profile</Button>
+    <Button onClick={this.follow}>Request Dylan as a Friend!</Button> 
         </div>
         <div className="logoutContainer">
           <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
@@ -501,4 +320,4 @@ class Profile extends Component {
 
 
 // export default NewPost;
-export default withRouter((Profile));
+export default withRouter((Dylan));

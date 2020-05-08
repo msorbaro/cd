@@ -13,7 +13,7 @@ import noFriends from '../pictures/nofriend.png';
 
 
 
-class Profile extends Component {
+class FriendProfile extends Component {
   constructor(props) {
     super(props);
 
@@ -173,12 +173,7 @@ class Profile extends Component {
     if (this.state.clubList.length == 0){
       return (
         <div> 
-           <ul>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>      
-            </li>
-           </ul>
+           {`${this.state.userFirstName}`} doesn't follow any clubs!
           </div>
        );
     }
@@ -188,10 +183,6 @@ class Profile extends Component {
         <div> 
            <ul>
            <li>{this.state.clubList[0]}</li>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-             </li>
            </ul>
           </div>
        );
@@ -204,10 +195,7 @@ class Profile extends Component {
            <li>{this.state.clubList[0]}</li>
            <li>{this.state.clubList[1]}</li>
 
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-           </li>
+           
            </ul>
           </div>
        );
@@ -220,11 +208,7 @@ class Profile extends Component {
          <li>{this.state.clubList[0]}</li>
          <li>{this.state.clubList[1]}</li>
          <li>{this.state.clubList[2]}</li>
-         <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-
-         </li>
+         
          </ul>
         </div>
      );
@@ -250,29 +234,9 @@ class Profile extends Component {
     renderClasses = () =>  {
       if (this.state.classList.length == 0){
         return (
-      <ul>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
+      <div>
+          {`${this.state.userFirstName}`} isn't in any clubs!
+      </div>
         );
       }
 
@@ -280,27 +244,7 @@ class Profile extends Component {
         return (
       <ul>
        <li>{this.state.classList[0]}</li>
-      <li>
-        <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
+      
     </ul>
         );
       }
@@ -310,27 +254,6 @@ class Profile extends Component {
       <ul>
       <li>{this.state.classList[0]}</li>
        <li>{this.state.classList[1]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn" onClick={this.addNewClass}>Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10 </a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
     </ul>
         );
       }
@@ -341,27 +264,6 @@ class Profile extends Component {
         <li>{this.state.classList[0]}</li>
         <li>{this.state.classList[1]}</li>
         <li>{this.state.classList[2]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
     </ul>
         );
       }
@@ -376,12 +278,10 @@ class Profile extends Component {
     return (
       <div className="all">
         <NavLink to="/calendar" class="logo">
-          <div className="dartCalLogoProfile">
-            DartCal
-            <div className="scheduleLogo">
-              <img width="80px" src={logo}/>
-              </div>
-          </div>
+            <div className="dartCalLogoProfile">
+                DartCal
+                <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+            </div>
         </NavLink>
         <div className="profileinfo">
           <div>
@@ -393,7 +293,6 @@ class Profile extends Component {
           <div className="nameContainer">
             <h6>Name</h6>
             <h6>Email</h6>
-            <h6>Password</h6>
             <h6>Year</h6>
           </div>
           <div className="inputContainer">
@@ -404,9 +303,6 @@ class Profile extends Component {
               <h6>{this.state.userEmail}</h6>
             </div>
             <div className="indivInput">
-              <h6>***********</h6>
-            </div>
-            <div className="indivInput">
               <h6>{this.state.userYear}</h6>
             </div>
           </div>
@@ -414,7 +310,7 @@ class Profile extends Component {
 
         <div className="classinfo">
           <div>
-            <h3 className="sectionHeader">Classes</h3>
+            <h3 className="sectionHeader">{`${this.state.userFirstName}`}'s Classes</h3>
           </div>
           <div className="listStyle">
            {this.renderClasses()}
@@ -472,26 +368,10 @@ class Profile extends Component {
                 <img class="a" src={this.state.friendsPics[5]} width="55%" height="55%"/>
                 <p>{this.state.friendsNames[5]}</p>
               </div></div> 
-              <div className="addFriends">
-                <NavLink to="/searchfriends">
-                  <img width="50px" src="https://cdn0.iconfinder.com/data/icons/social-media-glyph-1/64/Facebook_Social_Media_User_Interface-35-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-                  Add Friends
-                </NavLink>
-              </div>
           </div>
         </div>
         <div className="editOrFollowButton">
-          <Button>Edit Profile</Button>
-        </div>
-        <div className="logoutContainer">
-          <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-          <NavLink to="/searchfriends">Logout</NavLink>
-        </div>
-        <div className="calendarContainer">
-          <NavLink to="/calendar">
-            <img width="50px" src={logo} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
-            Calendar
-          </NavLink>
+          <Button>Friend {`${this.state.userFirstName}`}</Button>
         </div>
       </div>
     );
@@ -501,4 +381,4 @@ class Profile extends Component {
 
 
 // export default NewPost;
-export default withRouter((Profile));
+export default withRouter((FriendProfile));
