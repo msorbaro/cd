@@ -381,7 +381,11 @@ class Calendar extends React.Component {
       </div>
       <div className="dartCalLogoCal">
         DartCal
-        <div className="scheduleLogo"><img width="30px" src={logo} /></div>
+        <div className="scheduleLogo">
+              <a href="calendar" > 
+              <img width="80px" src={logo}/>
+              </a>
+              </div>
       </div>
       <div className="addEventModal">
         <Modal show={this.state.isOpen} save={this.saveInfo} onClose={this.toggleModal}>

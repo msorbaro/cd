@@ -1,0 +1,234 @@
+.dartCalLogoProfile {
+    position: static;
+    top: 2%;
+    bottom: 14.86%;
+    
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 59px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  
+    position: absolute;
+  
+    color: white;
+  }
+  
+  .profileinfo{
+    position: absolute;
+    flex-direction: column;
+    top: 15%;
+    left: 0%;
+    width: 40%;
+    height: 20%;
+    
+  }
+  .sectionHeader{
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    width: 30%;
+    height: 15%;
+  }
+  .nameContainer{
+    position: absolute;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    left: 15%;
+    padding: 50px;
+    top: 170%;
+  }
+  
+  h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 8px;
+  }
+  .inputContainer{
+    position: absolute;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    left: 40%;
+    top: 170%;
+    padding: 50px;
+    
+    
+  }
+  .indivInput{
+    background-color: #C4C4C4;
+  }
+  .imgStyle{
+      border-radius: 25px;
+  }
+  
+  .classinfo{
+    position: absolute;
+    flex-direction: column;
+    top: 65%;
+    left: 0%;
+    width: 40%;
+    height: 20%;
+    
+  }
+  .listStyle{
+    position: absolute;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+    position: absolute;
+    left: 20%;
+    
+  }
+  ul{
+    list-style-type: circle;
+    
+  }
+  li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 8px;
+  }
+  
+  img.a{
+    border-radius: 25px;
+   
+  }
+  
+  
+  .dropbtn {
+    background-color: #1D263B;
+    color: white;
+    padding: 1px;
+    font-size: 16px;
+    border: none;
+    margin: 1px 6px;
+  
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    bottom: 38px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 4px 6px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #C4C4C4;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #C4C4C4;}
+  
+  .clubinfo{
+    position: absolute;
+    flex-direction: column;
+    top: 65%;
+    left: 50%;
+    width: 40%;
+    height: 20%;
+  }
+  
+  .friendsinfo{
+    position: absolute;
+    flex-direction: column;
+    top: 15%;
+    left: 50%;
+    width: 40%;
+    height: 20%;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 0px;
+    grid-template-rows: auto auto;
+  }
+  .grid-item {
+    padding: 1px;
+    font-size: 15px;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 0;
+  }
+  p{
+    position: flex;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  .editOrFollowButton{
+    position: absolute;
+    top: 90%;
+    left: 42%;
+  }
+  
+  .addFriends{
+      position: absolute;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      height: auto;
+      top: 220%;
+      color: white;
+      font-weight: bolder;
+      font-size: 22px;
+  }
+  
+  .logoutContainer{
+    position: absolute;
+    top: 88%;
+    left: 20%;
+    position: flex;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .calendarContainer{
+    position: absolute;
+    top: 88%;
+    left: 70%;
+    position: flex;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+  }

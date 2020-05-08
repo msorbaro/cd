@@ -377,7 +377,11 @@ class Profile extends Component {
       <div className="all">
         <div className="dartCalLogoProfile">
           DartCal
-          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+          <div className="scheduleLogo">
+              <a href="calendar" > 
+              <img width="80px" src={logo}/>
+              </a>
+              </div>
         </div>
         <div className="profileinfo">
           <div>

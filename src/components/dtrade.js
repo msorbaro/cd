@@ -87,6 +87,7 @@ class DTrade extends Component {
     handleCancelButtonClick = (event) => {
       this.props.history.push('/');
     }
+
   
     render() {
       return (
