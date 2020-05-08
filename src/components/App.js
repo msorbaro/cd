@@ -17,6 +17,7 @@ import ClubLax from './clublax';
 import DFR from './dfr';
 import DTrade from './dtrade';
 import ChessClub from './chessclub';
+import Dali from './dali';
 
 
 const FallBack = (props) => {
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/dfr" component={DFR} />
             <Route exact path="/dtrade" component={DTrade} />
             <Route exact path="/chessclub" component={ChessClub} />
+            <Route exact path="/dali" component={Dali} />
             <Route component={FallBack} />
            </Switch>
            
