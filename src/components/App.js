@@ -13,6 +13,11 @@ import Home from './home';
 import Calendar from './calendar';
 import SearchFriends from './searchfriends';
 import ClubProfile from './clubprofile';
+import ClubLax from './clublax';
+import DFR from './dfr';
+import DTrade from './dtrade';
+import ChessClub from './chessclub';
+
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
@@ -31,6 +36,10 @@ function App() {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/searchfriends" component={SearchFriends} />
             <Route exact path="/clubprofile" component={ClubProfile} />
+            <Route exact path="/clublax" component={ClubLax} />
+            <Route exact path="/dfr" component={DFR} />
+            <Route exact path="/dtrade" component={DTrade} />
+            <Route exact path="/chessclub" component={ChessClub} />
             <Route component={FallBack} />
            </Switch>
            
