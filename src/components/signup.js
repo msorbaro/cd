@@ -58,6 +58,7 @@ class SignUp extends Component {
     if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
         alert(error);
+        alert("Please make sure that your sign up meets all of the following criteria: \n 1. Using a @dartmouth.edu email \n 2. Passwords are at least 6 characters \n 3. Passwords match ")
       });
     
       firebase.auth().onAuthStateChanged((user) => {
@@ -73,7 +74,7 @@ class SignUp extends Component {
     } else if (!this.state.email.endsWith('@dartmouth.edu')) {
       alert('Please enter a dartmouth.edu email');
     } else {
-      alert('Make sure passwords match');
+      alert('Make sure passwords match and are greater than six characters');
     }
   }
 
