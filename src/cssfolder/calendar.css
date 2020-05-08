@@ -4,7 +4,6 @@
 
 .allCal{
     background-color:  #5C6784;
-    z-index: 1;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     height: 135vh;
@@ -28,14 +27,15 @@
     font-weight: bold;
     background-color:  #5C6784;;
     width: 20%;
-    height: 125vh;
+    top: 12%;
+    height: 100vh;
     left: 0%;
 }
 
 .addNewEvent {
     position: sticky;
     justify-content: center;
-    top: 10%;
+    top: 20%;
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -44,17 +44,6 @@
     font-size: 22px;
 }
 
-.calProfileIcon{
-    position: sticky;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    top: 80%;
-    color: white;
-    font-weight: bolder;
-    font-size: 22px;
-}
 
 .toggleMonthWeek {
     position: sticky;
@@ -73,7 +62,7 @@
     flex-direction: row;
     width: 100%;
     height: auto;
-    top: 25%;
+    top: 35%;
     color: white;
     font-weight: bolder;
     font-size: 22px;
@@ -109,7 +98,7 @@
     justify-content: center;
     width: 100%;
     height: auto;
-    top: 60%;
+    top: 65%;
     color: white;
     font-weight: bolder;
     font-size: 22px;
@@ -121,19 +110,6 @@
 
 a {
     color: white;
-}
-
-.calSearchBar {
-    position: absolute;
-    flex-direction: row;
-    justify-content: center;
-    width: 20%;
-    height: 5%; /* auto */
-    top: 1%;
-    left: 68%;
-    margin-left: 5%;
-    margin-right: 5%;
-    /* z-index:-1 */
 }
 
 img {
@@ -212,11 +188,53 @@ input.shortSearch {
     margin-left: 5%;
   }
 
-  .fc-event-time, .fc-event-title {
+.fc-event-time, .fc-event-title {
     padding: 0 1px;
     white-space: nowrap;
-    }
+}
     
-    .fc-title {
+.fc-title {
     white-space: normal;
-    }
+}
+
+.logoutIconCal{
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: auto;
+    top: 2%;
+    left: 0%;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.calProfileIcon{
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    width: 20%;
+    height: auto;
+    top: 2%;
+    left: 80%;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+NavLink #row {
+    flex-direction: row;
+    justify-content: center;
+    font-style: normal;
+  }
+  
+.topBarCal {
+    position: sitcky;
+    top: 0%;
+    left:0%;
+    width: 100%;
+    height: 12%;
+  }
+  

@@ -366,25 +366,28 @@ class Calendar extends React.Component {
 
     return (
       <div className="allCal">
-      <div className="calSearchBar">
-      <ReactSearchBox
-          placeholder="Search for events in your calendar"
-          value=""
-          data={this.data}
-          callback={record => console.log(record)}
-        />  
-        {/* <img width="30px" src={search} style={{ 'vertical-align':'middle' }}/>
-        <input type="text" width="10px" placeholder="Search" className="shortSearch" ></input> */}
-      </div>
+        <div className="calProfileIcon">
+          <NavLink to="/profile"> 
+          <div><img width="40px" src={userpic} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/></div> 
+          </NavLink> &nbsp;
+          <NavLink to="/profile"><div style={{ 'margin-top':'5px'}}>Profile</div></NavLink>
+        </div>
+        <div className="dartCalLogoCal">
+            DartCal
+            <div className="scheduleLogo">
+                <img width="40px" src={logo}/>
+            </div>
+        </div>
+        <div className="logoutIconCal">
+              <NavLink to="/searchfriends">
+              <div><img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'center', 'mix-blend-mode': 'soft-light'}}/></div>
+              </NavLink> &nbsp;
+              <NavLink to="/searchfriends"><div style={{ 'margin-top':'10px'}}>Logout</div></NavLink>
+        </div>
       <div className="cal">
         {cal}
       </div>
-      <div className="dartCalLogoCal">
-          DartCal
-          <div className="scheduleLogo">
-              <img width="40px" src={logo}/>
-            </div>
-      </div>
+
       <div className="addEventModal">
         <Modal show={this.state.isOpen} save={this.saveInfo} onClose={this.toggleModal}>
         <div className="newEventInfo">
@@ -436,10 +439,6 @@ class Calendar extends React.Component {
             Add Friend
           </div>
         </div>
-         <div className="calProfileIcon">
-            <img width="50px" src={userpic} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-            <NavLink to="/profile">Profile</NavLink>
-         </div>
       </div>
       </div>
     )
