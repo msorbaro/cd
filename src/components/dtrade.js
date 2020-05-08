@@ -9,6 +9,8 @@ import '../cssfolder/clubprofile.css';
 import getUser from './datastore';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import search from '../pictures/magnifying-glass.png'
 
 class DTrade extends Component {
@@ -25,11 +27,32 @@ class DTrade extends Component {
         image:'',
         clubList: '',
         editing: false,
+        clubEvents: [
+          { title: 'Trader Meeting', start: '2020-05-14', className:"eTypeClub", id:'Trader Meeting2020-05-14' },
+          {title: 'Trader Meeting', start: '2020-05-21', className:"eTypeClub", id:'Trader Meeting2020-05-21' },
+          {title: 'Trader Meeting', start: '2020-05-28', className:"eTypeClub", id:'Trader Meeting2020-05-28' },
+          { title: 'Hand Shaking Practice', start: '2020-05-17T9:00:00', end: '2020-05-17T12:00:00', className:"eTypeClub", id:'Hand Shaking Practice2020-05-17'  },
+          {title: 'Trader Meeting', start: '2020-05-7', className:"eTypeClub", id:'Trader Meeting2020-05-7'},
+          ]
       };  
     }
 
-    compoundDidMount() {
+    componentDidMount() {
         db.getCurrUser(this.setCurrUser);
+    }
+
+    subscribe = () => {
+      alert("You have successfully subscribed!")
+      for (let i = 0; i < Object.keys(this.state.clubEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.clubEvents)[i];
+        const currItem = this.state.clubEvents[currentKey];
+
+        db.addCalEvent(
+          this.state.userID,
+          currItem.title+currItem.start,
+          currItem,
+        );
+      }
     }
   
     setCurrUser = (currUser) => {
@@ -76,18 +99,22 @@ class DTrade extends Component {
           <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
         </div>
         <div className="buttonContainer">
-          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
+          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}onClick={this.subscribe}>Subscribe</Button>
         </div>
         <img class="b" src="https://i.ytimg.com/vi/if-2M3K1tqk/maxresdefault.jpg" width="35%" height="35%"/>
         <div className="clubCal"> 
-        <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
-        events={[
-          { title: 'Meeting', date: '2020-05-14' },
-          {title: 'Meeting', date: '2020-05-21'},
-          {title: 'Meeting', date: '2020-05-28'},
-          { title: 'Hand shaking practice', date: '2020-05-17' },
-          {title: 'Meeting', date: '2020-05-7'},
-          ]}
+        <FullCalendar 
+          dateClick={this.handleDateClick} 
+          plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+          header={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+          }}
+          selectable= {true}
+          slotDuration= {'00:30:00'}
+          eventClick = {this.handleEventClick}
+          events= {this.state.clubEvents}
         />
         </div>
         <div className="description">

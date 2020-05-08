@@ -212,3 +212,11 @@ input.shortSearch {
     margin-left: 5%;
   }
 
+  .fc-event-time, .fc-event-title {
+    padding: 0 1px;
+    white-space: nowrap;
+    }
+    
+    .fc-title {
+    white-space: normal;
+    }

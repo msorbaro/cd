@@ -41,7 +41,6 @@ class ClubLax extends Component {
 
     componentDidMount() {
         db.getCurrUser(this.setCurrUser);
-        console.log("setting user")
     }
   
     setCurrUser = (currUser) => {

@@ -9,6 +9,8 @@ import '../cssfolder/clubprofile.css';
 import getUser from './datastore';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import search from '../pictures/magnifying-glass.png'
 
 class ChessClub extends Component {
@@ -25,10 +27,18 @@ class ChessClub extends Component {
         image:'',
         clubList: '',
         editing: false,
+        clubEvents: [
+          { title: 'Chess Weekly Match', start: '2020-05-13', className:'eTypeClub',id:'Chess Weekly Match2020-05-13'},
+          {title: 'Chess Weekly Match', start: '2020-05-20', className:'eTypeClub',id:'Chess Weekly Match2020-05-20'},
+          {title: 'Chess Weekly Match', start: '2020-05-27', className:'eTypeClub',id:'Chess Weekly Match2020-05-27'},
+          { title: 'Chess Tournament', start: '2020-05-16', className:'eTypeClub',id:'Chess Weekly Match2020-05-16' },
+          {title: 'Chess Regionals', start: '2020-05-23', className:'eTypeClub',id:'Chess Regionals2020-05-23'},
+          {title: 'Chess Weekly Match', start: '2020-05-6', className:'eTypeClub',id:'Chess Weekly Match2020-05-6'},
+          ]
       };  
     }
 
-    compoundDidMount() {
+    componentDidMount() {
         db.getCurrUser(this.setCurrUser);
     }
   
@@ -39,6 +49,20 @@ class ChessClub extends Component {
           userLastName: currUser.userLastName,
           userYear: currUser.userYear,
         });
+    }
+
+    subscribe = () => {
+      alert("You have successfully subscribed!")
+      for (let i = 0; i < Object.keys(this.state.clubEvents).length; i += 1) {
+        const currentKey = Object.keys(this.state.clubEvents)[i];
+        const currItem = this.state.clubEvents[currentKey];
+
+        db.addCalEvent(
+          this.state.userID,
+          currItem.title+currItem.start,
+          currItem,
+        );
+      }
     }
     
     onEmailChange = (event) => {
@@ -76,19 +100,22 @@ class ChessClub extends Component {
           <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
         </div>
         <div className="buttonContainer">
-          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}>Subscribe</Button>
+          <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}} onClick={this.subscribe}>Subscribe</Button>
         </div>
         <img class="b" src="https://students.dartmouth.edu/coso/sites/students_coso.prod/files/styles/slide/public/council_student_organizations/images/chess_club_summer_.jpg?itok=dzBOaD9Z" width="35%" height="35%"/>
         <div className="clubCal"> 
-        <FullCalendar dateClick={this.handleDateClick} plugins={[ dayGridPlugin ]} 
-        events={[
-          { title: 'Weekly Match', date: '2020-05-13' },
-          {title: 'Weekly Match', date: '2020-05-20'},
-          {title: 'Weekly Match', date: '2020-05-27'},
-          { title: 'Tournament', date: '2020-05-16' },
-          {title: 'Regionals', date: '2020-05-23'},
-          {title: 'Weekly Match', date: '2020-05-6'},
-          ]}
+        <FullCalendar 
+          dateClick={this.handleDateClick} 
+          plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]} 
+          header={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+          }}
+          selectable= {true}
+          slotDuration= {'00:30:00'}
+          eventClick = {this.handleEventClick}
+          events= {this.state.clubEvents}
         />
         </div>
         <div className="description">
