@@ -379,14 +379,12 @@ class Calendar extends React.Component {
       <div className="cal">
         {cal}
       </div>
-      <NavLink to="/calendar" class="logo">
-        <div className="dartCalLogoCal">
+      <div className="dartCalLogoCal">
           DartCal
           <div className="scheduleLogo">
-              <img width="80px" src={logo}/>
+              <img width="40px" src={logo}/>
             </div>
-        </div>
-      </NavLink>
+      </div>
       <div className="addEventModal">
         <Modal show={this.state.isOpen} save={this.saveInfo} onClose={this.toggleModal}>
         <div className="newEventInfo">
