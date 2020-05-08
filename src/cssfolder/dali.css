@@ -1,0 +1,101 @@
+.clubCal {
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    height: auto;
+    width: 40%;
+    background-color: white;
+}
+
+.clubPageAll{
+    background-color:  #5C6784;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+}
+.clubName{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    
+    position: absolute;
+  
+    color: white;
+   
+}
+.searchBar {
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    height: auto;
+    top: 1%;
+    left: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+img.b{
+    border-radius: 25px;
+    position: absolute;
+    top: 12%;
+    left: 8%;
+}
+.buttonContainer{
+    position: absolute;
+    top: 15%;
+    left: 70%;
+}
+Button #club{
+    background: #1D263B;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #C4C4C4;
+    border: none;
+  }
+
+.description{
+    width: 50%;
+    height: 40%;
+    position: absolute;
+    top: 58%;
+    left: 2%;
+    border: 6px solid #1D263B;
+    border-radius: 25px;
+}
+
+h2.clubHeader{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    position: absolute;
+}
+
+p.clubInfo{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: absolute;
+}

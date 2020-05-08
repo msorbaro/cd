@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import logo from '../pictures/calendar.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import * as db from './datastore';
-import '../cssfolder/clubprofile.css';
+import '../cssfolder/dali.css';
 import getUser from './datastore';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -34,7 +34,7 @@ class Dali extends Component {
           {title: 'SWE Meeting', start: '2020-05-25', className:'eTypeClub',id:'DALI Meeting2020-05-25'},
           {title: 'DALI Pong', start: '2020-05-15', className:'eTypeClub',id:'DALI Pong2020-05-15'},
           {title: 'DALI Formal', start: '2020-05-22', className:'eTypeClub',id:'DALI Formal2020-05-22'},
-          {title: 'MINI DALI GRADUATION', start: '2020-05-07', className:'eTypeClub',id:'DALI Formal2020-05-22'},
+          {title: 'MINI DALI GRADUATION', start: '2020-05-12', className:'Social',id:'DALI Formal2020-05-22'},
           ]
       };  
     }
@@ -103,7 +103,7 @@ class Dali extends Component {
               <div className="buttonContainer">
                 <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}onClick={this.subscribe}>Subscribe </Button>
               </div>
-              <img class="b" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnews.dartmouth.edu%2Fnews%2F2018%2F02%2Fredesigned-dali-lab-wins-architecture-award&psig=AOvVaw2E4ZZCAFmuEbgNap8rffZB&ust=1588997054464000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjAybuxo-kCFQAAAAAdAAAAABAD" width="35%" height="35%"/>
+              <img class="b" src="https://news.dartmouth.edu/sites/dart_news.prod/files/styles/slide/public/news/images/dali_lab_lounge_810.jpg" width="35%" height="35%"/>
               <div className="clubCal"> 
               <FullCalendar 
                 dateClick={this.handleDateClick} 
@@ -120,9 +120,9 @@ class Dali extends Component {
                 />
               </div>
               <div className="description">
-                <h2 class="clubHeader" style={{'top': '-7%'}}>Description</h2>
-                <p class="clubInfo" style={{'font-size': '15px', 'top': '15%', 'left': '3%'}}>We are Dartmouth Formula Racing: designed, built, driven by students. We compete in the Formula Hybrid Competition and have done well recently. We have weekly meetings and are looking for anyone who is excited about software or mechanical engineering! It's always a great place for the boys and we would love to see some new faces.</p>
-                <h2 class="clubHeader" style={{'top': '60%'}}>Contact Info</h2>
+                <h2 class="clubHeader" style={{'top': '5%'}}>Description</h2>
+                <p class="clubInfo" style={{'font-size': '20px', 'top': '20%', 'left': '3%'}}>We are the DALI Lab: designed, built, driven by students. We compete in the Formula Hybrid Competition and have done well recently. We have weekly meetings and are looking for anyone who is excited about software or mechanical engineering! It's always a great place for the boys and we would love to see some new faces.</p>
+                <h2 class="clubHeader" style={{'top': '60%', 'font-weight': 'boldest'}}>Contact Info</h2>
                 <p class="clubInfo" style={{'top': '78%', 'left': '20%', 'font-size':'20px'}}>katherine.lasonde.23@dartmouth.edu</p>
               </div>
             </div>

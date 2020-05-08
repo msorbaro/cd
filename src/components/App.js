@@ -18,6 +18,12 @@ import DFR from './dfr';
 import DTrade from './dtrade';
 import ChessClub from './chessclub';
 import Dali from './dali';
+import Scott from './scott';
+import Lily from './lily';
+import Dylan from './dylan';
+import Annika from './annika';
+import Morgan from './morgan';
+
 
 
 const FallBack = (props) => {
@@ -40,8 +46,13 @@ function App() {
             <Route exact path="/clublax" component={ClubLax} />
             <Route exact path="/dfr" component={DFR} />
             <Route exact path="/dtrade" component={DTrade} />
-            <Route exact path="/chessclub" component={ChessClub} />
             <Route exact path="/dali" component={Dali} />
+            <Route exact path="/chessclub" component={ChessClub} />
+            <Route exact path="/scott" component={Scott} />
+            <Route exact path="/Dylan" component={Dylan} />
+            <Route exact path="/Lily" component={Lily} />
+            <Route exact path="/Annika" component={Annika} />
+            <Route exact path="/Morgan" component={Morgan} />
             <Route component={FallBack} />
            </Switch>
            
