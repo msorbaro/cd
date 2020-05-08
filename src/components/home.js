@@ -47,6 +47,7 @@ render() {
     <NavLink to="/clubprofile" ><Button>View club profile</Button></NavLink>
     <Button onClick={this.addID}>add friends</Button>
     <NavLink to="/" ><Button onClick={this.logOut} >Sign off</Button></NavLink>
+    <NavLink to="/friendprofile" ><Button onClick={this.logOut} >Friend Profile</Button></NavLink>
    
 
     </div>
