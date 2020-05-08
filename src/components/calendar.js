@@ -71,6 +71,7 @@ class Calendar extends React.Component {
         title: name,
         start: arg.dateStr,
         id: name+arg.dateStr,
+        className :'eTypeOther'
       }
 
       db.addCalEvent(this.state.userID, name+arg.dateStr, event)
@@ -103,11 +104,12 @@ class Calendar extends React.Component {
     //add other type events back in 
     if(this.state.showClasses === false){
       var array = Array.from(this.state.calendarEvents) //copies the array
-      for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+      for (let i = Object.keys(this.state.unshownEvents).length-1; i >= 0; i -= 1) {
         const currentKey = Object.keys(this.state.unshownEvents)[i];
         const currItem = this.state.unshownEvents[currentKey];
         if(currItem.className === "eTypeClass"){
           array.push(currItem);
+          this.state.unshownEvents.splice(i, 1)
         }
       }
       this.setState({calendarEvents: array})
@@ -132,11 +134,12 @@ class Calendar extends React.Component {
       //add other type events back in 
       if(this.state.showClubs === false){
         var array = Array.from(this.state.calendarEvents) //copies the array
-        for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+        for (let i = Object.keys(this.state.unshownEvents).length-1; i >= 0; i -= 1) {
           const currentKey = Object.keys(this.state.unshownEvents)[i];
           const currItem = this.state.unshownEvents[currentKey];
           if(currItem.className === "eTypeClub"){
-            array.push(currItem)
+            array.push(currItem);
+            this.state.unshownEvents.splice(i, 1)
           }
         }
         this.setState({calendarEvents: array})
@@ -162,11 +165,12 @@ class Calendar extends React.Component {
       //add social type events back in 
       if(this.state.showSocial === false){
         var array = Array.from(this.state.calendarEvents) //copies the array
-        for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+        for (let i = Object.keys(this.state.unshownEvents).length-1; i >= 0; i -= 1) {
           const currentKey = Object.keys(this.state.unshownEvents)[i];
           const currItem = this.state.unshownEvents[currentKey];
-          if(currItem.className === 'eTypeSocial'){
+          if(currItem.className === "eTypeSocial"){
             array.push(currItem);
+            this.state.unshownEvents.splice(i, 1)
           }
         }
         this.setState({calendarEvents: array})
@@ -191,11 +195,12 @@ class Calendar extends React.Component {
     //add other type events back in 
     if(this.state.showOther === false){
       var array = Array.from(this.state.calendarEvents) //copies the array
-      for (let i = 0; i < Object.keys(this.state.unshownEvents).length; i += 1) {
+      for (let i = Object.keys(this.state.unshownEvents).length-1; i >= 0; i -= 1) {
         const currentKey = Object.keys(this.state.unshownEvents)[i];
         const currItem = this.state.unshownEvents[currentKey];
         if(currItem.className === "eTypeOther"){
           array.push(currItem);
+          this.state.unshownEvents.splice(i, 1)
         }
       }
       this.setState({calendarEvents: array})

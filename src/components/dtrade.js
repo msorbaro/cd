@@ -31,7 +31,7 @@ class DTrade extends Component {
           { title: 'Trader Meeting', start: '2020-05-14', className:"eTypeClub", id:'Trader Meeting2020-05-14' },
           {title: 'Trader Meeting', start: '2020-05-21', className:"eTypeClub", id:'Trader Meeting2020-05-21' },
           {title: 'Trader Meeting', start: '2020-05-28', className:"eTypeClub", id:'Trader Meeting2020-05-28' },
-          { title: 'Hand Shaking Practice', start: '2020-05-17T9:00:00', end: '2020-05-17T12:00:00', className:"eTypeClub", id:'Hand Shaking Practice2020-05-17T9:00:00'  },
+          {title: 'Hand Shaking Practice', start: '2020-05-17', className:"eTypeClub", id:'Hand Shaking Practice2020-05-17'  },
           ]
       };  
     }
