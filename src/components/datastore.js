@@ -179,16 +179,6 @@ export function getClubs(userID, callback) {
     });
   }
 
-  export function getListOfUsers(callback) {
-    const ref = ourDB.ref(`users/`); 
-    ref.orderByChild().on('value', (snapshot) => {
-      callback(snapshot);
-    });
-  }
-
-  
-
-
   export function deleteCalEvent(userID, calEventID, callback) {
     console.log(calEventID)
     firebase.database().ref(`users/${userID}/CalEvents`).child(calEventID).remove();
@@ -222,6 +212,12 @@ export function getClubs(userID, callback) {
       console.log(snapshot);
       callback(snapshot.numChildren());
     });
-
   
+}
+
+export function getListOfUsers(callback) {
+  const ref = ourDB.ref(`users/`); 
+  ref.on('value', (snapshot) => {
+    callback(snapshot.val());
+  });
 }

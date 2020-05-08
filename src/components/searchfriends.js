@@ -10,6 +10,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import '../cssfolder/calendar.css' // webpack must be configured to do this
 import '../cssfolder/searchfriends.css'
 import ReactSearchBox from 'react-search-box';
+import * as db from './datastore';
+
 
 class SearchFriends extends React.Component {
   constructor(props) {
@@ -19,52 +21,42 @@ class SearchFriends extends React.Component {
     };
   }
 
+  componentDidMount() {
+    db.getListOfUsers(this.setSearchBarUsers)
+  }
+
+  setSearchBarUsers = (userList) => {
+    var uL = []
+      for (let i = 0; i < Object.keys(userList).length; i += 1) {
+        const currentKey = Object.keys(userList)[i];
+        const currItem = userList[currentKey]; // the user
+        
+        var firstName = currItem.userFirstName; // typeof is a string
+        var lastName = currItem.userLastName; // typeof is a string
+        var fullName = firstName + " " + lastName;
+        var firstLetter = currItem.userFirstName.substr(0);
+
+        var object = {
+          key: firstLetter,
+          value: fullName,
+        }
+        
+        uL.push(object); 
+        console.log(uL);
+      }
+        this.setState ({
+          allUsers: uL,
+        })
+      
+  }
+
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
 
-
-  searchUserList = (userList) => {
-
-    var userList = []
-      for (let i = 0; i < Object.keys(userList).length; i += 1) {
-        const currentKey = Object.keys(userList)[i]; // a user
-        const currItem = userList[currentKey];
-  
-        userList.push(currItem);
-
-        this.setState ({
-          allUsers: userList,
-        })
-      }
-  }
-  
-
-
-  data = [
-    {
-      key: 'a',
-      value: 'Annika Kouhia',
-  },
-  {
-    key: 'd',
-    value: 'Dylan Bienstock',
-  },
-    {
-      key: 'k',
-      value: 'Katherine Lasonde',
-    },
-    {
-        key: 'l',
-        value: 'Lily Maechling',
-    },
-    {
-      key: 'm',
-      value: 'Morgan Sorbaro',
-    }
-  ]
-
   render() {
+    console.log(this.state.allUsers)
+    console.log("this is data: " + this.data);
     return (
       <div className="all">
           <NavLink to="/calendar" class="logo">
@@ -80,11 +72,10 @@ class SearchFriends extends React.Component {
             <ReactSearchBox
             placeholder="Search Here!"
             value=""
-            data={this.data}
+            data={this.state.allUsers}
             callback={record => console.log(record)}
           />  
           </div>
-
 
         <div className="clubHeader">Clubs:</div>
         <div className="clubSection">
