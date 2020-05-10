@@ -53,11 +53,11 @@ class SignIn extends Component {
       </div>
       <div className="logininfo">
         <div className="inputline">
-          Username: 
+          Username: &nbsp; 
           <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
         </div>
         <div className="inputline">
-          Password: 
+          Password: &nbsp; 
           <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
         </div>
         <div className="signup">

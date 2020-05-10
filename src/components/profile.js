@@ -231,7 +231,6 @@ class Profile extends Component {
   }
 
     renderClasses = () =>  {
-     
         return (
           <div> 
           <ul>
@@ -285,6 +284,7 @@ class Profile extends Component {
 
 
   render() {
+    console.log(this.state.classList)
     return (
       <div className="all">
         <NavLink to="/calendar" class="logo">
@@ -344,7 +344,7 @@ class Profile extends Component {
             <h3 className="sectionHeader">Classes</h3>
           </div>
           <div className="listStyle">
-           {this.renderClasses()}
+           {this.renderClasses}
           </div>
         </div>
 
