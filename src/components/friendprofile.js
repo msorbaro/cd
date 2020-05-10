@@ -39,236 +39,169 @@ class FriendProfile extends Component {
     };  
     }
 
-    setFriendsNamesAndPics = (Friends) => {
-
-      this.state.friendsPics = []
-      this.state.friendsNames = []
-  
-      for (let i = 0; i < Object.keys(Friends).length; i += 1) {
-        const currentKey = Object.keys(Friends)[i];
-        const currItem = Friends[currentKey];
-       db.getUser(currItem, this.setFriendInfo);
-       //console.log(this.state.friendsNames);
-
-      
-      }
+   
+    
+    
+    
+    componentDidMount() {
     }
-    setFriendInfo = (user) => {
-      var pics = this.state.friendsPics
-      var names = this.state.friendsNames
-      pics.push(user.userPic);
-      names.push(`${user.userFirstName} ${user.userLastName}`);
+
+    populateFriendPage = (currUser, friendID) => {
+      db.getCurrUser(this.setCurrUser);
+    }
+
+     setCurrUser = (currUser) => {
+    
 
       this.setState({
-        friendsPics: pics,
-        friendsNames: names,
-      })
-    }
-
-    setClassInfo = (classes) => {
-      var Class = []
-      for (let i = 0; i < Object.keys(classes).length; i += 1) {
-        const currentKey = Object.keys(classes)[i];
-        const currItem = classes[currentKey];
-  
-       Class.push(` ${currItem} (${currentKey})`);
-
-       this.setState ({
-         classList: Class
-       })
-    
-      }
-
-    }
-
-    setClubsInfo = (clubs) => {
-      var ClubList = []
-      for (let i = 0; i < Object.keys(clubs).length; i += 1) {
-        const currentKey = Object.keys(clubs)[i];
-        const currItem = clubs[currentKey];
-  
-        ClubList.push(currItem);
-
-        this.setState ({
-          clubList: ClubList,
-
-        })
-    
-      }
-
-    }
-    componentDidMount() {
-        db.getCurrUser(this.setCurrUser);
-    }
-  
-  setCurrUser = (currUser) => {
-    
-
-     this.setState({
-        userID: currUser.userID,
-        userEmail: currUser.userEmail,
-        userFirstName: currUser.userFirstName,
-        userLastName: currUser.userLastName,
-        userYear: currUser.userYear,
-        image: currUser.userPic,
-      });
-
-      //IDK why this is here but it works now bc of syncronizatin issues
-      db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
-      db.getClass(this.state.userID, this.setClassInfo);
-      db.getClubs(this.state.userID, this.setClubsInfo);
-
-     
-  }
-  
+         userID: currUser.userID,
+         userEmail: currUser.userEmail,
+         userFirstName: currUser.userFirstName,
+         userLastName: currUser.userLastName,
+         userYear: currUser.userYear,
+         image: currUser.userPic,
+         editing: false,
+       });
  
-  onClubChange = (event) => {
-    this.setState({ newClub: event.target.value });
-  }
-  addNewClub = () => {
-    
-    this.state.clubList.push(this.state.newClub);
-    db.addClub(this.state.userID, this.state.newClub);
-    this.setState({
-        newClub: '',
-    });
+       if(currUser.Clubs != null) {
+       var ClubList = []
+       for (let i = 0; i < Object.keys(currUser.Clubs).length; i += 1) {
+         const currentKey = Object.keys(currUser.Clubs)[i];
+         const currItem = currUser.Clubs[currentKey];
+   
+         ClubList.push(currItem);
+ 
+         this.setState ({
+           clubList: ClubList,
+ 
+         })
+     
+       }
+     }
+ 
+     if(currUser.Classes != null) {
+     var Class = []
+       for (let i = 0; i < Object.keys(currUser.Classes).length; i += 1) {
+         const currentKey = Object.keys(currUser.Classes)[i];
+         const currItem = currUser.Classes[currentKey];
+   
+        Class.push(` ${currItem} (${currentKey})`);
+ 
+        this.setState ({
+          classList: Class
+        })
+     
+       }
+     }
+     if(currUser.Friends != null) {
+     this.state.friendsPics = []
+     this.state.friendsNames = []
+ 
+     for (let i = 0; i < Object.keys(currUser.Friends).length; i += 1) {
+       const currentKey = Object.keys(currUser.Friends)[i];
+       const currItem = currUser.Friends[currentKey];
+      db.getUser(currItem, this.setFriendInfo);
+     
+     }
+   }
+   
+   }
+   
+   setFriendInfo = (user) => {
+     var pics = this.state.friendsPics
+     var names = this.state.friendsNames
+     var IDs = this.state.friendsIDs
+     pics.push(user.userPic);
+     names.push(`${user.userFirstName} ${user.userLastName}`);
+     IDs.push(user.userID);
+ 
+     this.setState({
+       friendsPics: pics,
+       friendsNames: names,
+       friendsIDs: IDs,
+     })
+   }
+ 
 
-  }
-
-  onClassChange = (event) => {
-    this.setState({ newClass: event.target.value });
-
-  }
-
-  addNewClass = (block) => {
-    console.log("new class")
-    this.state.classList.push(this.state.newClass);
-    db.addClass(this.state.userID, block, this.state.newClass);
-    this.setState({
-        newClass: '',
-    });
-  }
-
-  onPasswordChange= (event) => {
-    this.setState({ password: event.target.value });
-  }
-
-  onPasswordTwoChange= (event) => {
-    this.setState({ passwordTwo: event.target.value });
-  }
-
-  onFirstUsernameChange= (event) => {
-    this.setState({ firstusername: event.target.value });
-  }
-
-  onLastUsernameChange= (event) => {
-    this.setState({ lastusername: event.target.value });
-  }
-
-  handleCancelButtonClick = (event) => {
-    this.props.history.push('/');
-  }
-
-  renderClubs = () => {
-    if (this.state.clubList.length == 0){
-      return (
-        <div> 
-           {`${this.state.userFirstName}`} doesn't follow any clubs!
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 1){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 2){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           <li>{this.state.clubList[1]}</li>
-
-           
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 3){
-     return (
-      <div> 
-         <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         
-         </ul>
-        </div>
-     );
-  }
-
-  if (this.state.clubList.length >3){
+   renderClubs = () => {
+ 
     return (
       <div> 
          <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         <li>{this.state.clubList[3]}</li>
+         { (this.state.clubList.length > 0) 
+        ? <li>{this.state.clubList[0]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 1) 
+        ? <li>{this.state.clubList[1]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 2) 
+        ? <li>{this.state.clubList[2]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 3) 
+        ? <li>{this.state.clubList[3]}</li>
+        : <div> </div>
+         }
          </ul>
         </div>
      );
   }
 
 
+  renderClasses = () =>  {
+     
+    return (
+      <div> 
+      <ul>
+      { (this.state.classList.length > 0) 
+     ? <li>{this.state.classList[0]}</li>
+     : <div> </div>
+      }
+      { (this.state.classList.length > 1) 
+     ? <li>{this.state.classList[1]}</li>
+     : <div> </div>
+      }
+      { (this.state.classList.length > 2) 
+     ? <li>{this.state.classList[2]}</li>
+     : <div> </div>
+      }
+      { (this.state.classList.length > 3) 
+     ? <li>{this.state.classList[1]}</li>
+     : <div> </div>
+      }
+      {this.state.editing && (this.state.classList.length < 4)
+        ?    <li>
+        <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+        <div class="dropdown">
+          <button class="dropbtn">Class Block</button>
+          <div class="dropdown-content">
+            <a href="#">8</a>
+            <a href="#">9S</a>
+            <a href="#">9L</a>
+            <a href="#">10</a>
+            <a href="#">11</a>
+            <a href="#">12</a>
+            <a href="#">2</a>
+            <a href="#">3A</a>
+            <a href="#">6A</a>
+            <a href="#">10A</a>
+            <a href="#">2A</a>
+            <a href="#">3B</a>
+            <a href="#">6B</a>
+          </div>
+        </div>
+      </li> 
+       : <div></div>
+      }
+      </ul>
+     </div>
+  );
+
+ 
+
 }
-
-
-    renderClasses = () =>  {
-      if (this.state.classList.length == 0){
-        return (
-      <div>
-          {`${this.state.userFirstName}`} isn't in any clubs!
-      </div>
-        );
-      }
-
-      if (this.state.classList.length == 1){
-        return (
-      <ul>
-       <li>{this.state.classList[0]}</li>
-      
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 2){
-     return (
-      <ul>
-      <li>{this.state.classList[0]}</li>
-       <li>{this.state.classList[1]}</li>
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 3){
-        return (
-      <ul>
-        <li>{this.state.classList[0]}</li>
-        <li>{this.state.classList[1]}</li>
-        <li>{this.state.classList[2]}</li>
-    </ul>
-        );
-      }
-
-    }
 
   renderButton = () => {
 

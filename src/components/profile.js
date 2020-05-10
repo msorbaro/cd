@@ -41,67 +41,7 @@ class Profile extends Component {
     };  
     }
 
-    setFriendsNamesAndPics = (Friends) => {
-
-      this.state.friendsPics = []
-      this.state.friendsNames = []
   
-      for (let i = 0; i < Object.keys(Friends).length; i += 1) {
-        const currentKey = Object.keys(Friends)[i];
-        const currItem = Friends[currentKey];
-       db.getUser(currItem, this.setFriendInfo);
-       //console.log(this.state.friendsNames);
-
-      
-      }
-    }
-    setFriendInfo = (user) => {
-      var pics = this.state.friendsPics
-      var names = this.state.friendsNames
-      var IDs = this.state.friendsIDs
-      pics.push(user.userPic);
-      names.push(`${user.userFirstName} ${user.userLastName}`);
-      IDs.push(user.userID);
-
-      this.setState({
-        friendsPics: pics,
-        friendsNames: names,
-        friendsIDs: IDs,
-      })
-    }
-
-    setClassInfo = (classes) => {
-      var Class = []
-      for (let i = 0; i < Object.keys(classes).length; i += 1) {
-        const currentKey = Object.keys(classes)[i];
-        const currItem = classes[currentKey];
-  
-       Class.push(` ${currItem} (${currentKey})`);
-
-       this.setState ({
-         classList: Class
-       })
-    
-      }
-
-    }
-
-    setClubsInfo = (clubs) => {
-      var ClubList = []
-      for (let i = 0; i < Object.keys(clubs).length; i += 1) {
-        const currentKey = Object.keys(clubs)[i];
-        const currItem = clubs[currentKey];
-  
-        ClubList.push(currItem);
-
-        this.setState ({
-          clubList: ClubList,
-
-        })
-    
-      }
-
-    }
     componentDidMount() {
         db.getCurrUser(this.setCurrUser);
     }
@@ -119,14 +59,65 @@ class Profile extends Component {
         editing: false,
       });
 
-      //IDK why this is here but it works now bc of syncronizatin issues
-      db.getFriends(this.state.userID, this.setFriendsNamesAndPics);
-      db.getClass(this.state.userID, this.setClassInfo);
-      db.getClubs(this.state.userID, this.setClubsInfo);
+      if(currUser.Clubs != null) {
+      var ClubList = []
+      for (let i = 0; i < Object.keys(currUser.Clubs).length; i += 1) {
+        const currentKey = Object.keys(currUser.Clubs)[i];
+        const currItem = currUser.Clubs[currentKey];
+  
+        ClubList.push(currItem);
 
-     
+        this.setState ({
+          clubList: ClubList,
+
+        })
+    
+      }
+    }
+
+    if(currUser.Classes != null) {
+    var Class = []
+      for (let i = 0; i < Object.keys(currUser.Classes).length; i += 1) {
+        const currentKey = Object.keys(currUser.Classes)[i];
+        const currItem = currUser.Classes[currentKey];
+  
+       Class.push(` ${currItem} (${currentKey})`);
+
+       this.setState ({
+         classList: Class
+       })
+    
+      }
+    }
+    if(currUser.Friends != null) {
+    this.state.friendsPics = []
+    this.state.friendsNames = []
+
+    for (let i = 0; i < Object.keys(currUser.Friends).length; i += 1) {
+      const currentKey = Object.keys(currUser.Friends)[i];
+      const currItem = currUser.Friends[currentKey];
+     db.getUser(currItem, this.setFriendInfo);
+    
+    }
   }
   
+  }
+  
+  setFriendInfo = (user) => {
+    var pics = this.state.friendsPics
+    var names = this.state.friendsNames
+    var IDs = this.state.friendsIDs
+    pics.push(user.userPic);
+    names.push(`${user.userFirstName} ${user.userLastName}`);
+    IDs.push(user.userID);
+
+    this.setState({
+      friendsPics: pics,
+      friendsNames: names,
+      friendsIDs: IDs,
+    })
+  }
+
   onYearChange = (event) => {
     this.setState({userYear: event.target.value});
   }
@@ -143,6 +134,7 @@ class Profile extends Component {
       userFirstName: event.target.value.split(" ")[0],
       userLastName: event.target.value.split(" ")[1] });
   }
+
   addNewClub = () => {
     
     this.state.clubList.push(this.state.newClub);
@@ -234,7 +226,7 @@ class Profile extends Component {
         ? <li>{this.state.clubList[3]}</li>
         : <div> </div>
          }
-         {this.state.editing && (this.state.clubList.length < 5)
+         {this.state.editing && (this.state.clubList.length < 4)
            ? <div><Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
             <Button onClick={this.addNewClub}>Add Club</Button>  </div> 
           : <div></div>
@@ -245,10 +237,6 @@ class Profile extends Component {
         </div>
      );
   }
-
-
-
-
 
     renderClasses = () =>  {
      
@@ -271,7 +259,7 @@ class Profile extends Component {
          ? <li>{this.state.classList[1]}</li>
          : <div> </div>
           }
-          {this.state.editing && (this.state.classList.length < 5)
+          {this.state.editing && (this.state.classList.length < 4)
             ?    <li>
             <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
             <div class="dropdown">
