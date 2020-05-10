@@ -218,7 +218,7 @@ class Profile extends Component {
         ? <li>{this.state.clubList[3]}</li>
         : <div> </div>
          }
-         {this.state.editing && (this.state.clubList.length < 4)
+         {this.state.editing 
            ? <div><Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
             <Button onClick={this.addNewClub}>Add Club</Button>  </div> 
           : <div></div>
@@ -231,6 +231,7 @@ class Profile extends Component {
   }
 
     renderClasses = () =>  {
+     
         return (
           <div> 
           <ul>
@@ -250,7 +251,7 @@ class Profile extends Component {
          ? <li>{this.state.classList[1]}</li>
          : <div> </div>
           }
-          {this.state.editing && (this.state.classList.length < 4)
+          {this.state.editing 
             ?    <li>
             <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
             <div class="dropdown">
@@ -284,7 +285,6 @@ class Profile extends Component {
 
 
   render() {
-    console.log(this.state.classList)
     return (
       <div className="all">
         <NavLink to="/calendar" class="logo">
@@ -344,7 +344,7 @@ class Profile extends Component {
             <h3 className="sectionHeader">Classes</h3>
           </div>
           <div className="listStyle">
-           {this.renderClasses}
+           {this.renderClasses()}
           </div>
         </div>
 
