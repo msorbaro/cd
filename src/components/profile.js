@@ -24,12 +24,14 @@ class Profile extends Component {
       userLastName: ' last ',
       userFullName: 'username',
       userYear: 'no year',
+      image: noUserPic,
+
       friendsIDs: [],
       friendsPics: [],
       friendsNames: [],
-      friendsNamesOfficial: [],
+
       bio: '',
-      image: noUserPic,
+      
       newClub: '',
       newClass: '',
       classes: '',
@@ -56,12 +58,15 @@ class Profile extends Component {
     setFriendInfo = (user) => {
       var pics = this.state.friendsPics
       var names = this.state.friendsNames
+      var IDs = this.state.friendsIDs
       pics.push(user.userPic);
       names.push(`${user.userFirstName} ${user.userLastName}`);
+      IDs.push(user.userID);
 
       this.setState({
         friendsPics: pics,
         friendsNames: names,
+        friendsIDs: IDs,
       })
     }
 
@@ -111,6 +116,7 @@ class Profile extends Component {
         userLastName: currUser.userLastName,
         userYear: currUser.userYear,
         image: currUser.userPic,
+        editing: false,
       });
 
       //IDK why this is here but it works now bc of syncronizatin issues
@@ -121,9 +127,21 @@ class Profile extends Component {
      
   }
   
+  onYearChange = (event) => {
+    this.setState({userYear: event.target.value});
+  }
+  onImageChange = (event) => {
+    this.setState({image: event.target.value});
+  }
  
   onClubChange = (event) => {
     this.setState({ newClub: event.target.value });
+  }
+
+  onUsernameChange = (event) => {
+    this.setState({ 
+      userFirstName: event.target.value.split(" ")[0],
+      userLastName: event.target.value.split(" ")[1] });
   }
   addNewClub = () => {
     
@@ -149,13 +167,6 @@ class Profile extends Component {
     });
   }
 
-  onPasswordChange= (event) => {
-    this.setState({ password: event.target.value });
-  }
-
-  onPasswordTwoChange= (event) => {
-    this.setState({ passwordTwo: event.target.value });
-  }
 
   onFirstUsernameChange= (event) => {
     this.setState({ firstusername: event.target.value });
@@ -169,209 +180,130 @@ class Profile extends Component {
     this.props.history.push('/');
   }
 
-  renderClubs = () => {
-    if (this.state.clubList.length == 0){
-      return (
-        <div> 
-           <ul>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>      
-            </li>
-           </ul>
-          </div>
-       );
-    }
+  populateFriend = (index) => {
+    db.getUser(this.state.friendsIDs[index], this.goToFriend)
+  }
+  goToFriend = (user) => {
+       // userID: user.userID,
+        //userEmail: user.userEmail,
+       // userFirstName: user.userFirstName,
+       // userLastName: user.userLastName,
+       // userYear: user.userYear,
+       // image: user.userPic,
 
-    else if (this.state.clubList.length == 1){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-             </li>
-           </ul>
-          </div>
-       );
-    }
+      //db.getFriendsFriends(this.state.userID, this.setFriendsNamesAndPics);
+      //db.getFriendsClass(this.state.userID, this.setClassInfo);
+      //db.getFriendsClubs(this.state.userID, this.setClubsInfo);
+    //this.props.history.push('/friendprofile');
 
-    else if (this.state.clubList.length == 2){
-      return (
-        <div> 
-           <ul>
-           <li>{this.state.clubList[0]}</li>
-           <li>{this.state.clubList[1]}</li>
-
-           <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-           </li>
-           </ul>
-          </div>
-       );
-    }
-
-    else if (this.state.clubList.length == 3){
-     return (
-      <div> 
-         <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         <li>
-           <Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
-           <Button onClick={this.addNewClub}>Add Club</Button>
-
-         </li>
-         </ul>
-        </div>
-     );
   }
 
-  if (this.state.clubList.length >3){
+  toggleEdit = () => {
+    if(this.state.editing) { //turning it back to false
+    this.setState({ 
+      editing:false,
+    });
+    db.saveEditUser(this.state.userID, this.state.userFirstName, this.state.userLastName, this.state.userYear, this.state.image)
+  }
+  else{
+    this.setState({ 
+      editing:true,
+    });
+  }
+  }
+
+  renderClubs = () => {
+  
+ 
     return (
       <div> 
          <ul>
-         <li>{this.state.clubList[0]}</li>
-         <li>{this.state.clubList[1]}</li>
-         <li>{this.state.clubList[2]}</li>
-         <li>{this.state.clubList[3]}</li>
+         { (this.state.clubList.length > 0) 
+        ? <li>{this.state.clubList[0]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 1) 
+        ? <li>{this.state.clubList[1]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 2) 
+        ? <li>{this.state.clubList[2]}</li>
+        : <div> </div>
+         }
+         { (this.state.clubList.length > 3) 
+        ? <li>{this.state.clubList[3]}</li>
+        : <div> </div>
+         }
+         {this.state.editing && (this.state.clubList.length < 5)
+           ? <div><Input className="response"  placeholder="ex. Tri team" onChange={this.onClubChange} value={this.state.newClub} />
+            <Button onClick={this.addNewClub}>Add Club</Button>  </div> 
+          : <div></div>
+  
+         }
+       
          </ul>
         </div>
      );
   }
 
 
-}
+
 
 
     renderClasses = () =>  {
-      if (this.state.classList.length == 0){
+     
         return (
-      <ul>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
+          <div> 
+          <ul>
+          { (this.state.classList.length > 0) 
+         ? <li>{this.state.classList[0]}</li>
+         : <div> </div>
+          }
+          { (this.state.classList.length > 1) 
+         ? <li>{this.state.classList[1]}</li>
+         : <div> </div>
+          }
+          { (this.state.classList.length > 2) 
+         ? <li>{this.state.classList[2]}</li>
+         : <div> </div>
+          }
+          { (this.state.classList.length > 3) 
+         ? <li>{this.state.classList[1]}</li>
+         : <div> </div>
+          }
+          {this.state.editing && (this.state.classList.length < 5)
+            ?    <li>
+            <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
+            <div class="dropdown">
+              <button class="dropbtn">Class Block</button>
+              <div class="dropdown-content">
+                <a href="#">8</a>
+                <a href="#">9S</a>
+                <a href="#">9L</a>
+                <a href="#">10</a>
+                <a href="#">11</a>
+                <a href="#">12</a>
+                <a href="#">2</a>
+                <a href="#">3A</a>
+                <a href="#">6A</a>
+                <a href="#">10A</a>
+                <a href="#">2A</a>
+                <a href="#">3B</a>
+                <a href="#">6B</a>
+              </div>
+            </div>
+          </li> 
+           : <div></div>
+          }
+          </ul>
+         </div>
+      );
 
-      if (this.state.classList.length == 1){
-        return (
-      <ul>
-       <li>{this.state.classList[0]}</li>
-      <li>
-        <Input className="response" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 2){
-     return (
-      <ul>
-      <li>{this.state.classList[0]}</li>
-       <li>{this.state.classList[1]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn" onClick={this.addNewClass}>Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10 </a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
-
-      if (this.state.classList.length == 3){
-        return (
-      <ul>
-        <li>{this.state.classList[0]}</li>
-        <li>{this.state.classList[1]}</li>
-        <li>{this.state.classList[2]}</li>
-      <li>
-        <Input className="response" id="emailInputBar" placeholder="ex. ENGL37" onChange={this.onClassChange} value={this.state.newClass} />
-        <div class="dropdown">
-          <button class="dropbtn">Class Block</button>
-          <div class="dropdown-content">
-            <a href="#">8</a>
-            <a href="#">9S</a>
-            <a href="#">9L</a>
-            <a href="#">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
-            <a href="#">2</a>
-            <a href="#">3A</a>
-            <a href="#">6A</a>
-            <a href="#">10A</a>
-            <a href="#">2A</a>
-            <a href="#">3B</a>
-            <a href="#">6B</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-        );
-      }
+     
 
     }
 
-  renderButton = () => {
 
-
-  }
   render() {
     return (
       <div className="all">
@@ -387,7 +319,15 @@ class Profile extends Component {
           <div>
             <h3 className="sectionHeader">Profile</h3>
             <div className="imgStyle">
-              <img class="a" src={this.state.image} width="150" height="150"/>
+            {this.state.editing
+             ? <div>
+               <h6>Insert Image URL</h6>  
+             <Input className="response"  placeholder="Image URL " onChange={this.onImageChange}  value={this.state.image} />
+              </div>
+             :<img class="a" src={this.state.image} width="150" height="150"/>
+
+
+            }
             </div>
           </div>
           <div className="nameContainer">
@@ -398,7 +338,10 @@ class Profile extends Component {
           </div>
           <div className="inputContainer">
             <div className="indivInput">
-              <h6>{`${this.state.userFirstName} ${this.state.userLastName}`}</h6>
+            {this.state.editing
+             ? <Input className="response"  onChange={this.onUsernameChange} value={`${this.state.userFirstName} ${this.state.userLastName}`} />
+              :<h6>{`${this.state.userFirstName} ${this.state.userLastName}`}</h6>
+            }
             </div>
             <div className="indivInput">
               <h6>{this.state.userEmail}</h6>
@@ -407,7 +350,11 @@ class Profile extends Component {
               <h6>***********</h6>
             </div>
             <div className="indivInput">
-              <h6>{this.state.userYear}</h6>
+              {this.state.editing
+              ? <Input className="response"  onChange={this.onYearChange} value={this.state.userYear} />
+              : <h6>{this.state.userYear}</h6>
+            }
+             
             </div>
           </div>
         </div>
@@ -439,7 +386,7 @@ class Profile extends Component {
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[0]} width="55%" height="55%"/>
+                <img class="a" src={this.state.friendsPics[0]}  width="55%" height="55%"/>
                 <p>{this.state.friendsNames[0]}</p>
               </div>
             </div>
@@ -481,11 +428,14 @@ class Profile extends Component {
           </div>
         </div>
         <div className="editOrFollowButton">
-          <Button>Edit Profile</Button>
+        {this.state.editing
+         ? <Button onClick={this.toggleEdit}>Save Profile</Button>
+         :<Button onClick={this.toggleEdit}>Edit Profile</Button>
+        }
         </div>
         <div className="logoutContainer">
           <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-          <NavLink to="/searchfriends">Logout</NavLink>
+          <NavLink to="/" >Logout</NavLink>
         </div>
         <div className="calendarContainer">
           <NavLink to="/calendar">

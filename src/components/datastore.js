@@ -221,3 +221,12 @@ export function getListOfUsers(callback) {
     callback(snapshot.val());
   });
 }
+
+
+export function saveEditUser(userId, first, last, year, userPic) {
+  ourDB.ref(`users/${userId}/userPic`).set(userPic);
+  ourDB.ref(`users/${userId}/userFirstName`).set(first);
+  ourDB.ref(`users/${userId}/userLastName`).set(last);
+  ourDB.ref(`users/${userId}/userYear`).set(year);
+
+}
