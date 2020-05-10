@@ -175,17 +175,9 @@ class Profile extends Component {
   populateFriend = (index) => {
     db.getUser(this.state.friendsIDs[index], this.goToFriend)
   }
-  goToFriend = (user) => {
-       // userID: user.userID,
-        //userEmail: user.userEmail,
-       // userFirstName: user.userFirstName,
-       // userLastName: user.userLastName,
-       // userYear: user.userYear,
-       // image: user.userPic,
-
-      //db.getFriendsFriends(this.state.userID, this.setFriendsNamesAndPics);
-      //db.getFriendsClass(this.state.userID, this.setClassInfo);
-      //db.getFriendsClubs(this.state.userID, this.setClubsInfo);
+  
+  goToFriend = (FriendID) => {
+    //FriendDB.populateFriendPage(this.state.currUser, FriendID)
     //this.props.history.push('/friendprofile');
 
   }

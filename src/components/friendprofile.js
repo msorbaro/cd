@@ -18,6 +18,8 @@ class FriendProfile extends Component {
     super(props);
 
     this.state = {
+      currUserID: '',
+
       userID: 'no user ID',
       userEmail: 'no email',
       userFirstName: ' first ',
@@ -47,12 +49,14 @@ class FriendProfile extends Component {
     }
 
     populateFriendPage = (currUser, friendID) => {
-      db.getCurrUser(this.setCurrUser);
+      this.setState({
+        currUserID: currUser,
+      });
+      db.getUser(friendID, this.setCurrUser);
     }
 
      setCurrUser = (currUser) => {
-    
-
+       
       this.setState({
          userID: currUser.userID,
          userEmail: currUser.userEmail,
