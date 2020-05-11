@@ -202,7 +202,7 @@ class Scott extends Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogoProfile">
+        <div className="dartCalLogoProfileFake">
           DartCal
           <div className="scheduleLogo">
               <a href="calendar" > 
@@ -219,12 +219,12 @@ class Scott extends Component {
           </div>
           <div>
           </div>
-          <div className="nameContainer">
+          <div className="nameContainerFake">
             <h6>Name</h6>
             <h6>Email</h6>
             <h6>Year</h6>
           </div>
-          <div className="inputContainer">
+          <div className="inputContainerFake">
             <div className="indivInput">
               <h6>Scott Gibbons</h6>
             </div>
@@ -257,7 +257,7 @@ class Scott extends Component {
           </div>
         </div>
 
-        <div className="friendsinfo">
+        <div className="friendsinfoFake">
           <div>
             <h3 className="sectionHeader">Scott's Friends</h3>
           </div>

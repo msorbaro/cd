@@ -202,7 +202,7 @@ class Lily extends Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogoProfile">
+        <div className="dartCalLogoProfileFake">
           DartCal
           <div className="scheduleLogo">
               <a href="calendar" > 
@@ -210,7 +210,7 @@ class Lily extends Component {
               </a>
               </div>
         </div>
-        <div className="profileinfo">
+        <div className="profileinfoFake">
           <div>
             <h3 className="sectionHeader">Profile</h3>
             <div className="imgStyle">
@@ -219,12 +219,12 @@ class Lily extends Component {
           </div>
           <div>
           </div>
-          <div className="nameContainer">
+          <div className="nameContainerFake">
             <h6>Name</h6>
             <h6>Email</h6>
             <h6>Year</h6>
           </div>
-          <div className="inputContainer">
+          <div className="inputContainerFake">
             <div className="indivInput">
               <h6>Lily Maechlingo</h6>
             </div>
@@ -246,7 +246,7 @@ class Lily extends Component {
           </div>
         </div>
 
-        <div className="clubinfo">
+        <div className="clubinfoFake">
           <div>
             <h3 className="sectionHeader">Clubs</h3>
           </div>
@@ -257,7 +257,7 @@ class Lily extends Component {
           </div>
         </div>
 
-        <div className="friendsinfo">
+        <div className="friendsinfoFake">
           <div>
             <h3 className="sectionHeader">Lily's Friends</h3>
           </div>

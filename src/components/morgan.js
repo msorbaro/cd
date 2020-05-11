@@ -202,29 +202,29 @@ class Morgan extends Component {
   render() {
     return (
       <div className="all">
-        <div className="dartCalLogoProfile">
+        <div className="dartCalLogoProfileFake">
           DartCal
-          <div className="scheduleLogo">
+          <div className="scheduleLogoFake">
               <a href="calendar" > 
               <img width="80px" src={logo}/>
               </a>
               </div>
         </div>
-        <div className="profileinfo">
+        <div className="profileinfoFake">
           <div>
-            <h3 className="sectionHeader">Profile</h3>
+            <h3 className="sectionHeaderFake">Profile</h3>
             <div className="imgStyle">
               <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width ="250" height="250"/>
             </div>
           </div>
           <div>
           </div>
-          <div className="nameContainer">
+          <div className="nameContainerFake">
             <h6>Name</h6>
             <h6>Email</h6>
             <h6>Year</h6>
           </div>
-          <div className="inputContainer">
+          <div className="inputContainerFake">
             <div className="indivInput">
               <h6>Morgan Sorbaro</h6>
             </div>
@@ -249,6 +249,8 @@ class Morgan extends Component {
         <div className="clubinfo">
           <div>
             <h3 className="sectionHeader">Clubs</h3>
+            <li> DALI </li>
+
           </div>
           <div className="listStyle">
 
@@ -264,12 +266,12 @@ class Morgan extends Component {
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-              <img class="a" src={this.state.friendsNames[2]} width="55%" height="35%"/>
+              <img class="a" src={this.state.friendsNames[2]} width="55px" height="55px"/>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src= "https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="45%" height="45%"/>
+                <img class="a" src= "https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="55px" height="55px"/>
                 <p>Annika Kouhia</p>
               </div>
             </div>

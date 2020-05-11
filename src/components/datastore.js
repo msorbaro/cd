@@ -68,6 +68,30 @@ export function getUser(userID, callBack) {
       });
 }
 
+export function getUserID(userFirstName, userLastName, callBack) {
+   
+  // get the user id and accept a snapshot of information
+  ourDB.ref(`users/`).on('value', (snapshot) => { 
+    var uL = snapshot.val();
+    var thisUserID = [];
+    // get list of users
+    for (let i = 0; i < Object.keys(uL).length; i += 1) {
+      const currentKey = Object.keys(uL)[i];
+      const currItem = uL[currentKey]; // the user
+      
+      var firstName = currItem.userFirstName; // typeof is a string
+      var lastName = currItem.userLastName; // typeof is a string
+      
+      if(firstName == userFirstName && lastName == userLastName) {
+        thisUserID.push(currentKey);
+      }
+      
+      console.log(uL);
+    }
+    callBack(thisUserID); // call user into
+  });
+}
+
 
 export function getUserAndCal(callBack) {
   console.log("getting user");
