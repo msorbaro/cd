@@ -94,10 +94,12 @@ class DTrade extends Component {
         <div className="clubName">
           Dartmouth D-Trade
         </div>
-        <div className="searchBar">
-          <img width="40px" src={search} style={{ 'vertical-align':'middle' }}/>
-          <input type="text" width="40px" placeholder="Search" className="shortSearch" ></input>
-        </div>
+        <NavLink to="/searchfriends">
+          <div className="searchBar">
+            <img width="40px" src={search} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
+            Back to search
+          </div>
+        </NavLink>
         <div className="buttonContainer">
           <Button id="club" style={{'font-size': '35px', 'line-height': '50px'}}onClick={this.subscribe}>Subscribe</Button>
         </div>

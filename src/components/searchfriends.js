@@ -11,6 +11,8 @@ import '../cssfolder/calendar.css' // webpack must be configured to do this
 import '../cssfolder/searchfriends.css'
 import ReactSearchBox from 'react-search-box';
 import * as db from './datastore';
+import userpic from '../pictures/user.png';
+
 
 
 class SearchFriends extends React.Component {
@@ -94,6 +96,20 @@ class SearchFriends extends React.Component {
               </div>
             </div>
           </NavLink>
+          <div className="toProfile">
+          <NavLink to="/profile"> 
+            <img width="60px" src={userpic} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
+            <div style={{ 'margin-top':'8px'}}>Profile</div>
+          </NavLink> &nbsp;
+          </div>
+          <div className="toCal">
+            <NavLink to="/calendar">
+              <img width="60px" src={logo} style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/>
+              <div style={{ 'margin-top':'8px'}}>Calendar</div>
+            </NavLink>
+          
+          </div>
+         
           <div className="searchBarFriend">
             <p></p>
             <ReactSearchBox
@@ -188,9 +204,7 @@ class SearchFriends extends React.Component {
             </div>
           </div>
         </div>
-        <Button>
-          <div className="friend-triangle-left"></div>
-        </Button>
+        <div className="friend-triangle-left"></div>
         <div className="friend-triangle-right"></div>
       </div>
     )

@@ -161,3 +161,14 @@
 	border-left: 50px solid #1D263B;
 	border-bottom: 25px solid transparent;
 }
+
+.toProfile{
+  position: absolute;
+  top: 3%;
+  left: 85%;
+}
+.toCal{
+  position: absolute;
+  top: 3%;
+  left: 15%;
+}
