@@ -40,19 +40,14 @@ class FriendProfile extends Component {
       editing: false,
     };  
     }
-
-   
-    
-    
+ 
     
     componentDidMount() {
+      db.getUser(this.props.location.state.friendID, this.setCurrUser)
     }
 
-    populateFriendPage = (currUser, friendID) => {
-      this.setState({
-        currUserID: currUser,
-      });
-      db.getUser(friendID, this.setCurrUser);
+    updateUser= (newID) => {
+      //db.getUser(this.state.friendsIDs[newID], this.setCurrUser)
     }
 
      setCurrUser = (currUser) => {
@@ -98,6 +93,7 @@ class FriendProfile extends Component {
        }
      }
      if(currUser.Friends != null) {
+      
      this.state.friendsPics = []
      this.state.friendsNames = []
  
@@ -272,14 +268,14 @@ class FriendProfile extends Component {
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[0]} width="55%" height="55%"/>
-                <p>{this.state.friendsNames[0]}</p>
+                <img class="a" onClick={() => this.updateUser(0)} src={this.state.friendsPics[0]} width="55%" height="55%"/>
+                <p onClick={() => this.updateUser(0)}>{this.state.friendsNames[0]}</p>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[1]} width="55%" height="55%"/>
-                <p>{this.state.friendsNames[1]}</p>
+                <img class="a" onClick={() => this.updateUser(1)} src={this.state.friendsPics[1]} width="55%" height="55%"/>
+                <p onClick={() => this.updateUser(1)}>{this.state.friendsNames[1]}</p>
               </div>
             </div>
             <div class="grid-item">

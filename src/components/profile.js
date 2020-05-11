@@ -176,11 +176,11 @@ class Profile extends Component {
     db.getUser(this.state.friendsIDs[index], this.goToFriend)
   }
   
-  goToFriend = (FriendID) => {
+  //goToFriend = (FriendID) => {
     //FriendDB.populateFriendPage(this.state.currUser, FriendID)
     //this.props.history.push('/friendprofile');
 
-  }
+  //}
 
   toggleEdit = () => {
     if(this.state.editing) { //turning it back to false
@@ -194,6 +194,15 @@ class Profile extends Component {
       editing:true,
     });
   }
+  }
+
+  goToFriend = (index) => {
+    console.log(this.state.bio)
+    this.props.history.push({
+        pathname: '/friendprofile',
+        state: {friendID: this.state.friendsIDs[index]}
+
+    })
   }
 
   renderClubs = () => {
@@ -366,14 +375,14 @@ class Profile extends Component {
           <div class="grid-container">
             <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[0]}  width="55%" height="55%"/>
-                <p>{this.state.friendsNames[0]}</p>
+                <img class="a" onClick={() => this.goToFriend(0)} src={this.state.friendsPics[0]}  width="55%" height="55%"/>
+                <p  onClick={() => this.goToFriend(0)}>{this.state.friendsNames[0]}</p>
               </div>
             </div>
               <div class="grid-item">
               <div className="imgStyle">
-                <img class="a" src={this.state.friendsPics[1]} width="55%" height="55%"/>
-                <p>{this.state.friendsNames[1]}</p>
+                <img class="a" onClick={() => this.goToFriend(1)} src={this.state.friendsPics[1]} width="55%" height="55%"/>
+                <p onClick={() => this.goToFriend(1)}>{this.state.friendsNames[1]}</p>
               </div>
             </div>
             <div class="grid-item">
@@ -415,7 +424,7 @@ class Profile extends Component {
         </div>
         <div className="logoutContainer">
           <img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'middle', 'mix-blend-mode': 'soft-light'}}/> 
-          <NavLink to="/" >Logout</NavLink>
+          <NavLink to="/" onClick={db.signOut}>Logout</NavLink>
         </div>
         <div className="calendarContainer">
           <NavLink to="/calendar">

@@ -387,7 +387,7 @@ class Calendar extends React.Component {
               <NavLink to="/searchfriends">
               <div><img width="50px" src="https://cdn3.iconfinder.com/data/icons/mixed-communication-and-ui-pack-1/48/general_pack_NEW_glyph_logout_signout-512.png" style={{ 'vertical-align':'center', 'mix-blend-mode': 'soft-light'}}/></div>
               </NavLink> &nbsp;
-              <NavLink to="/searchfriends"><div style={{ 'margin-top':'10px'}}>Logout</div></NavLink>
+              <NavLink to="/"><div style={{ 'margin-top':'10px'}} onClick={db.signOut} >Logout</div></NavLink>
         </div>
       <div className="cal">
         {cal}
