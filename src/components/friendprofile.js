@@ -121,10 +121,7 @@ class FriendProfile extends Component {
        friendsIDs: IDs,
      })
    }
-   addClass = (classBlock) => {
-     console.log("tester")
-   }
-
+ 
    renderClubs = () => {
  
     return (

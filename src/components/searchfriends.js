@@ -20,7 +20,7 @@ class SearchFriends extends React.Component {
     super(props);
     this.state = {
       allUsers: [],
-      friendsIDs: ["6YwmMK3Z5OSe9hD8iYLOl2owJar1", "qJ79iMTzwzSEJvSvlJq5p6sbIvl1", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2", "jlrykrdLwiZ5igAOifGPfEVLoiP2", "0km9VWPQ82hxX69121riuJvhe8f1"],
+      friendsIDs: ["6YwmMK3Z5OSe9hD8iYLOl2owJar1", "qJ79iMTzwzSEJvSvlJq5p6sbIvl1", "yvKgKo5tmNXtKbIVtL6k6bYcQ6X2", "jlrykrdLwiZ5igAOifGPfEVLoiP2", "r48jVmIbLGas73K1f28Jh9eiUku2"],
     };
   }
 
@@ -174,7 +174,7 @@ class SearchFriends extends React.Component {
             <div class="friendContainer">
               <div>
               <a href="friendprofile">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/scott-gibbons.jpg" width="65%" height="65%"/>
+                <img class="a" onClick={() => this.goToFriend(0)} src="https://cs.dartmouth.edu/~albertoq/cs10/people/scott-gibbons.jpg" width="65%" height="65%"/>
                 <p  onClick={() => this.goToFriend(0)}>{"Scott Gibbons"}</p>
                 </a>
               </div>
@@ -182,7 +182,7 @@ class SearchFriends extends React.Component {
             <div class="friendContainer">
               <div>
                 <a href="">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="65%" height="65%"/>
+                <img class="a" onClick={() => this.goToFriend(1)} src="https://cs.dartmouth.edu/~albertoq/cs10/people/morgan-sorbaro.jpg" width="65%" height="65%"/>
                 <p  onClick={() => this.goToFriend(1)}>{"Morgan Sorbaro"}</p>
                 </a>
               </div>
@@ -190,7 +190,7 @@ class SearchFriends extends React.Component {
             <div class="friendContainer">
               <div>
               <a href="friendprofile">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/lily-maechling.jpg" width="65%" height="65%"/>
+                <img class="a" onClick={() => this.goToFriend(2)} src="https://cs.dartmouth.edu/~albertoq/cs10/people/lily-maechling.jpg" width="65%" height="65%"/>
                 <p  onClick={() => this.goToFriend(2)}>{"Lily Maechling"}</p>
                 </a>
               </div>
@@ -198,7 +198,7 @@ class SearchFriends extends React.Component {
             <div class="friendContainer">
               <div>
               <a href="friendprofile">
-                <img class="a" src="https://cs.dartmouth.edu/~albertoq/cs10/people/dylan-bienstock.jpg" width="65%" height="65%"/>
+                <img class="a" onClick={() => this.goToFriend(3)} src="https://cs.dartmouth.edu/~albertoq/cs10/people/dylan-bienstock.jpg" width="65%" height="65%"/>
                 <p  onClick={() => this.goToFriend(3)}>{"Dylan Bienstock"}</p>
               </a>
               </div>
@@ -206,7 +206,7 @@ class SearchFriends extends React.Component {
             <div class="friendContainer">
               <div>
               <a href="friendprofile">
-                <img class="a" src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="65%" height="65%"/>
+                <img class="a"onClick={() => this.goToFriend(4)} src="https://images.squarespace-cdn.com/content/v1/551cbdc5e4b0cd11d2597487/1512060367564-IGT0WBWUIVLHVF09B841/ke17ZwdGBToddI8pDm48kEcIqZ-D2i5g-z-Jm45MtO97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmnhdptcuU1alwky_sWs380ox8UhC6Zi9T53n4b7PpzvcsD7S2cubC6vFsaWXK1aWB/nnY62nCr.jpg?format=1000w" width="65%" height="65%"/>
                 <p  onClick={() => this.goToFriend(4)}>{"Annika Kouhia"}</p>
                 </a>
               </div>
