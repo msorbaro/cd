@@ -38,13 +38,60 @@ class Profile extends Component {
       classList: [],
       clubList: [],
       editing: false,
+
+      classBlockMap: null,
     };  
     }
 
   
-    componentDidMount() {
-        db.getCurrUser(this.setCurrUser);
-    }
+  componentDidMount() {
+    db.getCurrUser(this.setCurrUser);
+    this.setClassBlockMap();
+  }
+
+  setClassBlockMap = () => {
+    let map = new Map();
+    map.set('8', {start: '2020-05-11T07:45:00', 
+                  end: '2020-05-11T08:35:00',
+                  daysOfWeek: ['1', '2', '4', '5']})
+    map.set('9S', {start: '2020-05-11T09:05:00', 
+                  end: '2020-05-11T09:55:00',
+                  daysOfWeek: ['1', '2', '4', '5']})
+    map.set('9L', {start: '2020-05-11T8:50:00', 
+                  end: '2020-05-11T9:55:00',
+                  daysOfWeek: ['1', '3', '5']})
+    map.set('10A', {start: '2020-05-11T10:10:00', 
+                  end: '2020-05-11T12:00:00',
+                  daysOfWeek: ['2', '4']})
+    map.set('10', {start: '2020-05-11T10:10:00', 
+                  end: '2020-05-11T11:15:00',
+                  daysOfWeek: ['1', '3', '5']})
+    map.set('11', {start: '2020-05-11T11:30:00', 
+                  end: '2020-05-11T12:35:00',
+                  daysOfWeek: ['1', '3', '5']})
+    map.set('12', {start: '2020-05-11T12:50:00', 
+                  end: '2020-05-11T13:55:00',
+                  daysOfWeek: ['1', '3', '5']})
+    map.set('2', {start: '2020-05-11T14:10:00', 
+                  end: '2020-05-11T15:15:00',
+                  daysOfWeek: ['1', '3', '5']})
+    map.set('2A', {start: '2020-05-11T14:25:00', 
+                  end: '2020-05-11T16:15:00',
+                  daysOfWeek: ['2', '4']})
+    map.set('3A', {start: '2020-05-11T15:30:00', 
+                  end: '2020-05-11T17:20:00',
+                  daysOfWeek: ['1', '4']})
+    map.set('3B', {start: '2020-05-11T16:30:00', 
+                  end: '2020-05-11T18:20:00',
+                  daysOfWeek: ['2', '4']})
+    map.set('6A', {start: '2020-05-11T15:30:00', 
+                  end: '2020-05-11T17:20:00',
+                  daysOfWeek: ['1', '3']})
+    map.set('6B', {start: '2020-05-11T18:30:00', 
+                  end: '2020-05-11T21:30:00',
+                  daysOfWeek: ['3']})                               
+  }
+
   
   setCurrUser = (currUser) => {
     
@@ -151,9 +198,28 @@ class Profile extends Component {
   }
 
   addNewClass = (block) => {
-    console.log("new class")
+    //renders locally 
     this.state.classList.push(this.state.newClass);
     db.addClass(this.state.userID, block, this.state.newClass);
+    
+    //adds event to calendar 
+    db.addCalEvent(
+      this.state.userID, 
+      this.state.newClass + block,
+      {
+        title: this.state.newClass,
+        className: 'eTypeClass',
+        id: this.state.newClass + block,
+        startRecur: '2020-03-30',
+        endRecur: '2020-06-05',
+        start: '2020-05-11T08:00:00',
+        end: '2020-05-11T09:00:00',
+        daysOfWeek: ['1', '3', '5'],
+        
+      },
+    )
+    
+    
     this.setState({
        newClass: '',
    });
