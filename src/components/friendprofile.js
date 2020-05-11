@@ -121,7 +121,9 @@ class FriendProfile extends Component {
        friendsIDs: IDs,
      })
    }
- 
+   addClass = (classBlock) => {
+     console.log("tester")
+   }
 
    renderClubs = () => {
  
@@ -177,7 +179,7 @@ class FriendProfile extends Component {
         <div class="dropdown">
           <button class="dropbtn">Class Block</button>
           <div class="dropdown-content">
-            <a href="#">8</a>
+            <a href="#" >8</a>
             <a href="#">9S</a>
             <a href="#">9L</a>
             <a href="#">10</a>

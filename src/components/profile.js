@@ -155,8 +155,8 @@ class Profile extends Component {
     this.state.classList.push(this.state.newClass);
     db.addClass(this.state.userID, block, this.state.newClass);
     this.setState({
-        newClass: '',
-    });
+       newClass: '',
+   });
   }
 
 
@@ -266,19 +266,19 @@ class Profile extends Component {
             <div class="dropdown">
               <button class="dropbtn">Class Block</button>
               <div class="dropdown-content">
-                <a href="#">8</a>
-                <a href="#">9S</a>
-                <a href="#">9L</a>
-                <a href="#">10</a>
-                <a href="#">11</a>
-                <a href="#">12</a>
-                <a href="#">2</a>
-                <a href="#">3A</a>
-                <a href="#">6A</a>
-                <a href="#">10A</a>
-                <a href="#">2A</a>
-                <a href="#">3B</a>
-                <a href="#">6B</a>
+                <a href="#" onClick={() => this.addNewClass("8")} >8</a>
+                <a href="#" onClick={() => this.addNewClass("9S")}>9S</a>
+                <a href="#" onClick={() => this.addNewClass("9L")}>9L</a>
+                <a href="#" onClick={() => this.addNewClass("10")}>10</a>
+                <a href="#" onClick={() => this.addNewClass("11")}>11</a>
+                <a href="#" onClick={() => this.addNewClass("12")}>12</a>
+                <a href="#" onClick={() => this.addNewClass("2")}>2</a>
+                <a href="#" onClick={() => this.addNewClass("3A")}>3A</a>
+                <a href="#" onClick={() => this.addNewClass("6A")}>6A</a>
+                <a href="#" onClick={() => this.addNewClass("10A")}>10A</a>
+                <a href="#" onClick={() => this.addNewClass("2A")}>2A</a>
+                <a href="#" onClick={() => this.addNewClass("3B")}>3B</a>
+                <a href="# " onClick={() => this.addNewClass("6B")}>6B</a>
               </div>
             </div>
           </li> 
