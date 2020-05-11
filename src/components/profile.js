@@ -39,7 +39,7 @@ class Profile extends Component {
       clubList: [],
       editing: false,
 
-      classBlockMap: null,
+      classBlockMap: new Map(),
     };  
     }
 
@@ -50,46 +50,45 @@ class Profile extends Component {
   }
 
   setClassBlockMap = () => {
-    let map = new Map();
-    map.set('8', {start: '2020-05-11T07:45:00', 
-                  end: '2020-05-11T08:35:00',
+    this.state.classBlockMap.set('8', {startTime: '07:45:00', 
+                  endTime: '08:35:00',
                   daysOfWeek: ['1', '2', '4', '5']})
-    map.set('9S', {start: '2020-05-11T09:05:00', 
-                  end: '2020-05-11T09:55:00',
+    .set('9S', {startTime: '09:05:00', 
+                  endTime: '09:55:00',
                   daysOfWeek: ['1', '2', '4', '5']})
-    map.set('9L', {start: '2020-05-11T8:50:00', 
-                  end: '2020-05-11T9:55:00',
+    .set('9L', {startTime: '8:50:00', 
+                  endTime: '9:55:00',
                   daysOfWeek: ['1', '3', '5']})
-    map.set('10A', {start: '2020-05-11T10:10:00', 
-                  end: '2020-05-11T12:00:00',
+    .set('10A', {startTime: '10:10:00', 
+                  endTime: '12:00:00',
                   daysOfWeek: ['2', '4']})
-    map.set('10', {start: '2020-05-11T10:10:00', 
-                  end: '2020-05-11T11:15:00',
+    .set('10', {startTime: '10:10:00', 
+                  endTime: '11:15:00',
                   daysOfWeek: ['1', '3', '5']})
-    map.set('11', {start: '2020-05-11T11:30:00', 
-                  end: '2020-05-11T12:35:00',
+    .set('11', {startTime: '11:30:00', 
+                  endTime: '12:35:00',
                   daysOfWeek: ['1', '3', '5']})
-    map.set('12', {start: '2020-05-11T12:50:00', 
-                  end: '2020-05-11T13:55:00',
+    .set('12', {startTime: '12:50:00', 
+                  endTime: '13:55:00',
                   daysOfWeek: ['1', '3', '5']})
-    map.set('2', {start: '2020-05-11T14:10:00', 
-                  end: '2020-05-11T15:15:00',
+    .set('2', {startTime: '14:10:00', 
+                  endTime: '15:15:00',
                   daysOfWeek: ['1', '3', '5']})
-    map.set('2A', {start: '2020-05-11T14:25:00', 
-                  end: '2020-05-11T16:15:00',
+    .set('2A', {startTime: '14:25:00', 
+                  endTime: '16:15:00',
                   daysOfWeek: ['2', '4']})
-    map.set('3A', {start: '2020-05-11T15:30:00', 
-                  end: '2020-05-11T17:20:00',
+    .set('3A', {startTime: '15:30:00', 
+                  endTime: '17:20:00',
                   daysOfWeek: ['1', '4']})
-    map.set('3B', {start: '2020-05-11T16:30:00', 
-                  end: '2020-05-11T18:20:00',
+    .set('3B', {startTime: '16:30:00', 
+                  endTime: '18:20:00',
                   daysOfWeek: ['2', '4']})
-    map.set('6A', {start: '2020-05-11T15:30:00', 
-                  end: '2020-05-11T17:20:00',
+    .set('6A', {startTime: '15:30:00', 
+                  endTime: '17:20:00',
                   daysOfWeek: ['1', '3']})
-    map.set('6B', {start: '2020-05-11T18:30:00', 
-                  end: '2020-05-11T21:30:00',
-                  daysOfWeek: ['3']})                               
+    .set('6B', {startTime: '18:30:00', 
+                  endTime: '21:30:00',
+                  daysOfWeek: ['3']})                            
   }
 
   
@@ -203,20 +202,26 @@ class Profile extends Component {
     db.addClass(this.state.userID, block, this.state.newClass);
     
     //adds event to calendar 
+    var event =  {
+      title: this.state.newClass,
+      className: 'eTypeClass',
+      id: this.state.newClass + block,
+      startRecur: '2020-03-30',
+      endRecur: '2020-06-06',
+    }
+    // add block data to event
+    var eventextra = this.state.classBlockMap.get(block);
+    var prop;
+    for ( prop in eventextra ) {
+        if ( eventextra.hasOwnProperty(prop) && !event[prop] ) {
+            event[prop] = eventextra[prop];
+        }
+    }
+
     db.addCalEvent(
       this.state.userID, 
       this.state.newClass + block,
-      {
-        title: this.state.newClass,
-        className: 'eTypeClass',
-        id: this.state.newClass + block,
-        startRecur: '2020-03-30',
-        endRecur: '2020-06-05',
-        start: '2020-05-11T08:00:00',
-        end: '2020-05-11T09:00:00',
-        daysOfWeek: ['1', '3', '5'],
-        
-      },
+      event,
     )
     
     
