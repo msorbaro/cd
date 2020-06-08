@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
-import logo from '../pictures/calendar.png';
+import logo from '../pictures/DartCalLogo.png';
 import { NavLink, withRouter } from 'react-router-dom';
 
 import '../cssfolder/signin.css';
@@ -46,10 +46,10 @@ class SignIn extends Component {
 
   render() {
     return (
-    <div className="all">
+    <div className="allSignIn">
       <div className="dartCalLogo">
         DartCal
-        <div className="scheduleLogo"><img width="90px" src={logo}/></div>
+        <div className="logo"><img width="90px" src={logo}/></div>
       </div>
       <div className="logininfo">
         <div className="inputline">
