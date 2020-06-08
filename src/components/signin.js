@@ -49,7 +49,7 @@ class SignIn extends Component {
     <div className="allSignIn">
       <div className="dartCalLogo">
         DartCal
-        <div className="logo"><img width="90px" src={logo}/></div>
+        <img width="90px" src={logo} style={{"vertical-align":"bottom"}}/>
       </div>
       <div className="logininfo">
         <div className="inputline">
