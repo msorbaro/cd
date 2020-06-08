@@ -60,7 +60,7 @@ class SignIn extends Component {
           Password: &nbsp; 
           <Input type="password"  id="passwordInput" onChange={this.onPasswordChange} value={this.state.password} style={{"vertical-align":"top"}}/>
         </div>
-        <Button onClick={this.handleSigninButtonClick} style={{"margin-top":"6%"}}>Log In</Button>
+        <Button onClick={this.handleSigninButtonClick} style={{"margin-top":"6%", "width":"150px", "height":"50px"}}>Log In</Button>
         <div className="signup">
           New to DartCal? &nbsp; 
           <NavLink to="/signup" style={{"color": "#565C57", "font-weight": "bold"}}>
