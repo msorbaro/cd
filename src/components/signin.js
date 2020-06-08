@@ -54,23 +54,20 @@ class SignIn extends Component {
       <div className="logininfo">
         <div className="inputline">
           Username: &nbsp; 
-          <Input className="response" id="emailInputBar" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+          <Input id="emailInputBar" onChange={this.onEmailChange} value={this.state.email} style={{"vertical-align":"top"}}/>
         </div>
         <div className="inputline">
           Password: &nbsp; 
-          <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+          <Input type="password"  id="passwordInput" onChange={this.onPasswordChange} value={this.state.password} style={{"vertical-align":"top"}}/>
         </div>
+        <Button onClick={this.handleSigninButtonClick} style={{"margin-top":"6%"}}>Log In</Button>
         <div className="signup">
           New to DartCal? &nbsp; 
-          <NavLink to="/signup">
+          <NavLink to="/signup" style={{"color": "#565C57", "font-weight": "bold"}}>
              Sign Up 
           </NavLink>
         </div>
       </div>
-        <div className="enterorcancelbuttons">
-          <Button onClick={this.handleSigninButtonClick}>Log In</Button> &nbsp;
-          <Button  onClick={this.handleCancelButtonClick}>Cancel</Button>
-        </div>
     </div>
     );
   }

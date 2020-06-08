@@ -2,7 +2,7 @@
     background-color: #FBFBFB;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    min-height: 120vh;
+    min-height: 100vh;
     display: flex;
     text-align: center;
     align-items: center;
@@ -35,19 +35,31 @@
 
 
   .inputline{
-    display: absolute;
+    display: relative;
     flex-direction: row;
     margin-top: 4%;
-    margin-left: 5%;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: bottom;
+
+    /* Grey - 3 */
+    color: #898F89;
   }
 
   .logininfo{
     position: absolute;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
     height: 50%;
     top: 40%;
-    left: 20%;
+    left: 25%;
+    align-content: center;
 
     font-weight: bolder;
     font-size: 24px;
@@ -55,47 +67,72 @@
   }
 
   .signup{
-    display: absolute;
+    display: relative;
     flex-direction: row;
     margin-top: 7%;
+    
+    /* Text */
+    font-family: Montserrat;
     font-style: normal;
-    font-weight: bolder;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    text-align: center;
+
+    /* Grey - 4 */
+    color: #565C57;
   }
 
   
   input{
-    background: #C4C4C4;
+    /* Avocado Lime Ranch */
+    background-color: #96AB84;
     opacity: 0.5;
-    height: 22px;
-  }
-  
-  .enterorcancelbuttons{
-    position: absolute;
-    flex-direction: row;
-    justify-content: center;
-    width: 20%;
-    height: 15%;
-    top: 80%;
-    left: 40%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    line-height: 30px;
+    border: none;
   }
 
   Button{
-    background: #1D263B;
+    background: #2C6742;
+    border-radius: 10px;
     box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-    color: #C4C4C4;
     border: none;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 37px;
+    /* identical to box height */
+
+    text-align: center;
+
+    /* Grey - 0 */
+    color: #FFFFFF;
   }
+
   Button:hover{
-    background-color: #C4C4C4;
-    color: #1D263B;
+    background-color: #96AB84;
+    color: #565C57;
     transition-duration: 500ms;
   }
 
   #longButtons {
     width: 100%;
     left: 0%;
+  }
+
+  NavLink {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    text-decoration-line: underline;
+
+    /* Grey - 4 */
+
+    color: #565C57;
   }
