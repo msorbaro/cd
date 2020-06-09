@@ -24,13 +24,13 @@ import Dali from './dali';
 //import Annika from './annika';
 //import Morgan from './morgan';
 import FriendProfile from './friendprofile';
+//import ReactSearchbox from './ReactSearchbox';
 
 
 
 const FallBack = (props) => {
   return <div>URL Not Found</div>;
 };
-
 
 function App() {
   return (
@@ -55,6 +55,7 @@ function App() {
             <Route exact path="/Annika" component={Annika} />
             <Route exact path="/Morgan" component={Morgan} /> */}
             <Route exact path="/friendprofile" component={FriendProfile} />
+            {/* <Route path="/react-searchbox" component={ReactSearchbox} />  */}
             <Route component={FallBack} />
            </Switch>
            

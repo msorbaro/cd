@@ -28,12 +28,34 @@ class SearchFriends extends React.Component {
     db.getListOfUsers(this.setSearchBarUsers)
   }
 
+  goToFriendName = (firstAndLastName) => {
+    var nameArray = firstAndLastName.split(" ");
+    var firstName = nameArray[0];
+    var lastName = nameArray[1];
+
+    //console.log("index" + index);
+    db.getUserID(firstName, lastName, this.goToFriendID)
+     
+  }
+
+  goToFriendID = (ID) => {
+    this.props.history.push({
+      pathname: '/friendprofile',
+      state: {friendID: ID}
+
+  })  
+  }
+
   goToFriend = (index) => {
     this.props.history.push({
       pathname: '/friendprofile',
       state: {friendID: this.state.friendsIDs[index]}
 
-  })   
+  })  
+  }
+
+  setAllUsers = (array) => {
+    this.state.allUsers = array;
   }
   
 
@@ -54,7 +76,11 @@ class SearchFriends extends React.Component {
         }
         
         uL.push(object); 
+        console.log("here");
         console.log(uL);
+        this.state.allUsers.push(object);
+        console.log("everywhere");
+        //console.log(allUsers);
       }
       
       // remove this eventually when we stop hard coding the clubs
@@ -83,15 +109,31 @@ class SearchFriends extends React.Component {
       }
       uL.push(lax); 
 
-        this.setState ({
-          allUsers: uL,
-        })
+      console.log("uL");
+      console.log(uL);
+        // this.setState ({
+        //   // TO DO ITS NOT UPDATING
+        //   allUsers: uL,
+        // })
+
+        // update the allUsers array list
+
+        //this.setAllUsers(uL);
+
+        for (let i = 0; i < Object.keys(uL).length; i += 1) {
+          const currentKey = Object.keys(uL)[i];
+          const currItem = userList[currentKey]; // the user
+        }
+        console.log("there")
+        console.log(this.allUsers);
       
   }
 
   handleCancelButtonClick = (event) => {
     this.props.history.push('/');
   }
+
+  
 
   render() {
 
@@ -122,10 +164,12 @@ class SearchFriends extends React.Component {
           <div className="searchBarFriend">
             <p></p>
             <ReactSearchBox
-            placeholder="Search Here!"
+            placeholder="Search Here!!"
             value=""
             data={this.state.allUsers}
-            callback={record => console.log(record)}
+            callback={record => console.log("hello" + record)}
+            //onClick={() => this.goToFriend()}
+            onSelect={record => this.goToFriendName((record["value"]))}
           />  
           </div>
 

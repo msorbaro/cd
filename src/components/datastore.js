@@ -69,6 +69,11 @@ export function getUser(userID, callBack) {
 }
 
 export function getUserID(userFirstName, userLastName, callBack) {
+  console.log("inside of getUserID ");
+  console.log("firstName: " + userFirstName);
+  console.log("lastName: " + userLastName);
+  console.log("callBack " + callBack);
+
    
   // get the user id and accept a snapshot of information
   ourDB.ref(`users/`).on('value', (snapshot) => { 
@@ -82,12 +87,15 @@ export function getUserID(userFirstName, userLastName, callBack) {
       var firstName = currItem.userFirstName; // typeof is a string
       var lastName = currItem.userLastName; // typeof is a string
       
-      if(firstName == userFirstName && lastName == userLastName) {
+      if(firstName === userFirstName && lastName === userLastName) {
         thisUserID.push(currentKey);
       }
       
       console.log(uL);
     }
+
+    console.log("the user id " + thisUserID);
+    console.log("should be: yvKgKo5tmNXtKbIVtL6k6bYcQ6X2")
     callBack(thisUserID); // call user into
   });
 }
