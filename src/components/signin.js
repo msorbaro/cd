@@ -27,9 +27,13 @@ class SignIn extends Component {
   }
 
   handleSigninButtonClick = (event) => {
+    // 
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
       alert(error);
     });
+    // not really sure if this below line works
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.props.history.push('/profile');

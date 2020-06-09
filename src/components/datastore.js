@@ -36,6 +36,16 @@ const firebaseConfig = {
     });
 }
 
+// idk if this works
+export const signup = (email, password) =>
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then((_) => firebase.auth()
+            .createUserWithEmailAndPassword(email, password)
+        )
+        .catch((error) => {
+            return Promise.reject(error)
+        })
+
 export function signOut () {
 firebase.auth().signOut().then(() => {
   console.log('logged out');
@@ -43,6 +53,24 @@ firebase.auth().signOut().then(() => {
   console.log('wait, could not sign out');
       });
   }
+
+  /**
+ * Send verification email.
+ *
+ * @function verifyEmail
+ * @returns {Promise} Contains `void` when resolved.
+ */
+export function verifyEmail (email) {
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    .then((_) =>
+        firebase.auth().currentUser.sendEmailVerification({
+            url: `${email}${
+                firebase.auth().currentUser.email
+            }`,
+        })
+    )
+  }
+
 
 export function getCurrUser(callBack) {
   firebase.auth().onAuthStateChanged((user) => {
