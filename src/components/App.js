@@ -18,6 +18,7 @@ import DFR from './dfr';
 import DTrade from './dtrade';
 import ChessClub from './chessclub';
 import Dali from './dali';
+import SplashPage from './splashpage';
 //import Scott from './scott';
 //import Lily from './lily';
 //import Dylan from './dylan';
@@ -37,9 +38,10 @@ function App() {
     <Router>
       <div >
       <Switch>
+            <Route exact path="/" component={SplashPage} />
             <Route exact path="/help" component={Home} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/" component={Signin} />
+            <Route exact path="/signin" component={Signin} />
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/searchfriends" component={SearchFriends} />

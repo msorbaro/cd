@@ -51,7 +51,7 @@ class SignIn extends Component {
   render() {
     return (
     <div className="allSignIn">
-      <div className="dartCalLogo">
+      <div className="dartCalLogoSignIn">
         DartCal
         <img width="90px" src={logo} style={{"vertical-align":"bottom"}}/>
       </div>
