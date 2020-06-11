@@ -57,8 +57,13 @@ class SplashPage extends Component {
                 <NavLink to="/signup" ><Button id="nav" style={{'background-color': '#5C9900'}}>Sign Up</Button></NavLink>
             </div>
         </div>
-        <div>
-            <img src={background} style={{width:'1200px'}}/>
+        <div className="landing">
+            <div className="tint"></div>
+            <img src={background} id="tint" style={{position: 'static', width:'100%', margin:'0%'}}/>
+        </div>
+        <div className="welcomeBox">
+            <h4 style={{position:'relative', top:'-20px'}}>Welcome to DartCal</h4>
+            <h5 style={{position:'relative', top:'-60px'}}>Mission Statement</h5>
         </div>
       </div>
     );
