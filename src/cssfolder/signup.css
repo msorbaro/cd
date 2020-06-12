@@ -1,4 +1,13 @@
-
+.allSignUp{
+  background-color: #FBFBFB;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  min-height: 100vh;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: row;
+}
   .dartCalLogoSmall {
     position: static;
     top: 15%;
@@ -17,8 +26,9 @@
   
     position: absolute;
   
-    color: white;
+    color: #565C57;
   }
+
 
   .accountinfo{
     position: absolute;
@@ -51,7 +61,7 @@
     left: 29%;
     padding: 50px;
     top: 30%;
-    color: white;
+    color: #565C57;
   }
 
   .signupinputContainer {
@@ -59,6 +69,16 @@
     font-size: 20px;
     line-height: 24px;
     text-align: left;
+    left: 47%;
+    top: 30%;
+    padding: 50px;
+   
+
+  }
+
+  .signuporcancelbuttons {
+    position: absolute;
+    
     left: 47%;
     top: 30%;
     padding: 50px;

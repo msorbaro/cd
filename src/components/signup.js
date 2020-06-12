@@ -8,6 +8,8 @@ import '../cssfolder/signup.css';
 import logo from '../pictures/calendar.png'
 import * as db from './datastore';
 
+import '../cssfolder/signup.css';
+
 class SignUp extends Component {
   constructor(props) {
 
@@ -84,7 +86,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="all">
+      <div className="allSignUp">
         <div className="dartCalLogoSmall">
           DartCal
           <div className="scheduleLogo"><img width="80px" src={logo}/></div>
