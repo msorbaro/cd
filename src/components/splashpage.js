@@ -65,6 +65,15 @@ class SplashPage extends Component {
             <h4 style={{position:'relative', top:'-20px'}}>Welcome to DartCal</h4>
             <h5 style={{position:'relative', top:'-60px'}}>Mission Statement</h5>
         </div>
+        <div className="splashServices" >
+            Our Services
+        </div>
+        <div className="splashPartners" >
+            Our Partners
+        </div>
+        <div className="splashTeam" >
+            Our Team
+        </div>
       </div>
     );
   }

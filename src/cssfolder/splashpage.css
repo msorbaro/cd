@@ -46,7 +46,7 @@
     z-index: 0;
 
     background: #2C6742;
-    opacity: 0.3;
+    opacity: 1;
 }
 
 .tint {
@@ -96,4 +96,24 @@ h5 {
     /* Grey - 5 */
 
     color: #272C28;
+}
+
+h1{
+    /* Header I */
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 78px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #000000;
+
+}
+
+.splashServices{
+    position: absolute;
+    top: 100%;
 }
