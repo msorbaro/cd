@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 import firebase from 'firebase';
 import '../cssfolder/signup.css';
-import logo from '../pictures/calendar.png'
+import logo from '../pictures/DartCalLogo.png';
 import * as db from './datastore';
 
 import '../cssfolder/signup.css';
@@ -88,40 +88,39 @@ class SignUp extends Component {
     return (
       <div className="allSignUp">
         <div className="dartCalLogoSmall">
-          DartCal
-          <div className="scheduleLogo"><img width="80px" src={logo}/></div>
+          DARTCAL
+          <img width="80px" src={logo} style={{"vertical-align":"bottom"}}/>
         </div>
           <div className="signupnameContainer">
-            <h6>Darmouth Email:</h6>
             <h6>First Name:</h6>
             <h6>Last Name:</h6>
+            <h6>Email:</h6>
             <h6>Password:</h6>
-            <h6>Confirm Password:</h6>
-            <h6>Class Year:</h6>
+            <h6>Re-Enter Password:</h6>
+            <h6>Year:</h6>
           </div>
           <div className="signupinputContainer">
-            <div className="indivInput">
-              <h6><Input placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} /></h6>
+            <div className="signupindivInput">
+              <h6><Input placeholder="YOUR FIRST NAME HERE" onChange={this.onFirstUsernameChange} value={this.state.firstusername} /></h6>
             </div>
-            <div className="indivInput">
-              <h6><Input placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} /></h6>
+            <div className="signupindivInput">
+              <h6><Input  placeholder="YOUR LAST NAME HERE" onChange={this.onLastUsernameChange} value={this.state.lastusername} /></h6>
             </div>
-            <div className="indivInput">
-              <h6><Input  placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} /></h6>
+            <div className="signupindivInput">
+              <h6><Input placeholder="NAME.YEAR@DARTMOUTH.EDU" onChange={this.onEmailChange} value={this.state.email} /></h6>
             </div>
-            <div className="indivInput">
-              <h6><Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} /></h6>
+            <div className="signupindivInput">
+              <h6><Input type="password"  id="passwordInput" placeholder="AT LEAST 6 CHARACTERS" onChange={this.onPasswordChange} value={this.state.password} /></h6>
             </div>
-            <div className="indivInput">
-              <h6><Input type="password"  id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} /></h6>
+            <div className="signupindivInput">
+              <h6><Input type="password"  id="passwordInput" placeholder="AT LEAST 6 CHARACTERS" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} /></h6>
             </div>
-            <div className="indivInput">
-              <h6><Input type="classYear"  id="classYear" placeholder="Class Year ex. 2023" onChange={this.onUserYearChange} value={this.state.userYear}/></h6>
+            <div className="signupindivInput">
+              <h6><Input type="classYear"  id="classYear" placeholder="CLASS YEAR" onChange={this.onUserYearChange} value={this.state.userYear}/></h6>
             </div>
           </div>
-          <div className="enterorcancelbuttons">
+          <div className="signuporcancelbuttons">
             <Button  id="createButton" onClick={this.handleSignupButtonClick}>Create User</Button> &nbsp; 
-            <Button  id="cancelButton" onClick={this.handleCancelButtonClick}>Cancel</Button>
           </div>
       </div>
     );
