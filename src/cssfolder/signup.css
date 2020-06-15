@@ -83,12 +83,14 @@
   .signupinputContainer {
     position: absolute;
     font-size: 20px;
-    line-height: 30px;
-    padding: 15px;
+    line-height: 20px;
+    border-radius: 12%;
     text-align: left;
     left: 47%;
     top: 30%;
     padding: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .signupindivInput {
