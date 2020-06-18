@@ -121,7 +121,9 @@
     background-color: #96AB84;
     color: #565C57;
     transition-duration: 500ms;
+    cursor: pointer;
   }
+  Button:focus {outline:0;}
 
   #longButtons {
     width: 100%;
